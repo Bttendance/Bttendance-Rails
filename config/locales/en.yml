@@ -21,6 +21,9 @@
 
 en:
   user_mailer:
+    common:
+      subject: "Bttendane Mail"
+      team: "Team Bttendance"
     welcome:
       subject: "Welcome to Bttendance!"
-      team: "Team Bttendance"
+    reset:

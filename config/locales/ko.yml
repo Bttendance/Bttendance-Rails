@@ -1,5 +1,8 @@
 ko:
   user_mailer:
+    common:
+      subject: "Bttendance Mail"
+      team: "Team Bttendance"
     welcome:
       subject: "Bttendance에 가입하신 걸 환영합니다!"
-      team: "Team Bttendance"
+    reset:

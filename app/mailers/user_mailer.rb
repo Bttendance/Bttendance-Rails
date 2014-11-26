@@ -4,4 +4,10 @@ class UserMailer < ActionMailer::Base
     I18n.locale = @user.locale
     mail(to: @user.email)
   end
+
+  def reset(user)
+    @user = user
+    I18n.locale = @user.locale
+    mail(to: @user.email)
+  end
 end
