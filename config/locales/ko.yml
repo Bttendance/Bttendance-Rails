@@ -1,0 +1,5 @@
+ko:
+  user_mailer:
+    welcome:
+      subject: "Bttendance에 가입하신 걸 환영합니다!"
+      team: "Team Bttendance"

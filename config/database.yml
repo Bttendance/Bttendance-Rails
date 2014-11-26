@@ -1,0 +1,25 @@
+# PostgreSQL version 9.x
+#   gem install pg
+#
+#   Ensure the Postgres gem is defined in your Gemfile
+#   gem 'pg'
+#
+#   Set the DATABASE_URL environment variable, for example:
+#   $ export DATABASE_URL=postgresql://username:password@localhost/bttendance >> ~/.bash_profile
+#
+default: &default
+  encoding: unicode
+  pool: 5
+  url: <%= ENV['DATABASE_URL'] %>
+
+development:
+  <<: *default
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+
+production:
+  <<: *default
