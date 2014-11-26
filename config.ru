@@ -6,5 +6,5 @@ require 'grape/rabl'
 run Rails.application
 
 use Rack::Config do |env|
-  env['api.tilt.root'] = '/views/api'
+  env['api.tilt.root'] = Dir.pwd + '/app/views/api'
 end
