@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :schools, through: :user_schools
   has_many :devices
 
-  accepts_nested_attributes_for :devices
+  accepts_nested_attributes_for :devices, allow_destroy: true
 
   before_save { email.downcase! }
   validates :locale, presence: true
