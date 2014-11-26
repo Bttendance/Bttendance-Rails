@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20141126155444) do
   end
 
   add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
+  add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
 
   create_table "schools", force: true do |t|
     t.string   "name",       null: false
