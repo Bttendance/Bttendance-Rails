@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  has_many :user_schools
-  has_many :schools, through: :user_schools
-  has_many :user_courses
-  has_many :courses, through: :user_courses
+  has_many :schools_users
+  has_many :schools, through: :schools_users
+  has_many :course_users
+  has_many :courses, through: :courses_users
   has_many :devices
 
   accepts_nested_attributes_for :devices, allow_destroy: true
+  accepts_nested_attributes_for :schools_users, allow_destroy: true
 
   before_save { email.downcase! }
   validates :locale, presence: true
@@ -17,5 +18,5 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
 end

@@ -1,8 +1,8 @@
 class Course < ActiveRecord::Base
   belongs_to :school
 
-  has_many :user_courses
-  has_many :users, through: :user_courses
+  has_many :courses_users
+  has_many :users, through: :courses_users
 
   validates :name, presence: true
   validates :open, inclusion: { in: [true, false] }

@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20141126155444) do
   add_index "courses", ["school_id"], name: "index_courses_on_school_id", using: :btree
 
   create_table "courses_users", id: false, force: true do |t|
-    t.integer "user_id",   null: false
     t.integer "course_id", null: false
+    t.integer "user_id",   null: false
   end
 
   add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
@@ -59,8 +59,9 @@ ActiveRecord::Schema.define(version: 20141126155444) do
   end
 
   create_table "schools_users", id: false, force: true do |t|
-    t.integer "user_id",   null: false
     t.integer "school_id", null: false
+    t.integer "user_id",   null: false
+    t.string  "identity",  null: false
   end
 
   add_index "schools_users", ["school_id"], name: "index_schools_users_on_school_id", using: :btree

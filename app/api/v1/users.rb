@@ -53,20 +53,25 @@ module V1
       desc 'Updates a user and returns the updated user object'
       params do
         requires :user, type: Hash do
-          requires :password, type: String, desc: 'Password'
+          optional :password, type: String, desc: 'Password'
           optional :new_password, type: String, desc: 'New Password'
           optional :email, type: String, desc: 'Email'
           optional :name, type: String, desc: 'Name'
           optional :locale, type: String, desc: 'Locale'
           optional :devices_attributes, type: Array do
+            optional :id, type: Integer, desc: 'ID'
             optional :platform, type: String, desc: 'Platform'
             optional :uuid, type: String, desc: 'UUID'
             optional :mac_address, type: String, desc: 'MAC Address'
             optional :notification_key, type: String, desc: 'Notification Key'
           end
+          optional :schools_users_attributes, type: Array do
+            requires :school_id, type: Integer, desc: 'School ID'
+            requires :identity, type: String, desc: 'Identity'
+          end
         end
       end
-      put ':id', rabl: 'users/update' do
+      put ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
         if @user
           if permitted_params[:user][:new_password].present?
@@ -85,14 +90,10 @@ module V1
               error!({ errors: ['Authentication failed'] })
             end
           else
-            if @user.authenticate(permitted_params[:user][:password])
-              if @user.update_attributes(permitted_params[:user])
-                @user
-              else
-                error!({ errors: @user.errors.full_messages }, 422)
-              end
+            if @user.update_attributes permitted_params[:user]
+              @user
             else
-              error!({ errors: ['Authentication failed'] })
+              error!({ errors: @user.errors.full_messages }, 422)
             end
           end
         else

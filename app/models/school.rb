@@ -1,6 +1,6 @@
 class School < ActiveRecord::Base
-  has_many :user_schools
-  has_many :users, through: :user_schools
+  has_many :schools_users
+  has_many :users, through: :schools_users
   has_many :courses
 
   accepts_nested_attributes_for :courses, allow_destroy: true
