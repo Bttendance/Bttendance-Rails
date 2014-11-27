@@ -1,3 +1,3 @@
-collection @users, object_root: false
+collection @users
 
 extends 'users/user'

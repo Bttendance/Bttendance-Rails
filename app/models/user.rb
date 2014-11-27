@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :user_schools
   has_many :schools, through: :user_schools
+  has_many :user_courses
+  has_many :courses, through: :user_courses
   has_many :devices
 
   accepts_nested_attributes_for :devices, allow_destroy: true

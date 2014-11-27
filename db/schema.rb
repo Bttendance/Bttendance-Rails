@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20141126155444) do
     t.string   "instructor_name", null: false
     t.string   "code",            null: false
     t.boolean  "open",            null: false
-    t.date     "startDate"
-    t.date     "endDate"
+    t.date     "start_date"
+    t.date     "end_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 20141126155444) do
   add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
 
   create_table "schools", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "type",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",           null: false
+    t.string   "classification", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "schools_users", id: false, force: true do |t|

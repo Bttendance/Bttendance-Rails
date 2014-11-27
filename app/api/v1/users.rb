@@ -16,10 +16,9 @@ module V1
       end
 
 
-      desc 'Gets a specific user'
+      desc 'Returns a specific user'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
-
         if @user then @user else error!({ errors: ['User does not exist'] }) end
       end
 
@@ -40,7 +39,7 @@ module V1
         end
       end
       post '', rabl: 'users/user' do
-        @user = User.new(permitted_params[:user])
+        @user = User.new permitted_params[:user]
 
         if @user.save
           UserMailer.welcome(@user).deliver
@@ -60,7 +59,6 @@ module V1
           optional :name, type: String, desc: 'Name'
           optional :locale, type: String, desc: 'Locale'
           optional :devices_attributes, type: Array do
-            optional :id, type: Integer, desc: 'ID'
             optional :platform, type: String, desc: 'Platform'
             optional :uuid, type: String, desc: 'UUID'
             optional :mac_address, type: String, desc: 'MAC Address'
