@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141126155444) do
     t.string   "name",            null: false
     t.string   "instructor_name", null: false
     t.string   "code",            null: false
+    t.string   "information",     null: false
     t.boolean  "open",            null: false
     t.date     "start_date"
     t.date     "end_date"
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141126155444) do
   create_table "courses_users", id: false, force: true do |t|
     t.integer "course_id", null: false
     t.integer "user_id",   null: false
+    t.string  "identity",  null: false
   end
 
   add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20141126155444) do
     t.integer "school_id", null: false
     t.integer "user_id",   null: false
     t.string  "identity",  null: false
+    t.string  "state",     null: false
   end
 
   add_index "schools_users", ["school_id"], name: "index_schools_users_on_school_id", using: :btree
