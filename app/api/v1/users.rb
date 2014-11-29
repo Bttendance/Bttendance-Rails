@@ -8,6 +8,10 @@ module V1
             'apple6@apple.com', 'apple7@apple.com', 'apple8@apple.com',
             'apple9@apple.com']
         end
+
+        def error_with_user
+          error!({ errors: @user.errors.full_messages }, 422)
+        end
       end
 
       desc 'Returns a list of users'
@@ -39,13 +43,13 @@ module V1
         end
       end
       post '', rabl: 'users/user' do
-        @user = User.new permitted_params[:user]
+        @user = User.new(permitted_params[:user])
 
         if @user.save
           UserMailer.welcome(@user).deliver
           @user
         else
-          error!({ errors: @user.errors.full_messages }, 422)
+          error_with_user
         end
       end
 
@@ -66,35 +70,64 @@ module V1
             optional :notification_key, type: String, desc: 'Notification Key'
           end
           optional :schools_users_attributes, type: Array do
-            requires :school_id, type: Integer, desc: 'School ID'
-            requires :identity, type: String, desc: 'Identity'
+            optional :school_id, type: Integer, desc: 'School ID'
+            optional :identity, type: String, desc: 'Identity'
+            optional :state, type: String, desc: 'State'
+            optional :_destroy, type: Boolean, desc: 'Destroy'
+          end
+          optional :courses_users_attributes, type: Array do
+            optional :course_id, type: Integer, desc: 'Course ID'
+            optional :state, type: String, desc: 'State'
+            optional :_destroy, type: Boolean, desc: 'Destroy'
           end
         end
       end
       put ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
         if @user
+          update_params = permitted_params[:user]
           if permitted_params[:user][:new_password].present?
             if @user.authenticate(permitted_params[:user][:password])
-              # Set and remove the new password
-              update_params = permitted_params[:user]
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
-
-              if @user.update_attributes(update_params)
-                @user
-              else
-                error!({ errors: @user.errors.full_messages })
-              end
             else
               error!({ errors: ['Authentication failed'] })
             end
-          else
-            if @user.update_attributes permitted_params[:user]
-              @user
-            else
-              error!({ errors: @user.errors.full_messages }, 422)
+          end
+
+          # Update schools and courses join models manually
+          # TODO: Abstract (app-level)
+          if update_params[:schools_users_attributes].present?
+            update_params[:schools_users_attributes].each do |schools_user|
+              found_schools_user = @user.schools_users.find_by_school_id(schools_user[:school_id])
+              if found_schools_user && schools_user[:_destroy]
+                found_schools_user.destroy
+              elsif found_schools_user
+                found_schools_user.update_attributes(schools_user)
+              else !found_schools_user
+                @user.schools_users.new(schools_user)
+              end
             end
+            update_params.delete(:schools_users_attributes)
+          end
+          if update_params[:courses_users_attributes].present?
+            update_params[:courses_users_attributes].each do |courses_user|
+              found_courses_user = @user.courses_users.find_by_course_id(courses_user[:course_id])
+              if found_courses_user && courses_user[:_destroy]
+                found_courses_user.destroy
+              elsif found_courses_user
+                found_courses_user.update_attributes(courses_user)
+              else !found_courses_user
+                @user.courses_users.new(courses_user)
+              end
+            end
+            update_params.delete(:courses_users_attributes)
+          end
+
+          if @user.update_attributes(update_params)
+            @user
+          else
+            error_with_user
           end
         else
           error!({ errors: ['User does not exist'] })
@@ -133,7 +166,7 @@ module V1
             device = Device.find_by_uuid(params[:device][:uuid])
             # Device not yet registered to any user, add it to this user
             if !device
-              if @user.devices.create permitted_params[:device]
+              if @user.devices.create(permitted_params[:device])
                 @user
               else
                 # Fail silently
@@ -145,7 +178,7 @@ module V1
               @user
             else
               # User doesn't own this device
-              error!({ errors: ['Device registered to another user']})
+              error!({ errors: ['Device registered to another user'] })
             end
           else
             error!({ errors: ['Authentication failed'] })
