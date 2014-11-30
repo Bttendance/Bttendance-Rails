@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: 
+  schedule_id: 
+  user_id: 
+  scheduled_for: 2014-11-29 14:10:04
+  manual: false
+  active: false
+
+two:
+  course_id: 
+  schedule_id: 
+  user_id: 
+  scheduled_for: 2014-11-29 14:10:04
+  manual: false
+  active: false

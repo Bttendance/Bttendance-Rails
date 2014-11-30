@@ -4,6 +4,103 @@ module V1
       get '', rabl: 'courses/courses' do
         @courses = Course.all
       end
+
+
+      get ':id', rabl: 'courses/course' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          @course
+        else
+          error!({ errors: ['Course does not exist'] })
+        end
+      end
+
+
+      desc 'Creates a course and returns the new course object'
+      params do
+        requires :course, type: Hash do
+          requires :school_id, type: Integer, desc: 'School ID'
+          requires :name, type: String, desc: 'Name'
+          requires :instructor_name, type: String, desc: 'Instructor Name'
+          requires :code, type: String, desc: 'Code'
+          requires :open, type: Boolean, desc: 'Open'
+          optional :information, type: String, desc: 'Information'
+          optional :start_date, type: Date, desc: 'Start Date'
+          optional :end_date, type: Date, desc: 'End Date'
+        end
+      end
+      post '', rabl: 'courses/course' do
+        @course = Course.new(permitted_params[:course])
+
+        if @course.save
+          @course
+        else
+          error!({ errors: @course.errors.full_messages })
+        end
+      end
+
+
+      desc 'Updates a course and returns the updated course object'
+      params do
+        requires :course, type: Hash do
+          optional :name, type: String, desc: 'Name'
+          optional :instructor_name, type: String, desc: 'Instructor Name'
+          optional :code, type: String, desc: 'Code'
+          optional :open, type: Boolean, desc: 'Open'
+          optional :information, type: String, desc: 'Information'
+          optional :start_date, type: Date, desc: 'Start Date'
+          optional :end_date, type: Date, desc: 'End Date'
+          optional :courses_users_attributes, type: Array do
+            optional :user_id, type: Integer, desc: 'User ID'
+            optional :state, type: String, desc: 'State'
+            optional :_destroy, type: Boolean, desc: 'Destroy'
+          end
+        end
+      end
+      put ':id', rabl: 'courses/course' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          update_params = permitted_params[:course]
+          if update_params[:courses_users_attributes].present?
+            update_params[:courses_users_attributes].each do |courses_user|
+              found_courses_user = @course.courses_users.find_by_user_id(courses_user[:user_id])
+              if found_courses_user && courses_user[:_destroy]
+                found_courses_user.destroy
+              elsif found_courses_user
+                found_courses_user.update_attributes(courses_user)
+              else !found_courses_user
+                @course.courses_users.new(courses_user)
+              end
+            end
+            update_params.delete(:courses_users_attributes)
+          end
+
+          if @course.update_attributes(update_params)
+            @course
+          else
+            error!({ errors: @course.errors.full_messages })
+          end
+        else
+          error!({ errors: ['Course does not exist'] })
+        end
+      end
+
+      desc 'Deletes a course'
+      delete ':id' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          if @course.destroy
+            { success: true }
+          else
+            error!({ errors: @course.errors.full_messages })
+          end
+        else
+          error!({ errors: ['Course does not exist'] })
+        end
+      end
     end
   end
 end

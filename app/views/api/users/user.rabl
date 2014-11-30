@@ -9,3 +9,7 @@ end
 child :schools, object_root: false do
   attributes :id, :name, :classification
 end
+
+child :courses, object_root: false do
+  attributes :id, :school_id, :name, :open
+end

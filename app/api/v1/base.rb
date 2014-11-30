@@ -6,5 +6,8 @@ module V1
     mount V1::Schools
     mount V1::Courses
     mount V1::Devices
+    mount V1::AttendanceAlarms
+    mount V1::Schedules
+    mount V1::ClickerSets
   end
 end

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_id: 
+  user_id: 
+  type: 
+  message: MyString
+  time_length: 1
+  cheating: false
+  privacy: MyString
+
+two:
+  course_id: 
+  user_id: 
+  type: 
+  message: MyString
+  time_length: 1
+  cheating: false
+  privacy: MyString

@@ -11,17 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126155444) do
+ActiveRecord::Schema.define(version: 20141129191438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendance_alarms", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "schedule_id"
+    t.integer  "user_id"
+    t.datetime "scheduled_for",                null: false
+    t.boolean  "manual",                       null: false
+    t.boolean  "active",        default: true, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendance_alarms", ["course_id"], name: "index_attendance_alarms_on_course_id", using: :btree
+  add_index "attendance_alarms", ["schedule_id"], name: "index_attendance_alarms_on_schedule_id", using: :btree
+  add_index "attendance_alarms", ["user_id"], name: "index_attendance_alarms_on_user_id", using: :btree
+
+  create_table "clicker_sets", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.string   "type",        default: "mult4",     null: false
+    t.string   "message",     default: "",          null: false
+    t.integer  "time_length", default: 45,          null: false
+    t.boolean  "cheating",    default: true,        null: false
+    t.string   "privacy",     default: "professor", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clicker_sets", ["course_id"], name: "index_clicker_sets_on_course_id", using: :btree
+  add_index "clicker_sets", ["user_id"], name: "index_clicker_sets_on_user_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.integer  "school_id"
     t.string   "name",            null: false
     t.string   "instructor_name", null: false
     t.string   "code",            null: false
-    t.string   "information",     null: false
+    t.string   "information"
     t.boolean  "open",            null: false
     t.date     "start_date"
     t.date     "end_date"
@@ -34,7 +64,7 @@ ActiveRecord::Schema.define(version: 20141126155444) do
   create_table "courses_users", id: false, force: true do |t|
     t.integer "course_id", null: false
     t.integer "user_id",   null: false
-    t.string  "identity",  null: false
+    t.string  "state",     null: false
   end
 
   add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
@@ -52,6 +82,17 @@ ActiveRecord::Schema.define(version: 20141126155444) do
 
   add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
   add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
+
+  create_table "schedules", force: true do |t|
+    t.integer  "course_id"
+    t.string   "day_of_week", null: false
+    t.string   "time",        null: false
+    t.string   "timezone",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schedules", ["course_id"], name: "index_schedules_on_course_id", using: :btree
 
   create_table "schools", force: true do |t|
     t.string   "name",           null: false

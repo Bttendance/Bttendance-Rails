@@ -2,6 +2,10 @@ object @school
 
 attributes :id, :name, :classification
 
-child @school.courses, object_root: false do
-  extends 'courses/course'
+child :users, object_root: false do
+  attributes :id, :name
+end
+
+child :courses, object_root: false do
+  attributes :id, :name
 end

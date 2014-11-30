@@ -68,6 +68,7 @@ module V1
             optional :uuid, type: String, desc: 'UUID'
             optional :mac_address, type: String, desc: 'MAC Address'
             optional :notification_key, type: String, desc: 'Notification Key'
+            optional :_destroy, type: Boolean, desc: 'Destroy'
           end
           optional :schools_users_attributes, type: Array do
             optional :school_id, type: Integer, desc: 'School ID'

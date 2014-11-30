@@ -1,3 +1,3 @@
-collection @schools, object_root: false
+collection @schools
 
-extends 'schools/schoo'
+extends 'schools/school'

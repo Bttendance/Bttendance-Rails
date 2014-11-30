@@ -5,7 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :name, null: false
       t.string :instructor_name, null: false
       t.string :code, null: false
-      t.string :information, null: false
+      t.string :information
       t.boolean :open, null: false
       t.date :start_date
       t.date :end_date
