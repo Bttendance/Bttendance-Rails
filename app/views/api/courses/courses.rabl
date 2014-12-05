@@ -1,3 +1,3 @@
-collection @courses, object_root: false
+collection @courses
 
 extends 'courses/course'

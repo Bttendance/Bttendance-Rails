@@ -1,18 +1,44 @@
 module V1
   class Courses < Grape::API
     resource :courses do
+      desc 'Returns a list of courses'
       get '', rabl: 'courses/courses' do
         @courses = Course.all
       end
 
 
+      desc 'Returns a specific course'
       get ':id', rabl: 'courses/course' do
         @course = Course.find_by_id(params[:id])
 
         if @course
           @course
         else
-          error!({ errors: ['Course does not exist'] })
+          error!({ errors: ['Course does not exist'] }, 404)
+        end
+      end
+
+
+      desc 'Returns a course\'s users by type'
+      get ':id/users', rabl: 'courses/users' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          # Plain Ruby hashes are not well supported by RABL, use OpenStruct
+          @users = OpenStruct.new({
+            "supervising" => [],
+            "attending" => [],
+            "dropped" => [],
+            "kicked" => []
+          })
+
+          @course.courses_users.each do |courses_user|
+            @users[courses_user.state].push(courses_user.user)
+          end
+
+          @users
+        else
+          error!({ errors: ['Course does not exist'] }, 404)
         end
       end
 
@@ -36,7 +62,7 @@ module V1
         if @course.save
           @course
         else
-          error!({ errors: @course.errors.full_messages })
+          error!({ errors: @course.errors.full_messages }, 422)
         end
       end
 
@@ -80,10 +106,10 @@ module V1
           if @course.update_attributes(update_params)
             @course
           else
-            error!({ errors: @course.errors.full_messages })
+            error!({ errors: @course.errors.full_messages }, 422)
           end
         else
-          error!({ errors: ['Course does not exist'] })
+          error!({ errors: ['Course does not exist'] }, 404)
         end
       end
 
@@ -95,10 +121,10 @@ module V1
           if @course.destroy
             { success: true }
           else
-            error!({ errors: @course.errors.full_messages })
+            error!({ errors: @course.errors.full_messages }, 422)
           end
         else
-          error!({ errors: ['Course does not exist'] })
+          error!({ errors: ['Course does not exist'] }, 404)
         end
       end
     end

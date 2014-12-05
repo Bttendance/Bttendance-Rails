@@ -5,9 +5,9 @@ class CoursesUser < ActiveRecord::Base
   # Limit one instance of a (the same) course per user
   validates :course_id, uniqueness: { scope: :user_id }
   validates :state, presence: true, inclusion: {
-    in: ['supervising', 'assisting', 'attending', 'dropped', 'kicked']
+    in: ['supervising', 'attending', 'dropped', 'kicked']
   }
 
   # Set a primary key so we can use standard ActiveRecord methods
-  self.primary_key = :course_id
+  self.primary_key = :user_id
 end

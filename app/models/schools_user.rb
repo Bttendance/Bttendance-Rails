@@ -8,5 +8,5 @@ class SchoolsUser < ActiveRecord::Base
   validates :state, presence: true, inclusion: { in: ['supervisor', 'student', 'administrator'] }
 
   # Set a primary key so we can use standard ActiveRecord methods
-  self.primary_key = :school_id
+  self.primary_key = :user_id
 end
