@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :courses_users
   has_many :courses, through: :courses_users
   has_many :devices
-  has_many :alarms, foreign_key: 'attendance_alarm_id', class_name: 'AttendanceAlarm'
+  has_many :alarms, foreign_key: 'user_id', class_name: 'AttendanceAlarm'
   has_many :attendances_users
   has_many :attendances, through: :attendances_users
   has_many :clickers
@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
   has_many :notices
   has_many :notice_targets
 
-  accepts_nested_attributes_for :devices, allow_destroy: true
-  accepts_nested_attributes_for :schools_users, allow_destroy: true
+  accepts_nested_attributes_for :devices, :schools_users, allow_destroy: true
 
   before_save { email.downcase! }
   validates :locale, presence: true

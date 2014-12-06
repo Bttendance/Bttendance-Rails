@@ -7,7 +7,7 @@ class Clicker < ActiveRecord::Base
   validates :privacy, inclusion: { in: ['all', 'none', 'professor'] }
   validates :type, inclusion: { in: ['ox', 'star', 'mult2', 'mult3', 'mult4', 'mult5', 'essay'] }
 
-  validates_presence_of :type, :message, :saved, :time_length, :cheating, :privacy
+  validates_presence_of :type, :time_length, :privacy
 
   self.inheritance_column = :_type
 end
