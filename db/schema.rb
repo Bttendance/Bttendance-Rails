@@ -118,6 +118,28 @@ ActiveRecord::Schema.define(version: 20141129191438) do
   add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
   add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
 
+  create_table "notice_targets", force: true do |t|
+    t.integer  "notice_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notice_targets", ["notice_id"], name: "index_notice_targets_on_notice_id", using: :btree
+  add_index "notice_targets", ["user_id"], name: "index_notice_targets_on_user_id", using: :btree
+
+  create_table "notices", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.boolean  "targeted",   default: false, null: false
+    t.string   "message",    default: "",    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "notices", ["course_id"], name: "index_notices_on_course_id", using: :btree
+  add_index "notices", ["user_id"], name: "index_notices_on_user_id", using: :btree
+
   create_table "schedules", force: true do |t|
     t.integer  "course_id"
     t.string   "day_of_week", null: false

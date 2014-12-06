@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :attendances, through: :attendances_users
   has_many :clickers
   has_many :clicker_choices
+  has_many :notices
+  has_many :notice_targets
 
   accepts_nested_attributes_for :devices, allow_destroy: true
   accepts_nested_attributes_for :schools_users, allow_destroy: true
