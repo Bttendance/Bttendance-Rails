@@ -9,7 +9,6 @@ class Course < ActiveRecord::Base
   has_many :clickers
 
   validates :name, presence: true
-  validates :open, inclusion: { in: [true, false] }
   validates :code, presence: true, uniqueness: true
   validates :instructor_name, presence: true
 end
