@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206041448) do
+ActiveRecord::Schema.define(version: 20141206184959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 20141206041448) do
   add_index "clickers", ["course_id"], name: "index_clickers_on_course_id", using: :btree
   add_index "clickers", ["user_id"], name: "index_clickers_on_user_id", using: :btree
 
+  create_table "comments", force: true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.string   "message",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "courses", force: true do |t|
     t.integer  "school_id"
     t.string   "name",            null: false
@@ -107,6 +118,18 @@ ActiveRecord::Schema.define(version: 20141206041448) do
   add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
   add_index "courses_users", ["user_id"], name: "index_courses_users_on_user_id", using: :btree
 
+  create_table "curious", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.string   "title",      default: "", null: false
+    t.string   "message",    default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "curious", ["course_id"], name: "index_curious_on_course_id", using: :btree
+  add_index "curious", ["user_id"], name: "index_curious_on_user_id", using: :btree
+
   create_table "devices", force: true do |t|
     t.integer  "user_id"
     t.string   "platform",         null: false
@@ -119,6 +142,26 @@ ActiveRecord::Schema.define(version: 20141206041448) do
 
   add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
   add_index "devices", ["uuid"], name: "index_devices_on_uuid", using: :btree
+
+  create_table "followers", force: true do |t|
+    t.integer  "followable_id"
+    t.string   "followable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "followers", ["user_id"], name: "index_followers_on_user_id", using: :btree
+
+  create_table "likes", force: true do |t|
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "notice_targets", force: true do |t|
     t.integer  "notice_id"

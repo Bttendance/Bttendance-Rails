@@ -8,6 +8,7 @@ class Course < ActiveRecord::Base
   has_many :attendances
   has_many :clickers
   has_many :notices
+  has_many :curious
 
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true
