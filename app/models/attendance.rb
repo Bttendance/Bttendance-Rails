@@ -4,4 +4,5 @@ class Attendance < ActiveRecord::Base
 
   has_many :attendances_users
   has_many :users, through: :attendances_users
+  has_many :notifications, as: :notifiable
 end

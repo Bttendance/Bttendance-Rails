@@ -5,6 +5,7 @@ class Curious < ActiveRecord::Base
   has_many :likes, as: :likeable
   has_many :followers, as: :followable
   has_many :comments, as: :commentable
+  has_many :notifications, as: :notifiable
 
   accepts_nested_attributes_for :likes, :followers, :comments
 

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :comments
   has_many :subscriptions, foreign_key: 'user_id', class_name: 'Follower'
+  has_many :notifications
 
   accepts_nested_attributes_for :devices, :schools_users, allow_destroy: true
 
