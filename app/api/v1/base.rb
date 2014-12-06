@@ -8,6 +8,6 @@ module V1
     mount V1::Devices
     mount V1::AttendanceAlarms
     mount V1::Schedules
-    mount V1::ClickerSets
+    mount V1::Clickers
   end
 end

@@ -31,20 +31,21 @@ ActiveRecord::Schema.define(version: 20141129191438) do
   add_index "attendance_alarms", ["schedule_id"], name: "index_attendance_alarms_on_schedule_id", using: :btree
   add_index "attendance_alarms", ["user_id"], name: "index_attendance_alarms_on_user_id", using: :btree
 
-  create_table "clicker_sets", force: true do |t|
+  create_table "clickers", force: true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
     t.string   "type",        default: "mult4",     null: false
     t.string   "message",     default: "",          null: false
+    t.boolean  "saved",       default: false,       null: false
     t.integer  "time_length", default: 45,          null: false
     t.boolean  "cheating",    default: true,        null: false
     t.string   "privacy",     default: "professor", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
-  add_index "clicker_sets", ["course_id"], name: "index_clicker_sets_on_course_id", using: :btree
-  add_index "clicker_sets", ["user_id"], name: "index_clicker_sets_on_user_id", using: :btree
+  add_index "clickers", ["course_id"], name: "index_clickers_on_course_id", using: :btree
+  add_index "clickers", ["user_id"], name: "index_clickers_on_user_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.integer  "school_id"

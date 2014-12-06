@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :courses_users
   has_many :devices
   has_many :alarms, foreign_key: 'attendance_alarm_id', class_name: 'AttendanceAlarm'
-  has_many :clicker_sets
+  has_many :clickers
 
   accepts_nested_attributes_for :devices, allow_destroy: true
   accepts_nested_attributes_for :schools_users, allow_destroy: true

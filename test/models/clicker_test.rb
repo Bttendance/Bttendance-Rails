@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ClickerSetTest < ActiveSupport::TestCase
+class ClickerTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

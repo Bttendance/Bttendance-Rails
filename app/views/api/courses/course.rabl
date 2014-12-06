@@ -10,6 +10,6 @@ child :schedules do
   attributes :id, :day_of_week, :time, :timezone
 end
 
-child :clicker_sets do
-  attributes :id, :user_id, :type, :message, :time_length, :cheating, :privacy
+child :clickers do
+  attributes :id, :user_id, :type, :message, :saved, :time_length, :cheating, :privacy
 end

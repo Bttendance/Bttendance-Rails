@@ -5,7 +5,7 @@ class Course < ActiveRecord::Base
   has_many :users, through: :courses_users
   has_many :schedules
   has_many :alarms, foreign_key: 'attendance_alarm_id', class_name: 'AttendanceAlarm'
-  has_many :clicker_sets
+  has_many :clickers
 
   validates :name, presence: true
   validates :open, inclusion: { in: [true, false] }
