@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attendance_id: 
+  user_id: 
+  state: MyString
+
+two:
+  attendance_id: 
+  user_id: 
+  state: MyString

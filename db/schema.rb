@@ -31,6 +31,28 @@ ActiveRecord::Schema.define(version: 20141129191438) do
   add_index "attendance_alarms", ["schedule_id"], name: "index_attendance_alarms_on_schedule_id", using: :btree
   add_index "attendance_alarms", ["user_id"], name: "index_attendance_alarms_on_user_id", using: :btree
 
+  create_table "attendances", force: true do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.boolean  "auto",       default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "attendances", ["course_id"], name: "index_attendances_on_course_id", using: :btree
+  add_index "attendances", ["user_id"], name: "index_attendances_on_user_id", using: :btree
+
+  create_table "attendances_users", id: false, force: true do |t|
+    t.integer  "attendance_id", null: false
+    t.integer  "user_id",       null: false
+    t.string   "state",         null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "attendances_users", ["attendance_id"], name: "index_attendances_users_on_attendance_id", using: :btree
+  add_index "attendances_users", ["user_id"], name: "index_attendances_users_on_user_id", using: :btree
+
   create_table "clickers", force: true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
