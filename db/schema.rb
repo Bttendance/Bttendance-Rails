@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129191438) do
+ActiveRecord::Schema.define(version: 20141206041448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20141129191438) do
     t.datetime "scheduled_for",                null: false
     t.boolean  "manual",                       null: false
     t.boolean  "active",        default: true, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "attendance_alarms", ["course_id"], name: "index_attendance_alarms_on_course_id", using: :btree
@@ -97,9 +97,11 @@ ActiveRecord::Schema.define(version: 20141129191438) do
   add_index "courses", ["school_id"], name: "index_courses_on_school_id", using: :btree
 
   create_table "courses_users", id: false, force: true do |t|
-    t.integer "course_id", null: false
-    t.integer "user_id",   null: false
-    t.string  "state",     null: false
+    t.integer  "course_id",  null: false
+    t.integer  "user_id",    null: false
+    t.string   "state",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
@@ -145,8 +147,8 @@ ActiveRecord::Schema.define(version: 20141129191438) do
     t.string   "day_of_week", null: false
     t.string   "time",        null: false
     t.string   "timezone",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "schedules", ["course_id"], name: "index_schedules_on_course_id", using: :btree
@@ -159,10 +161,12 @@ ActiveRecord::Schema.define(version: 20141129191438) do
   end
 
   create_table "schools_users", id: false, force: true do |t|
-    t.integer "school_id", null: false
-    t.integer "user_id",   null: false
-    t.string  "identity",  null: false
-    t.string  "state",     null: false
+    t.integer  "school_id",  null: false
+    t.integer  "user_id",    null: false
+    t.string   "identity",   null: false
+    t.string   "state",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "schools_users", ["school_id"], name: "index_schools_users_on_school_id", using: :btree

@@ -5,6 +5,8 @@ class CreateSchoolsUsers < ActiveRecord::Migration
       t.index :school_id
       t.string :identity, null: false
       t.string :state, null: false
+
+      t.timestamps null: false
     end
   end
 end

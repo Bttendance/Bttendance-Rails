@@ -8,7 +8,7 @@ class CreateAttendanceAlarms < ActiveRecord::Migration
       t.boolean :manual, null: false
       t.boolean :active, null: false, default: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

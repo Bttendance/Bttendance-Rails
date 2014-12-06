@@ -6,7 +6,7 @@ class CreateSchedules < ActiveRecord::Migration
       t.string :time, null: false
       t.string :timezone, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
