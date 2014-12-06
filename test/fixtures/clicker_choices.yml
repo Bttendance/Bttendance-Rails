@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clicker_id: 
+  user_id: 
+  choice: MyString
+  message: MyString
+
+two:
+  clicker_id: 
+  user_id: 
+  choice: MyString
+  message: MyString

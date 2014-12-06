@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20141129191438) do
   add_index "attendances_users", ["attendance_id"], name: "index_attendances_users_on_attendance_id", using: :btree
   add_index "attendances_users", ["user_id"], name: "index_attendances_users_on_user_id", using: :btree
 
+  create_table "clicker_choices", force: true do |t|
+    t.integer  "clicker_id"
+    t.integer  "user_id"
+    t.string   "choice",     default: "text", null: false
+    t.string   "message",    default: "",     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "clicker_choices", ["clicker_id"], name: "index_clicker_choices_on_clicker_id", using: :btree
+  add_index "clicker_choices", ["user_id"], name: "index_clicker_choices_on_user_id", using: :btree
+
   create_table "clickers", force: true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
