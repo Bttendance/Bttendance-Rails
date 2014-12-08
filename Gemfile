@@ -37,6 +37,9 @@ gem 'pry-rails',     group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# WebSocket
+gem 'websocket-rails'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
 
