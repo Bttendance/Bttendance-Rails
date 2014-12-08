@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
   has_many :alarms, foreign_key: 'user_id', class_name: 'AttendanceAlarm'
   has_many :attendances
   has_many :attendances_users
-  has_many :attendeds, through: :attendances_users, foreign_key: 'attendance_id', class_name: 'Attendance', source: :attendance
+  has_many :attendeds, through: :attendances_users,
+                       foreign_key: 'attendance_id',
+                       class_name: 'Attendance',
+                       source: :attendance
   has_many :clickers
   has_many :clicker_choices
   has_many :notices

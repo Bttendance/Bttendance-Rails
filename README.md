@@ -2,22 +2,13 @@ Bttendance
 =================
 Bttendance a is Bluetooth-based attendance check and "Smart TA" application, established 2013/11/01.
 
-## Brew Install
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-## Ruby-Install Install
-brew install ruby-install
-
-## Ruby Install
-ruby-install ruby 2.1.3
-
-## Rails Install
-gem install rails
-
-## Installation
-1. After cloning this repository, run ```bundle install``` to install dependencies.
-2. Set the ```DATABASE_URL``` environment variable to your desired Postgres development database URL
-3. Run ```rake db:setup``` to setup the database (creates database if doesn't exist and autoruns all migrations).
+## Installation (OS X)
+1. Install [Homebrew](http://brew.sh) with ```ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+2. Install [Ruby Version Manager (RVM)](http://rvm.io) with ```\curl -sSL https://get.rvm.io | bash -s stable``` and resource your ```.bash_profile``` (or restart your terminal)
+3. Install Ruby 2.1+ with ```rvm install 2.1```
+4. After cloning this repository, run ```bundle install``` to install dependencies.
+5. Set the ```DATABASE_URL``` environment variable to your desired Postgres development database URL
+6. Run ```rake db:setup``` to setup the database (creates database if doesn't exist and autoruns all migrations).
 
 ## Tips
 

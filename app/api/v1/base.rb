@@ -8,6 +8,9 @@ module V1
     mount V1::Devices
     mount V1::AttendanceAlarms
     mount V1::Schedules
+    mount V1::Attendances
     mount V1::Clickers
+    mount V1::Notices
+    mount V1::Curious
   end
 end

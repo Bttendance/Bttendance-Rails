@@ -23,7 +23,7 @@ module V1
       desc 'Returns a specific user'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
-        if @user then @user else error!({ errors: ['User does not exist'] }) end
+        @user ? @user : error!({ errors: ['User does not exist'] })
       end
 
 

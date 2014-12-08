@@ -5,5 +5,7 @@ class Notice < ActiveRecord::Base
   has_many :notice_targets
   has_many :notifications, as: :notifiable
 
+  accepts_nested_attributes_for :notice_targets
+
   validates_presence_of :targeted, :message
 end
