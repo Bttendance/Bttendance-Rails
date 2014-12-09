@@ -78,7 +78,7 @@ Run ```rake api:routes``` to list the API routes, e.g.
 
 #### Postgres (psql) commands
     // Connect to local Bttendance DB
-    $ psql bttendance
+    $ psql postgres
 
     // Connect to a remote DB (prod, dev, etc)
     $ psql <db_url, e.g. postgres://...>
@@ -147,12 +147,12 @@ Run ```rake api:routes``` to list the API routes, e.g.
 ## Developer
 
 #### Devin Doolin
-- Email: icddevin@gmail.com
+- Email: icddevin@bttendance.com
 
 #### Hee Hwan Park
-- Email: heehwan.park@gmail.com
+- Email: heehwan.park@bttendance.com
 
 #### The Finest Artist
-- Email: contact@thefinestartist.com
+- Email: thefinestartist@bttendance.com
 
 #### Copyright 2015 @Bttendance Inc.
