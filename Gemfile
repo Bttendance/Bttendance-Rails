@@ -37,6 +37,9 @@ gem 'pry-rails',     group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+## Settings for Rails
+gem 'ledermann-rails-settings'
+
 # WebSocket
 gem 'websocket-rails'
 
