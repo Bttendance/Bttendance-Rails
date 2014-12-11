@@ -50,7 +50,6 @@ Bttendance a is "Smart TA" application, established 2013/11/01.
 ## Tips
 Run ```rake api:routes``` to list the API routes, e.g.
 
-    GET        /api/v1/users(.:format)
     GET        /api/v1/users/:id(.:format)
     POST       /api/v1/users(.:format)
     PUT        /api/v1/users/:id(.:format)
@@ -59,8 +58,27 @@ Run ```rake api:routes``` to list the API routes, e.g.
     GET        /api/v1/schools(.:format)
     GET        /api/v1/schools/:id(.:format)
     POST       /api/v1/schools(.:format)
+    PUT        /api/v1/schools/:id(.:format)
     GET        /api/v1/courses(.:format)
+    GET        /api/v1/courses/:id(.:format)
+    GET        /api/v1/courses/:id/users(.:format)
+    POST       /api/v1/courses(.:format)
+    PUT        /api/v1/courses/:id(.:format)
+    DELETE     /api/v1/courses/:id(.:format)
     GET        /api/v1/devices(.:format)
+    GET        /api/v1/attendance_alarms(.:format)
+    POST       /api/v1/attendance_alarms(.:format)
+    PUT        /api/v1/attendance_alarms/:id(.:format)
+    DELETE     /api/v1/attendance_alarms/:id(.:format)
+    POST       /api/v1/schedules(.:format)
+    DELETE     /api/v1/schedules/:id(.:format)
+    POST       /api/v1/attendances(.:format)
+    POST       /api/v1/clickers(.:format)
+    PUT        /api/v1/clickers/:id(.:format)
+    DELETE     /api/v1/clickers/:id(.:format)
+    POST       /api/v1/notices(.:format)
+    PUT        /api/v1/notices/:id(.:format)
+
 
 
 ## Commands
