@@ -56,12 +56,24 @@ Run ```rake api:routes``` to list the API routes, e.g.
     PUT        /api/v1/users/:id(.:format)
     GET        /api/v1/users/reset(.:format)
     POST       /api/v1/users/login(.:format)
+    GET        /api/v1/users/:id/courses(.:format)
     GET        /api/v1/schools(.:format)
     GET        /api/v1/schools/:id(.:format)
     POST       /api/v1/schools(.:format)
     GET        /api/v1/courses(.:format)
     GET        /api/v1/devices(.:format)
-
+    GET        /api/v1/attendance_alarms(.:format)
+    POST       /api/v1/attendance_alarms(.:format)
+    PUT        /api/v1/attendance_alarms/:id(.:format)
+    DELETE     /api/v1/attendance_alarms/:id(.:format)
+    POST       /api/v1/schedules(.:format)
+    DELETE     /api/v1/schedules/:id(.:format)
+    POST       /api/v1/attendances(.:format)
+    POST       /api/v1/clickers(.:format)
+    PUT        /api/v1/clickers/:id(.:format)
+    DELETE     /api/v1/clickers/:id(.:format)
+    POST       /api/v1/notices(.:format)
+    PUT        /api/v1/notices/:id(.:format)
 
 ## Commands
 #### Heroku commands
@@ -123,7 +135,7 @@ Run ```rake api:routes``` to list the API routes, e.g.
     // Exit redis cli
     $ CTRL+C
 
-    // Drop all key-values (WARNING : DO NOT USE IN PRODUCTION DATABASE SERVER)
+    // Drop all key-values (WARNING: DO NOT USE IN PRODUCTION DATABASE SERVER)
     $ FLUSHALL
 
 #### Git commands
@@ -144,7 +156,7 @@ Run ```rake api:routes``` to list the API routes, e.g.
     $ git push bttendance-dev master
     $ git push bttendance master
 
-## Developer
+## Developers
 
 #### Devin Doolin
 - Email: icddevin@bttendance.com

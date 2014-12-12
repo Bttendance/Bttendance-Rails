@@ -188,6 +188,18 @@ module V1
           error!({ errors: ['User does not exist'] })
         end
       end
+
+
+      desc 'Returns a user\'s courses'
+      get ':id/courses', rabl: 'courses/courses' do
+        @user = User.find_by_id(params[:id])
+
+        if @user
+          @courses = @user.courses
+        else
+          error!({ errors: ['User does not exist'] })
+        end
+      end
     end
   end
 end

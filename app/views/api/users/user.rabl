@@ -2,14 +2,10 @@ object @user
 
 attributes :id, :name, :email
 
-child :devices do
-  attributes :id, :platform, :uuid, :mac_address
-end
+child :schools_users do
+  attributes :identity, :state
 
-child :schools do
-  attributes :id, :name, :classification
-end
-
-child :courses do
-  attributes :id, :school_id, :name, :open
+  child :school do
+    attributes :id, :name
+  end
 end
