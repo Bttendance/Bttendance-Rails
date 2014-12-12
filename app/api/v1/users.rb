@@ -188,6 +188,70 @@ module V1
           error!({ errors: ['User does not exist'] })
         end
       end
+
+      desc 'Automatic sign in'
+      params do
+        requires :email, type: String, desc: 'Email'
+        requires :password, type: String, desc: 'Password'
+        requires :device, type: Hash do
+          requires :uuid, type: String, desc: 'UUID'
+          optional :platform, type: String, desc: 'Platform'
+        end
+        requires :appVersion, type: String, desc: 'App Version'
+      end
+      post 'autologin' rabl: 'users/user' do
+        @user = User.find_by_email(params[:email])
+        if @user
+          if @user.authenticate(params[:password])
+            #device
+            device = Device.find_by_uuid(params[:device][:uuid])
+            if device && device.user_id == @user.id
+              #If version of user's app is greater than 2.0
+              if params[:appVersion].to_f >= 2
+                @user
+              else
+                error!({ errors: ['Update available'] })
+              end
+            elsif device && device.user_id != @user.id              
+              error!({ errors: ['Device registered to another user'] })
+            else
+              error!({ errors: ['Device was not registered'] })
+            end
+          else
+            error!({ errors: ['Authentication failed'] })
+          end
+        else
+          error!({ errors: ['User does not exist'] })
+        end
+      end
+
+      desc 'Get user\'s courses'
+      params do
+        requires :email, type: String, desc: 'Email'
+      end
+      get 'courses' rabl: 'users/user' do
+        @user = User.find_by_email(params[:email])        
+        if @user
+          @courses = OpenStruct.new({
+            "supervising" => [],
+            "resigned" => [],
+            "attending" => [],
+            "dropped" => [],
+            "kicked" => []
+          })
+
+          @user.courses_user.each do |courses_user|
+            @courses[courses_user.state].push(courses_user.course)
+          end
+
+          supervising_courses = @courses.send("supervising")
+          attending_courses = @courses.send("attending")
+          @total_courses = supervising_courses + attending_courses
+          
+        else
+          error!({ errors: ['User does not exist'] })
+        end
+      end
     end
   end
 end
