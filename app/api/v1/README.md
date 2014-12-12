@@ -3,11 +3,17 @@ Bttendance API v1
 
 ### Base URL for all API routes: ```/api/v1/```
 
+Notes:
+* JSON types are validated, so strings should be sent as strings, numbers as
+numbers, and so on.
+* Most parameters require a root object (user, school, course, etc), so if something is going wrong that isn't obvious, check that first.
+* All errors include a standard [HTTP informational status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) and message detailing the error.
+
 ## Users
 
 ### GET ```/users```
 
-_Gets all users_
+_Returns all users_
 
 Returns:
 ```json
@@ -38,7 +44,7 @@ Returns:
 
 ### GET ```/users/:id```
 
-_Gets a single user with ```:id```_
+_Returns a single user with ```:id```_
 
 Returns:
 ```json
@@ -247,11 +253,261 @@ Returns:
 ]
 ```
 
-## Devices
-
 ## Schools
 
+### GET ```/schools```
+
+_Returns all schools_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "name": "Yonsei University",
+    "classification": "university"
+  },
+  {
+    "id": 2,
+    "name": "Korea University",
+    "classification": "university"
+  }
+]
+```
+
+### GET ```/schools/:id```
+
+_Returns a single school with ```:id```_
+
+Returns:
+```json
+{
+  "id": 1,
+  "name": "Yonsei University",
+  "classification": "university"
+}
+```
+
+### POST ```/schools```
+
+_Creates a school and returns the new school object_
+
+Params:
+```ruby
+requires :school, type: Hash do
+  requires :name, type: String, desc: 'Name'
+  requires :classification, type: String, desc: 'Type'
+  optional :courses_attributes, type: Array do
+    requires :name, type: String, desc: 'Name'
+    requires :instructor_name, type: String, desc: 'Instructor Name'
+    requires :code, type: String, desc: 'Code'
+    requires :open, type: Boolean, desc: 'Open'
+    optional :information, type: String, desc: 'Information'
+    optional :start_date, desc: 'Start Date'
+    optional :end_date, desc: 'End Date'
+  end
+end
+```
+
+Notes:
+* You can create courses at the same time as a school by including a new Course
+object in the ```courses_attributes``` array.
+
+Returns:
+```json
+{
+  "id": 2,
+  "name": "Korea University",
+  "classification": "university"
+}
+```
+
+### PUT ```/schools/:id```
+
+_Updates a school and returns the updated school object_
+
+Params:
+```ruby
+requires :school, type: Hash do
+  optional :name, type: String, desc: 'Name'
+  optional :classification, type: String, desc: 'Type'
+  optional :courses_attributes, type: Array do
+    requires :name, type: String, desc: 'Name'
+    requires :instructor_name, type: String, desc: 'Instructor Name'
+    requires :code, type: String, desc: 'Code'
+    requires :open, type: Boolean, desc: 'Open'
+    optional :start_date, desc: 'Start Date'
+    optional :end_date, desc: 'End Date'
+  end
+end
+```
+
+Notes:
+* As when creating a school, you may also create new courses by passing an
+array of the Course objects that you would like to create. Not that you can't update or delete existing courses here, only add new ones.
+
+Returns:
+```json
+{
+  "id": 3,
+  "name": "Wall Street Institute",
+  "classification": "institute"
+}
+```
+
 ## Courses
+
+### GET ```/courses```
+
+_Returns all courses_
+
+Returns:
+```json
+[
+  {
+    "id": 3,
+    "school_id": 3,
+    "name": "English 101",
+    "instructor_name": "Devin Doolin",
+    "code": "ENGL101",
+    "open": false,
+    "start_date": null,
+    "end_date": null
+  },
+  {
+    "id": 4,
+    "school_id": 3,
+    "name": "Business English 101",
+    "instructor_name": "Devin Doolin",
+    "code": "BZEN101",
+    "open": false,
+    "start_date": null,
+    "end_date": null
+  }
+]
+```
+
+### GET ```/courses/:id```
+
+_Returns a single course with ```:id```_
+
+Returns:
+```json
+{
+  "id": 3,
+  "school_id": 3,
+  "name": "English 101",
+  "instructor_name": "Devin Doolin",
+  "code": "ENGL101",
+  "open": false,
+  "start_date": null,
+  "end_date": null
+}
+```
+
+### GET ```/courses/:id/users```
+
+_Returns a course's users by type_
+
+Returns:
+```json
+{
+  "supervising": [
+    {
+      "id": 1,
+      "name": "Tae-hwan Kim"
+    }
+  ],
+  "attending": [
+    {
+      "id": 2,
+      "name": "Devin Doolin"
+    }
+  ],
+  "dropped": [],
+  "kicked": []
+}
+```
+
+### POST ```/courses```
+
+_Creates a course and returns the new course object_
+
+Params:
+```ruby
+requires :course, type: Hash do
+  requires :school_id, type: Integer, desc: 'School ID'
+  requires :name, type: String, desc: 'Name'
+  requires :instructor_name, type: String, desc: 'Instructor Name'
+  requires :code, type: String, desc: 'Code'
+  requires :open, type: Boolean, desc: 'Open'
+  optional :information, type: String, desc: 'Information'
+  optional :start_date, type: Date, desc: 'Start Date'
+  optional :end_date, type: Date, desc: 'End Date'
+end
+```
+
+Returns:
+```json
+{
+  "id": 5,
+  "school_id": 1,
+  "name": "Application Development with Advanced JavaScript",
+  "instructor_name": "Devin Doolin",
+  "code": "JSCR304",
+  "open": false,
+  "start_date": "2015-03-01",
+  "end_date": "2015-06-19"
+}
+```
+
+### PUT ```/courses/:id```
+
+_Updates a course and returns the updated course object_
+
+Params:
+```ruby
+requires :course, type: Hash do
+  optional :name, type: String, desc: 'Name'
+  optional :instructor_name, type: String, desc: 'Instructor Name'
+  optional :code, type: String, desc: 'Code'
+  optional :open, type: Boolean, desc: 'Open'
+  optional :information, type: String, desc: 'Information'
+  optional :start_date, type: Date, desc: 'Start Date'
+  optional :end_date, type: Date, desc: 'End Date'
+  optional :courses_users_attributes, type: Array do
+    optional :user_id, type: Integer, desc: 'User ID'
+    optional :state, type: String, desc: 'State'
+    optional :_destroy, type: Boolean, desc: 'Destroy'
+  end
+end
+```
+
+Notes:
+* Similar to how users can attach courses via update, courses may also add and
+remove users in a similar way. For example, the following will add a user to a class:
+
+```json
+{
+    "course": {
+      "courses_users_attributes": [
+        {
+          "user_id": 1,
+          "state": "attending"
+        }
+      ]
+    }
+}
+```
+
+### DELETE ```/courses/:id```
+
+_Deletes a course_
+
+Returns:
+```json
+{ "success": true }
+```
 
 ## Schedules
 

@@ -48,15 +48,17 @@ module V1
 
       desc 'Updates a school and returns the updated school object'
       params do
-        optional :name, type: String, desc: 'Name'
-        optional :classification, type: String, desc: 'Type'
-        optional :courses_attributes, type: Array do
-          requires :name, type: String, desc: 'Name'
-          requires :instructor_name, type: String, desc: 'Instructor Name'
-          requires :code, type: String, desc: 'Code'
-          requires :open, type: Boolean, desc: 'Open'
-          optional :start_date, desc: 'Start Date'
-          optional :end_date, desc: 'End Date'
+        requires :school, type: Hash do
+          optional :name, type: String, desc: 'Name'
+          optional :classification, type: String, desc: 'Type'
+          optional :courses_attributes, type: Array do
+            requires :name, type: String, desc: 'Name'
+            requires :instructor_name, type: String, desc: 'Instructor Name'
+            requires :code, type: String, desc: 'Code'
+            requires :open, type: Boolean, desc: 'Open'
+            optional :start_date, desc: 'Start Date'
+            optional :end_date, desc: 'End Date'
+          end
         end
       end
       put ':id', rabl: 'schools/school' do

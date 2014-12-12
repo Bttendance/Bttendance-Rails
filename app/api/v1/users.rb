@@ -23,7 +23,7 @@ module V1
       desc 'Returns a specific user'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
-        @user ? @user : error!({ errors: ['User does not exist'] })
+        @user ? @user : error!({ errors: ['User does not exist'] }, 404)
       end
 
 
@@ -92,7 +92,7 @@ module V1
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
             else
-              error!({ errors: ['Authentication failed'] })
+              error!({ errors: ['Authentication failed'] }, 401)
             end
           end
 
@@ -131,7 +131,7 @@ module V1
             error_with_user
           end
         else
-          error!({ errors: ['User does not exist'] })
+          error!({ errors: ['User does not exist'] }, 404)
         end
       end
 
@@ -143,7 +143,7 @@ module V1
           UserMailer.reset(@user).deliver
           true
         else
-          error!({ errors: ['User with that email does not exist']})
+          error!({ errors: ['User with that email does not exist'] }, 404)
         end
       end
 
@@ -179,13 +179,13 @@ module V1
               @user
             else
               # User doesn't own this device
-              error!({ errors: ['Device registered to another user'] })
+              error!({ errors: ['Device registered to another user'] }, 400)
             end
           else
-            error!({ errors: ['Authentication failed'] })
+            error!({ errors: ['Authentication failed'] }, 401)
           end
         else
-          error!({ errors: ['User does not exist'] })
+          error!({ errors: ['User does not exist'] }, 404)
         end
       end
 
@@ -197,7 +197,7 @@ module V1
         if @user
           @courses = @user.courses
         else
-          error!({ errors: ['User does not exist'] })
+          error!({ errors: ['User does not exist'] }, 404)
         end
       end
     end
