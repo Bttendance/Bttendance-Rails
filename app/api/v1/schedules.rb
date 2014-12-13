@@ -16,7 +16,7 @@ module V1
         if @schedule.save
           @schedule
         else
-          error!({ errors: @schedule.errors.full_messages })
+          error_with(@schedule)
         end
       end
 
@@ -27,12 +27,12 @@ module V1
 
         if @schedule
           if @schedule.destroy
-            { success: true }
+            { "success": true }
           else
-            error!({ errors: @schedule.errors.full_messages })
+            error_with(@schedule)
           end
         else
-          error!({ errors: ['Schedule does not exist'] })
+          error!({ errors: ['Schedule does not exist'] }, 404)
         end
       end
     end

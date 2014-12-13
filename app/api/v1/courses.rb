@@ -62,7 +62,7 @@ module V1
         if @course.save
           @course
         else
-          error!({ errors: @course.errors.full_messages }, 422)
+          error_with(@course)
         end
       end
 
@@ -106,7 +106,7 @@ module V1
           if @course.update_attributes(update_params)
             @course
           else
-            error!({ errors: @course.errors.full_messages }, 422)
+            error_with(@course)
           end
         else
           error!({ errors: ['Course does not exist'] }, 404)
@@ -119,9 +119,9 @@ module V1
 
         if @course
           if @course.destroy
-            { success: true }
+            { "success": true }
           else
-            error!({ errors: @course.errors.full_messages }, 422)
+            error_with(@course)
           end
         else
           error!({ errors: ['Course does not exist'] }, 404)

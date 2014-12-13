@@ -8,10 +8,6 @@ module V1
             'apple6@apple.com', 'apple7@apple.com', 'apple8@apple.com',
             'apple9@apple.com']
         end
-
-        def error_with_user
-          error!({ errors: @user.errors.full_messages }, 422)
-        end
       end
 
       desc 'Returns a list of users'
@@ -49,7 +45,7 @@ module V1
           UserMailer.welcome(@user).deliver
           @user
         else
-          error_with_user
+          error_with(@user)
         end
       end
 
@@ -128,7 +124,7 @@ module V1
           if @user.update_attributes(update_params)
             @user
           else
-            error_with_user
+            error_with(@user)
           end
         else
           error!({ errors: ['User does not exist'] }, 404)

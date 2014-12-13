@@ -7,9 +7,13 @@ class API < Grape::API
   formatter :json, Grape::Formatter::Rabl
 
   helpers do
-    # API-wide helper to declare params
+    # Quickly get declared params
     def permitted_params
       declared(params, { include_missing: false })
+    end
+
+    def error_with(obj)
+      error!({ errors: obj.errors.full_messages }, 422)
     end
   end
 

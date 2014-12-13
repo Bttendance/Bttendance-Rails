@@ -24,7 +24,7 @@ module V1
         if @attendance_alarm.save
           @attendance_alarm
         else
-          error!({ errors: @attendance_alarm.errors.full_messages }, 422)
+          error_with(@attendance_alarm)
         end
       end
 
@@ -44,7 +44,7 @@ module V1
           if @attendance_alarm.update_attributes(permitted_params[:attendance_alarm])
             @attendance_alarm
           else
-            error!({ errors: @attendance_alarm.errors.full_messages }, 422)
+            error_with(@attendance_alarm)
           end
         else
           error!({ errors: ['Attendance Alarm does not exist'] }, 404)
@@ -58,7 +58,7 @@ module V1
 
         if @attendance_alarm
           if @attendance_alarm.destroy
-            { success: true }
+            { "success": true }
           else
             error!({ errors: @attendance_alarm.errors.full_messages })
           end

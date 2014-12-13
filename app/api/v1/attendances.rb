@@ -15,7 +15,7 @@ module V1
         if @attendance.save
           @attendance
         else
-          error!({ errors: @attendance.errors.full_messages })
+          error_with(@attendance)
         end
       end
     end

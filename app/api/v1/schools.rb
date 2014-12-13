@@ -14,7 +14,7 @@ module V1
         if @school
           @school
         else
-          error!({ errors: ['School does not exist'] }, 422)
+          error!({ errors: ['School does not exist'] }, 404)
         end
       end
 
@@ -41,7 +41,7 @@ module V1
         if @school.save
           @school
         else
-          error!({ errors: @school.errors.full_messages }, 422)
+          error_with(@school)
         end
       end
 
@@ -68,7 +68,7 @@ module V1
           if @school.update_attributes(permitted_params[:school])
             @school
           else
-            error!({ errors: @school.errors.full_messages }, 422)
+            error_with(@school)
           end
         else
           error!({ errors: ['School does not exist'] }, 404)

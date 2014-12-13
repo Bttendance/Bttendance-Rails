@@ -20,7 +20,7 @@ module V1
         if @clicker.save
           @clicker
         else
-          error!({ errors: @clicker.errors.full_messages })
+          error_with(@clicker)
         end
       end
 
@@ -43,7 +43,7 @@ module V1
           if @clicker.update_attributes(permitted_params[:clicker])
             @clicker
           else
-            error!({ errors: @clicker.errors.full_messages })
+            error_with(@clicker)
           end
         else
           error!({ errors: ['Clicker does not exist'] })
@@ -56,9 +56,9 @@ module V1
         @clicker = Clicker.find_by_id(params[:id])
 
         if @clicker.destroy
-          { success: true }
+          { "success": true }
         else
-          error!({ errors: @clicker.errors.full_messages })
+          error_with(@clicker)
         end
       end
     end
