@@ -9,6 +9,15 @@ numbers, and so on.
 * Most parameters require a root object (user, school, course, etc), so if something is going wrong that isn't obvious, check that first.
 * All errors include a standard [HTTP informational status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) and message detailing the error.
 
+## Table of Contents
+
+* [Users](#users)
+* [Schools](#schools)
+* [Courses](#courses)
+* [Schedules](#schedules)
+* [Attendance Alarms](#attendance-alarms)
+
+
 ## Users
 
 ### GET ```/users```
@@ -100,7 +109,7 @@ Returns:
 
 ### PUT ```/users/:id```
 
-_Updates a user and returns the updated user object_
+_Updates a user with ```:id``` and returns the updated user object_
 
 Params:
 ```ruby
@@ -324,7 +333,7 @@ Returns:
 
 ### PUT ```/schools/:id```
 
-_Updates a school and returns the updated school object_
+_Updates a school with ```:id``` and returns the updated school object_
 
 Params:
 ```ruby
@@ -463,7 +472,7 @@ Returns:
 
 ### PUT ```/courses/:id```
 
-_Updates a course and returns the updated course object_
+_Updates a course with ```:id``` and returns the updated course object_
 
 Params:
 ```ruby
@@ -487,6 +496,7 @@ Notes:
 * Similar to how users can attach courses via update, courses may also add and
 remove users in a similar way. For example, the following will add a user to a class:
 
+Returns:
 ```json
 {
     "course": {
@@ -502,7 +512,7 @@ remove users in a similar way. For example, the following will add a user to a c
 
 ### DELETE ```/courses/:id```
 
-_Deletes a course_
+_Deletes a course with ```:id```_
 
 Returns:
 ```json
@@ -511,7 +521,141 @@ Returns:
 
 ## Schedules
 
+### POST ```/schedules```
+
+_Creates a schedule and returns the new schedule object_
+
+Params:
+```ruby
+requires :schedule, type: Hash do
+  requires :course_id, type: Integer, desc: 'Course ID'
+  requires :day_of_week, type: String, desc: 'Day of Week'
+  requires :time, type: String, desc: 'Time'
+  requires :timezone, type: String, desc: 'Timezone'
+end
+```
+
+Notes:
+* ```timezone``` represents a tz database time zone. A list of such exists on
+[Wikipedia](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "day_of_week": "mon",
+  "time": "9:00 AM",
+  "timezone": "Asia/Seoul"
+}
+```
+
+### DELETE ```/schedules/:id```
+
+_Deletes a schedule with ```:id```_
+
+Returns:
+```json
+{ "success": true }
+```
+
 ## Attendance Alarms
+
+### GET ```/attendance_alarms```
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "schedule_id": 1,
+    "user_id": 1,
+    "scheduled_for": "25/12/2014",
+    "manual": false,
+    "active": true
+  },
+  {
+    "id": 2,
+    "course_id": 1,
+    "schedule_id": 2,
+    "user_id": 2,
+    "scheduled_for": "25/12/2014",
+    "manual": false,
+    "active": true
+  }
+]
+```
+
+### POST ```/attendance_alarms```
+
+_Creates an attendance alarm and returns the new attendance alarm object_
+
+Params:
+```ruby
+requires :attendance_alarm, type: Hash do
+  requires :course_id, type: Integer, desc: 'Course ID'
+  requires :schedule_id, type: Integer, desc: 'Schedule ID'
+  requires :user_id, type: Integer, desc: 'User ID'
+  requires :scheduled_for, type: Date, desc: 'Scheduled For'
+  requires :manual, type: Boolean, desc: 'Manual'
+  requires :active, type: Boolean, desc: 'Active'
+end
+```
+
+Notes:
+* ```scheduled_for``` must be in a valid Ruby date format (i.e. DD/MM/YYYY).
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "schedule_id": 1,
+  "user_id": 1,
+  "scheduled_for": "25/12/2014",
+  "manual": false,
+  "active": true
+}
+```
+
+### PUT ```/attendance_alarms/:id```
+
+_Updates an attendance alarm with ```:id``` and returns the updated attendance alarm object_
+
+Params:
+```ruby
+requires :attendance_alarm, type: Hash do
+  optional :scheduled_for, type: Date, desc: 'Scheduled For'
+  optional :manual, type: Boolean, desc: 'Manual'
+  optional :active, type: Boolean, desc: 'Active'
+end
+```
+
+Notes:
+* ```scheduled_for``` must be in a valid Ruby date format (i.e. DD/MM/YYYY).
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "schedule_id": 1,
+  "user_id": 1,
+  "scheduled_for": "18/12/2014",
+  "manual": false,
+  "active": true
+}
+```
+
+### DELETE ```/attendance_alarms/:id```
+
+_Deletes an attendance alarm with ```:id```_
+
+Returns:
+```json
+{ "success": true }
+```
 
 ## Attendances
 
