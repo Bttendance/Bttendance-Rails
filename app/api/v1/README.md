@@ -85,6 +85,12 @@ requires :user, type: Hash do
   requires :password, type: String, desc: 'Password'
   requires :name, type: String, desc: 'Name'
   optional :locale, type: String, desc: 'Locale'
+  optional :preferences_attributes, type: Hash do
+    optional :clicker, type: Boolean, desc: 'Clicker'
+    optional :attendance, type: Boolean, desc: 'Attendance'
+    optional :notice, type: Boolean, desc: 'Notice'
+    optional :curious, type: Boolean, desc: 'Curious'
+  end
   optional :devices_attributes, type: Array do
     requires :platform, type: String, desc: 'Platform'
     optional :uuid, type: String, desc: 'UUID'
@@ -119,6 +125,12 @@ requires :user, type: Hash do
   optional :email, type: String, desc: 'Email'
   optional :name, type: String, desc: 'Name'
   optional :locale, type: String, desc: 'Locale'
+  optional :preferences_attributes, type: Hash do
+    optional :clicker, type: Boolean, desc: 'Clicker'
+    optional :attendance, type: Boolean, desc: 'Attendance'
+    optional :notice, type: Boolean, desc: 'Notice'
+    optional :curious, type: Boolean, desc: 'Curious'
+  end
   optional :devices_attributes, type: Array do
     optional :id, type: Integer, desc: 'ID'
     optional :platform, type: String, desc: 'Platform'
@@ -234,7 +246,7 @@ Returns:
 
 ### GET ```/users/:id/courses```
 
-_Returns a user's courses_
+_Returns a user with ```:id```'s courses_
 
 Returns:
 ```json
@@ -260,6 +272,20 @@ Returns:
     "end_date": null
   }
 ]
+```
+
+### GET ```/users/:id/preferences```
+
+_Returns a user with ```:id```'s preferences_
+
+Returns:
+```json
+{
+  "clicker": true,
+  "attendance": true,
+  "notice": true,
+  "curious": true
+}
 ```
 
 ## Schools

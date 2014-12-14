@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clicker: false
+  attendance: false
+  notify: false
+  curious: false
+
+two:
+  clicker: false
+  attendance: false
+  notify: false
+  curious: false

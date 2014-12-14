@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
   has_many :subscriptions, foreign_key: 'user_id', class_name: 'Follower'
   has_many :notifications
 
+  has_one :preferences
+
+  accepts_nested_attributes_for :preferences
   accepts_nested_attributes_for :devices, :schools_users, allow_destroy: true
 
   before_save { email.downcase! }

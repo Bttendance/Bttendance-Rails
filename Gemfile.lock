@@ -90,8 +90,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
-    ledermann-rails-settings (2.3.0)
-      activerecord (>= 3.1)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -202,7 +200,6 @@ DEPENDENCIES
   grape-rabl
   hashie_rails
   jquery-rails
-  ledermann-rails-settings
   pg
   pry-rails
   rails (= 4.1.8)
