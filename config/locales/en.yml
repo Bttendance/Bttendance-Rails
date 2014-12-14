@@ -27,3 +27,4 @@ en:
     welcome:
       subject: "Welcome to Bttendance!"
     reset:
+      subject: "Bttendance Password Reset"
