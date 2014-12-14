@@ -12,8 +12,19 @@ class API < Grape::API
       declared(params, { include_missing: false })
     end
 
-    def error_with(obj)
-      error!({ errors: obj.errors.full_messages }, 422)
+    def error_with(obj, status_code)
+      if obj.is_a?(Integer)
+        status_code = obj
+      end
+
+      case status_code
+      when 401
+        error!({ errors: ['Authentication failed'] }, 401)
+      when 404
+        error!({ errors: ["#{obj} does not exist"] }, 404)
+      when 422
+        error!({ errors: obj.errors.full_messages }, 422)
+      end
     end
   end
 

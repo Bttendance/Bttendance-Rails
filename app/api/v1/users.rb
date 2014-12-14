@@ -19,7 +19,7 @@ module V1
       desc 'Returns a specific user'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
-        @user ? @user : error!({ errors: ['User does not exist'] }, 404)
+        @user ? @user : error_with('User', 404)
       end
 
 
@@ -45,7 +45,7 @@ module V1
           UserMailer.welcome(@user).deliver
           @user
         else
-          error_with(@user)
+          error_with(@user, 422)
         end
       end
 
@@ -83,12 +83,12 @@ module V1
         @user = User.find_by_id(params[:id])
         if @user
           update_params = permitted_params[:user]
-          if permitted_params[:user][:new_password].present?
-            if @user.authenticate(permitted_params[:user][:password])
+          if update_params[:new_password].present?
+            if @user.authenticate(update_params[:password])
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
             else
-              error!({ errors: ['Authentication failed'] }, 401)
+              error_with(401)
             end
           end
 
@@ -124,22 +124,22 @@ module V1
           if @user.update_attributes(update_params)
             @user
           else
-            error_with(@user)
+            error_with(@user, 422)
           end
         else
-          error!({ errors: ['User does not exist'] }, 404)
+          error_with('User', 404)
         end
       end
 
 
       desc 'Sends a reset password email to a user'
-      get 'reset' do
+      post 'reset' do
         @user = User.find_by_email(params[:email])
         if @user
           UserMailer.reset(@user).deliver
-          true
+          status 204
         else
-          error!({ errors: ['User with that email does not exist'] }, 404)
+          error_with('User', 404)
         end
       end
 
@@ -178,10 +178,10 @@ module V1
               error!({ errors: ['Device registered to another user'] }, 400)
             end
           else
-            error!({ errors: ['Authentication failed'] }, 401)
+            error_with(401)
           end
         else
-          error!({ errors: ['User does not exist'] }, 404)
+          error_with('User', 404)
         end
       end
 
@@ -193,7 +193,7 @@ module V1
         if @user
           @courses = @user.courses
         else
-          error!({ errors: ['User does not exist'] }, 404)
+          error_with('User', 404)
         end
       end
     end

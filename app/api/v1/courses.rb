@@ -14,7 +14,7 @@ module V1
         if @course
           @course
         else
-          error!({ errors: ['Course does not exist'] }, 404)
+          error_with('Course', 404)
         end
       end
 
@@ -38,7 +38,7 @@ module V1
 
           @users
         else
-          error!({ errors: ['Course does not exist'] }, 404)
+          error_with('Course', 404)
         end
       end
 
@@ -62,7 +62,7 @@ module V1
         if @course.save
           @course
         else
-          error_with(@course)
+          error_with(@course, 422)
         end
       end
 
@@ -106,10 +106,10 @@ module V1
           if @course.update_attributes(update_params)
             @course
           else
-            error_with(@course)
+            error_with(@course, 422)
           end
         else
-          error!({ errors: ['Course does not exist'] }, 404)
+          error_with('Course', 404)
         end
       end
 
@@ -119,12 +119,12 @@ module V1
 
         if @course
           if @course.destroy
-            { "success": true }
+            status 204
           else
-            error_with(@course)
+            error_with(@course, 422)
           end
         else
-          error!({ errors: ['Course does not exist'] }, 404)
+          error_with('Course', 404)
         end
       end
     end

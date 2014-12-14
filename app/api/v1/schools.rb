@@ -14,7 +14,7 @@ module V1
         if @school
           @school
         else
-          error!({ errors: ['School does not exist'] }, 404)
+          error_with('School', 404)
         end
       end
 
@@ -41,7 +41,7 @@ module V1
         if @school.save
           @school
         else
-          error_with(@school)
+          error_with(@school, 422)
         end
       end
 
@@ -68,10 +68,10 @@ module V1
           if @school.update_attributes(permitted_params[:school])
             @school
           else
-            error_with(@school)
+            error_with(@school, 422)
           end
         else
-          error!({ errors: ['School does not exist'] }, 404)
+          error_with('School', 404)
         end
       end
     end

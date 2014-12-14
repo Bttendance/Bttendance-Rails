@@ -15,7 +15,7 @@ module V1
         if @attendance.save
           @attendance
         else
-          error_with(@attendance)
+          error_with(@attendance, 422)
         end
       end
     end

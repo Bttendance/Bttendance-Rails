@@ -19,7 +19,7 @@ module V1
         if @notice.save
           @notice
         else
-          error_with(@notice)
+          error_with(@notice, 422)
         end
       end
 
@@ -42,10 +42,10 @@ module V1
           if @notice.update_attributes(permitted_params[:notice])
             @notice
           else
-            error_with(@notice)
+            error_with(@notice, 422)
           end
         else
-          error!({ errors: ['Notice does not exist'] })
+          error_with('Notice', 404)
         end
       end
     end

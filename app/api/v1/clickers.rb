@@ -20,7 +20,7 @@ module V1
         if @clicker.save
           @clicker
         else
-          error_with(@clicker)
+          error_with(@clicker, 422)
         end
       end
 
@@ -43,10 +43,10 @@ module V1
           if @clicker.update_attributes(permitted_params[:clicker])
             @clicker
           else
-            error_with(@clicker)
+            error_with(@clicker, 422)
           end
         else
-          error!({ errors: ['Clicker does not exist'] })
+          error_with('Clicker', 404)
         end
       end
 
@@ -56,9 +56,9 @@ module V1
         @clicker = Clicker.find_by_id(params[:id])
 
         if @clicker.destroy
-          { "success": true }
+          status 204
         else
-          error_with(@clicker)
+          error_with(@clicker, 422)
         end
       end
     end

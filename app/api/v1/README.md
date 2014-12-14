@@ -515,8 +515,8 @@ Returns:
 _Deletes a course with ```:id```_
 
 Returns:
-```json
-{ "success": true }
+```
+204
 ```
 
 ## Schedules
@@ -555,8 +555,8 @@ Returns:
 _Deletes a schedule with ```:id```_
 
 Returns:
-```json
-{ "success": true }
+```
+204
 ```
 
 ## Attendance Alarms
@@ -653,8 +653,8 @@ Returns:
 _Deletes an attendance alarm with ```:id```_
 
 Returns:
-```json
-{ "success": true }
+```
+204
 ```
 
 ## Attendances
