@@ -7,5 +7,5 @@ class Notice < ActiveRecord::Base
 
   accepts_nested_attributes_for :notice_targets
 
-  validates_presence_of :targeted, :message
+  validates_presence_of :message
 end

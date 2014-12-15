@@ -113,6 +113,7 @@ module V1
         end
       end
 
+
       desc 'Deletes a course'
       delete ':id' do
         @course = Course.find_by_id(params[:id])
@@ -123,6 +124,30 @@ module V1
           else
             error_with(@course, 422)
           end
+        else
+          error_with('Course', 404)
+        end
+      end
+
+
+      desc 'Returns a course\'s attendances'
+      get ':id/attendances', rabl: 'attendances/attendances' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          @attendances = @course.attendances
+        else
+          error_with('Course', 404)
+        end
+      end
+
+
+      desc 'Returns a course\'s notices'
+      get ':id/notices', rabl: 'notices/notices' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          @notices = @course.notices
         else
           error_with('Course', 404)
         end

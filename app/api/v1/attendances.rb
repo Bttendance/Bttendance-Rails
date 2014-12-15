@@ -6,7 +6,7 @@ module V1
         requires :attendance, type: Hash do
           requires :course_id, type: Integer, desc: 'Course ID'
           requires :user_id, type: Integer, desc: 'User ID'
-          requires :state, type: String, desc: 'State'
+          optional :auto, type: Boolean, desc: 'Auto'
         end
       end
       post '', rabl: 'attendances/attendance' do
