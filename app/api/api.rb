@@ -6,6 +6,11 @@ class API < Grape::API
   # Use the RABL JSON formatter
   formatter :json, Grape::Formatter::Rabl
 
+  # Before any route, set the locale based on the language header
+  before do
+    I18n.locale = headers['Accept-Language']
+  end
+
   helpers do
     # Quickly get declared params
     def permitted_params
