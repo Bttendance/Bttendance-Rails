@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use Unicorn for the web server
+# Use Unicorn as the app server
 gem 'unicorn'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -44,9 +44,6 @@ gem 'websocket-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
