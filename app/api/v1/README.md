@@ -283,8 +283,8 @@ Returns:
 {
   "clicker": true,
   "attendance": true,
-  "notice": true,
-  "curious": true
+  "curious": true,
+  "notice": true
 }
 ```
 
