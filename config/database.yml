@@ -10,7 +10,7 @@
 default: &default
   encoding: unicode
   pool: 5
-  url: <%= ENV['DATABASE_URL'] %>
+  url: postgres://zopiztxyqhpjbf:5TM180NEfy6f2Z_0ipZvmj6trF@ec2-54-83-205-46.compute-1.amazonaws.com:5432/d4fs0v6gc7e1c4
 
 development:
   <<: *default

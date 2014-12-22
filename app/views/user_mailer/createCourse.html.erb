@@ -43,7 +43,7 @@
 														Title
 													</td>
 													<td align="center" bgcolor="#F1F1FF" >
-														#courseTitle
+														<%= @course.name %>
 													</td>
 												</tr>
 												<tr>
@@ -51,7 +51,7 @@
 														Class Code
 													</td>
 													<td align="center" bgcolor="#F1F1FF" >
-														#classCode
+														<%= @course.code %>
 													</td>
 												</tr>
 												<tr>
@@ -59,7 +59,7 @@
 														Professor
 													</td>
 													<td align="center" bgcolor="#F1F1FF" >
-														#profname
+														<%= @course.instructor_name %>
 													</td>
 												</tr>
 												<tr>
@@ -67,7 +67,7 @@
 														Institution
 													</td>
 													<td align="center" bgcolor="#F1F1FF" >
-														#institutionName
+														<%= @school.name %>
 													</td>
 												</tr>
 											</table>											

@@ -11,14 +11,20 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email)
   end
 
-  def createCourse(user)
-    @user = user
+  def createCourse(courses_user)
+    @courses_user = courses_user
+    @user = User.find_by_id(params[@courses_user.user_id])
+    @course = Course.find_by_id(params[@courses_user.course_id])
+    @school = School.find_by_id(params[@course.school_id])
     I18n.locale = @user.locale
     mail(to: @user.email)
   end
 
-  def attendCourse(user)
-    @user = user
+  def attendCourse(courses_user)
+    @courses_user = courses_user
+    @user = User.find_by_id(params[@courses_user.user_id])
+    @course = Course.find_by_id(params[@courses_user.course_id])
+    @school = School.find_by_id(params[@course.school_id])
     I18n.locale = @user.locale
     mail(to: @user.email)
   end
