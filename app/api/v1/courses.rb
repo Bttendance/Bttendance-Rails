@@ -142,12 +142,36 @@ module V1
       end
 
 
+      desc 'Returns a course\'s clickers'
+      get ':id/clickers', rabl: 'clickers/clickers' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          @clickers = @course.clickers
+        else
+          error_with('Course', 404)
+        end
+      end
+
+
       desc 'Returns a course\'s notices'
       get ':id/notices', rabl: 'notices/notices' do
         @course = Course.find_by_id(params[:id])
 
         if @course
           @notices = @course.notices
+        else
+          error_with('Course', 404)
+        end
+      end
+
+
+      desc 'Returns a course\'s curiouses'
+      get ':id/curiouses', rabl: 'curiouses/curiouses' do
+        @course = Course.find_by_id(params[:id])
+
+        if @course
+          @curiouses = @course.curiouses
         else
           error_with('Course', 404)
         end
