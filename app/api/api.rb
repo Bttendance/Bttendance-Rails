@@ -8,7 +8,7 @@ class API < Grape::API
 
   # Before any route, set the locale based on the language header
   before do
-    I18n.locale = headers['Accept-Language']
+    I18n.locale = headers['Accept-Language'] || 'en'
   end
 
   helpers do
