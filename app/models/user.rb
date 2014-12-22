@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   has_many :schools_users
   has_many :schools, through: :schools_users
@@ -37,4 +37,16 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 6 }, on: :create
+
+  # FILTERS
+  before_create     :create_preference
+  after_craete      :send_welcome_email
+
+  def create_preference
+    # Preferences.create(user_id: self.id)
+  end
+
+  def send_welcome_mail
+    UserMailer.welcome(@user).deliver
+  end
 end

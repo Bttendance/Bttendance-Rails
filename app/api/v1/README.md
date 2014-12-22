@@ -85,12 +85,6 @@ requires :user, type: Hash do
   requires :password, type: String, desc: 'Password'
   requires :name, type: String, desc: 'Name'
   optional :locale, type: String, desc: 'Locale'
-  optional :preferences_attributes, type: Hash do
-    optional :clicker, type: Boolean, desc: 'Clicker'
-    optional :attendance, type: Boolean, desc: 'Attendance'
-    optional :notice, type: Boolean, desc: 'Notice'
-    optional :curious, type: Boolean, desc: 'Curious'
-  end
   optional :devices_attributes, type: Array do
     requires :platform, type: String, desc: 'Platform'
     optional :uuid, type: String, desc: 'UUID'
