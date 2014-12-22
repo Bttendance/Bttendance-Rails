@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  VALID_EMAIL_REGEX = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   has_many :schools_users
   has_many :schools, through: :schools_users
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
   # FILTERS
   before_create     :create_preference
-  after_craete      :send_welcome_email
+  after_create      :send_welcome_email
 
   def create_preference
     # Preferences.create(user_id: self.id)
