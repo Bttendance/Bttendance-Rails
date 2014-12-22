@@ -10,6 +10,8 @@ Bttendance a is "Smart TA" application, established 2013/11/01.
 5. After cloning this repository, run ```bundle install``` to install dependencies.
 6. Set the ```DATABASE_URL``` environment variable to your desired Postgres development database URL ```launchctl setenv DATABASE_URL postgres```
 7. Run ```rake db:setup``` to setup the database (creates database if doesn't exist and autoruns all migrations).
+8. Run ```rake db:migrate RAILS_ENV=development``` to migrate new database
+9. Run ```rails server``` to start server.
 
 #### Install Postgres/Redis with [Homebrew](http://brew.sh)
     $ brew update
