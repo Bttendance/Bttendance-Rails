@@ -25,6 +25,18 @@ module V1
       end
 
 
+      desc 'Returns a specific clicker'
+      get ':id', rabl: 'clickers/clicker' do
+        @clicker = Clicker.find_by_id(params[:id])
+
+        if @clicker
+          @clicker
+        else
+          error_with('Clicker', 404)
+        end
+      end
+
+
       desc 'Updates a clicker and returns the updated clicker object'
       params do
         requires :clicker do
