@@ -118,17 +118,17 @@ ActiveRecord::Schema.define(version: 20141214035812) do
   add_index "courses_users", ["course_id"], name: "index_courses_users_on_course_id", using: :btree
   add_index "courses_users", ["user_id"], name: "index_courses_users_on_user_id", using: :btree
 
-  create_table "curious", force: true do |t|
+  create_table "curiouses", force: true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
-    t.string   "title",      default: "", null: false
+    t.string   "title",                   null: false
     t.string   "message",    default: "", null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  add_index "curious", ["course_id"], name: "index_curious_on_course_id", using: :btree
-  add_index "curious", ["user_id"], name: "index_curious_on_user_id", using: :btree
+  add_index "curiouses", ["course_id"], name: "index_curiouses_on_course_id", using: :btree
+  add_index "curiouses", ["user_id"], name: "index_curiouses_on_user_id", using: :btree
 
   create_table "devices", force: true do |t|
     t.integer  "user_id"

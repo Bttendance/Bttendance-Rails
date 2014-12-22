@@ -11,6 +11,6 @@ module V1
     mount V1::Attendances
     mount V1::Clickers
     mount V1::Notices
-    mount V1::Curious
+    mount V1::Curiouses
   end
 end

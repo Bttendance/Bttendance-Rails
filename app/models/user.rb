@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :clicker_choices
   has_many :notices
   has_many :notice_targets
-  has_many :curious
+  has_many :curiouses
   has_many :likes
   has_many :comments
   has_many :subscriptions, foreign_key: 'user_id', class_name: 'Follower'
