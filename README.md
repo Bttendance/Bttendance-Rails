@@ -13,6 +13,14 @@ Bttendance a is "Smart TA" application, established 2013/11/01.
 8. Run ```rake db:migrate RAILS_ENV=development``` to migrate new database
 9. Run ```rails server``` to start server.
 
+#### Install EditorConfig for your preferred editor
+
+[EditorConfig](http://editorconfig.org) is a project defining a file format
+for defining coding styles and a collection of plugins to enable editors to
+adhere to those styles, such as tabs/spaces, indentation width, and more. It
+also allows style definitions based on file location and type. Follow the link
+for more information and download the plugin for your editor of choice. If your editor isn't supported, take a look at the ```.editorconfig``` file and try to set the styles in your editor manually.
+
 #### Install Postgres/Redis with [Homebrew](http://brew.sh)
     $ brew update
     $ brew doctor
