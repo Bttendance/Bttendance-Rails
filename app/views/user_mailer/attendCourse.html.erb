@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>
-			Your course has been created!
+			<%= t '.subject' %> | <%= t 'user_mailer.common.team' %>
 		</title>
 		<meta charset="utf-8" name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
 		<meta name="format-detection" content="telephone=no, address=no, email=no">
@@ -11,10 +11,10 @@
 		<table class="protector" align="center" width="99%" border="0">
 			<tr>
 				<td>
-					<table class="email" align="center" cellspacing="0" style="border: 5px solid; border-color: #0072B0; line-height: 1.5em; max-width: 600px;">
+					<table class="email" align="center" cellspacing="0" style="border: 5px solid; border-color: #0072B0; line-height: 1.5em; max-width: 600px">
 						<tr>
 							<td>
-								<table class="email-content" style="margin: 0 20px;	text-align: center; color: #556; font-size: 16px;">
+								<table class="email-content" style="margin: 0 30px;	text-align: center; color: #556; font-size: 16px;">
 									<!-- spacer -->
 									<tr><td height="30"></td></tr>
 									<!-- Image -->
@@ -33,49 +33,45 @@
 									<!-- Content -->									
 									<tr style="text-align: left;">
 										<td style="font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-											<p style="font-weight: bold;">Dear #fullname.</p>
-											<p>
-												Your course has been created in #schoolname institution. Please tell class code to your students in order that they can join your course.
-											</p>
-											<table align="center" border="0px" width="90%" style="font-size: 14px; color: #556; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif; line-height: 140%; border-collapse: collapse;">
-												<tr>
-													<td align="center" width="40%" bgcolor="#0072B0" style="color:#F1F1FF">
-														Title
-													</td>
-													<td align="center" bgcolor="#F1F1FF" >
-														#courseTitle
-													</td>
-												</tr>
-												<tr>
-													<td align="center" bgcolor="#0072B0" style="color:#F1F1FF">
-														Class Code
-													</td>
-													<td align="center" bgcolor="#F1F1FF" >
-														#classCode
-													</td>
-												</tr>
-												<tr>
-													<td align="center" bgcolor="#0072B0" style="color:#F1F1FF">
-														Professor
-													</td>
-													<td align="center" bgcolor="#F1F1FF" >
-														#profname
-													</td>
-												</tr>
-												<tr>
-													<td align="center" bgcolor="#0072B0" style="color:#F1F1FF">
-														Institution
-													</td>
-													<td align="center" bgcolor="#F1F1FF" >
-														#institutionName
-													</td>
-												</tr>
-											</table>											
-											<p align="center">
-												Make your lecture interactive with BTTENDANCE!
-											</p>
+											<p>Dear <%= @user.name %>,</p>
+											<p>You are successfully registered to #courseTitle course.</p>											
+												<table align="center" width="90%" border="0" style="font-size: 14px; color: #556; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif; line-height: 140%; border-collapse: collapse;">
+													<tr>
+														<td align="center" width="40%" bgcolor="#0072B0" style="color:#F1F1FF">
+															Title
+														</td>
+														<td align="center" bgcolor="#F1F1FF" >
+															#courseTitle
+														</td>
+													</tr>
+													<tr>
+														<td align="center" bgcolor="#0072B0" style="color:#F1F1FF;">
+															Class code
+														</td>
+														<td align="center" bgcolor="#F1F1FF" >
+															#classCode
+														</td>
+													</tr>
+													<tr>
+														<td align="center" bgcolor="#0072B0" style="color:#F1F1FF">
+															Professor
+														</td>
+														<td align="center" bgcolor="#F1F1FF" >
+															#profName
+														</td>
+													</tr>
+													<tr>
+														<td align="center" bgcolor="#0072B0" style="color:#F1F1FF">
+															Institution
+														</td>
+														<td align="center" bgcolor="#F1F1FF" >
+															#schoolName
+														</td>
+													</tr>
+												</table>
+											<p>Your student number (or identity number) in #schoolName is #studentID. If this number is not your real identity number, please modify it to the real one at Profile screen.</p>
 										</td>
-									</tr>
+									</tr>									
 									<!-- spacer -->
 									<tr><td height="15"></td></tr>
 									<!-- Line -->
@@ -85,8 +81,8 @@
 									<!-- Content -->
 									<tr>
 										<td style="font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-											<p style="text-align: center; color: #556;">Download BTTENDANCE Ver 2.0.0 User Manual!</p>
-											<p style="text-align: center;"><a style="color: #0072B0; text-decoration: none;" target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/Tutorial/Instructor+manual_Ver1.0.0_EN.pdf">User Manual for Instructors (English)</a></p>
+											<p style="text-align: center; color: #556;">Download BTTENDANCE Ver 2.0 User Manual!</p>
+											<p><a style="color: #0072B0; text-decoration: none;" target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/Tutorial/Student+manual_Ver1.0.0_EN.pdf">User Guide for Students (English)</a></p>
 										</td>
 									</tr>
 									<!-- spacer -->
@@ -98,8 +94,7 @@
 						<tr>
 							<td class="footy" style="background: #0072B0; padding: 30px 0px;">
 								<p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;	text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-									BTTENDANCE Homepage: <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com" class="footer-link">www.bttendance.com</a><br> 
-									If you want to unsubscribe, please click <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com/unsubscribe" class="footer-link">HERE</a>.
+									BTTENDANCE Homepage: <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com" class="footer-link">www.bttendance.com</a>
 								</p>
 								<br>
 								<p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;	text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
