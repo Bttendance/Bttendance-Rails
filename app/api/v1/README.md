@@ -191,7 +191,7 @@ Returns:
 }
 ```
 
-### GET ```/users/reset```
+### POST ```/users/reset```
 
 _Sends a password reset email to a user's email address on file_
 
