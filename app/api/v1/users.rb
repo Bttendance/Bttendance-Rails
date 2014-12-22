@@ -138,6 +138,9 @@ module V1
 
 
       desc 'Sends a reset password email to a user'
+      params do
+        requires :email, type: String, desc: 'Email'
+      end
       post 'reset' do
         @user = User.find_by_email(params[:email])
         if @user
