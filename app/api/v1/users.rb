@@ -216,6 +216,20 @@ module V1
           error_with('User', 404)
         end
       end
+
+      #Just for testing user_mailer
+      #Under the heehwan_mailer branch
+
+      desc 'Send welcome email to user'
+      get ':id/welcome' do
+        @user = User.find_by_id(params[:id])
+        if @user
+          UserMailer.welcome(@user).deliver
+          status 204
+        else
+          error_with('User', 404)
+        end
+      end
     end
   end
 end
