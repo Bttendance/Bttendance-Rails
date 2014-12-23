@@ -130,7 +130,7 @@ en:
       error_in_post_find_method: "Error in post find method."
       post_doesnt_exist: "Post doesn't exist."
       updating_identity_has_failed: "Updating identity has failed."
-  
+
   push:
     you_have_succeed_to_send_a_message: "You have succeed to send a message."
     attendance_has_been_checked: "Attendance has been checked"
@@ -153,7 +153,7 @@ en:
     youve_already_chosen_c_as_a_choice: "You've already chosen C as a choice."
     youve_already_chosen_d_as_a_choice: "You've already chosen D as a choice."
     youve_already_chosen_e_as_a_choice: "You've already chosen E as a choice."
- 
+
   export_grades:
     clicker: "Clicker"
     attendance: "Attendance"
@@ -190,7 +190,7 @@ en:
       student_manual: "User Manual for Students (English)"
       homepage: "BTTENDANCE Homepage:"
       company_info: "© 2014 Bttendance Inc. All rights reserved. Bttendance, 606-601, 100, Pangyoyeok-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, 463-420 Rep. of KOREA."
-      contact: "Contact:"      
+      contact: "Contact:"
     welcome:
       subject: "Welcome to Bttendance!"
       intro_1: "BTTENDANCE is a mobile application helping to make lecture interactive."
@@ -203,9 +203,9 @@ en:
       notice: "Notice"
       notice_des: "BTTENDANCE is an efficient way to make an announcement for your class. Notify to your students as easy as sending text message!"
       see_how_to_use: "See how to use."
-      feel_free_to_ask_us: "If you have a question about BTTENDANCE, please feel free to ask us at contact&zwnj;@bttendance.&zwnj;com!"      
+      feel_free_to_ask_us: "If you have a question about BTTENDANCE, please feel free to ask us at contact&zwnj;@bttendance.&zwnj;com!"
     reset:
-      subject: "Bttendance Password Reset"      
+      subject: "Bttendance Password Reset"
       we_received_your_request: "We have received a request to reset your password."
       user_new_password: "Your new password is following."
       please_change_password: "Please change your password that you can remember."
