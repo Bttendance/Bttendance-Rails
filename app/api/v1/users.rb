@@ -92,7 +92,7 @@ module V1
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
             else
-              error_with('', 401)
+              error_with(@user, 401)
             end
           end
 
@@ -186,7 +186,7 @@ module V1
               error!({ errors: ['Device registered to another user'] }, 400)
             end
           else
-            error_with('', 401)
+            error_with(@user, 401)
           end
         else
           error_with('User', 404)

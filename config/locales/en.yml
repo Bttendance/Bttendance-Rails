@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  error:
+    title:
+      attendance_check_failed: "Attendance Check Failed"
+      sending_email_failed: "Sending Email Failed"
+    message:
+      attendance_record_doesnt_exist: "Attendance record doesn't exist."
   user_mailer:
     common:
       subject: "Bttendane Mail"
