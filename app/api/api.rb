@@ -6,7 +6,7 @@ class API < Grape::API
   # Use the RABL JSON formatter
   formatter :json, Grape::Formatter::Rabl
 
-  # Before any route, set the locale based on the language header
+  # Before any route
   before do
     set_locale
   end
@@ -19,6 +19,7 @@ class API < Grape::API
       declared(params, { include_missing: false })
     end
 
+    # Api error return helper
     def error_with(obj, status_code)
       if obj.is_a?(Integer)
         status_code = obj
@@ -34,12 +35,14 @@ class API < Grape::API
       end
     end
 
+    # set the locale based on the language header
     def set_locale
       Rails.logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-      I18n.locale = extract_locale_from_accept_language_header
+      I18n.locale = extract_locale_from_accept_language_header || 'en'
       Rails.logger.debug "* Locale set to '#{I18n.locale}'"
     end
 
+    # locale parsing from http header
     def extract_locale_from_accept_language_header
       request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     end
