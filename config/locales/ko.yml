@@ -133,24 +133,7 @@ ko:
     youve_already_chosen_d_as_a_choice:	"이미 D를 선택하였습니다."
     youve_already_chosen_e_as_a_choice:	"이미 E를 선택하였습니다."
 
-	user_mailer:
-    common:
-      subject: "비텐던스 메일"
-      team: "비텐던스 팀"
-    welcome:
-      subject: "비텐던스에 가입하신 걸 환영합니다!"
-    reset:
-    	subject: "회원님의 비텐던스 비밀번호가 복구되었습니다."
-    update_password:
-      subject: "회원님의 비텐던스 비밀번호가 수정되었습니다."
-    create_course:
-      subject: "\"%s\" 강의가 개설되었습니다."
-    attend_course:
-      subject: "강의 \"%s\"에 성공적으로 등록되었습니다!"
-    export_grades:
-      subject: "요청하신 \"%s\" 강의의 설문, 출석 및 공지 기록입니다."
-
-  export_grades:
+	export_grades:
     clicker:	"설문하기"
     attendance:	"출석체크"
     notice:	"공지하기"
@@ -169,4 +152,40 @@ ko:
     didnt_participated:	"참여하지 않음"
     read:	"읽음"
     unread:	"읽지 않음"
+
+	user_mailer:
+    common:
+      subject: "비텐던스 메일"
+      team: "비텐던스 팀"
+      homepage: "비텐던스 홈페이지:"
+      company_info: "사업자번호: 144-81-10243 | 통신판매업신고: 제 2014-경기성남-0306호 | 대표자: 김태환 | 경기도 성남시 분당구&zwnj; 판교역로 100,&zwnj; 606-601 주식회사 비텐던스"
+      contact: "문의메일:"
+      sincerely:
+      from_bttendance:
+    welcome:
+      subject: "비텐던스에 가입하신 걸 환영합니다!"
+      intro_1: "비텐던스는 학생들이 활발하게 참여하는 강의를 돕는 모바일 어플리케이션입니다."
+      intro_2: "비텐던스는 수업 중 학생들의 반응을 바로 알아볼 수 있게 돕고, 출석 확인에 사용되는 시간을 줄여줍니다. 또, 급한 공지를 문자 보내듯 보낼 수 있게 해주죠."
+      intro_3: "이제 비텐던스로 보다 효율적이고 효과적인 수업을 만들어 보세요!"
+      clicker: "설문하기"
+      clicker_des: "설문하기 기능은 강의자가 학생들의 반응을 강의 중에 확인하시고 싶을 때 즉석 설문을 할 수 있는 기능입니다."
+      attendance: "출석체크"
+      attendance_des: "자동 출석체크 기능은 스마트폰의 블루투스 기능을 이용해 수백 명의 학생도 빠르고 정확하게 출석을 확인할 수 있는 기능입니다."
+      notice: "공지하기"
+      notice_des: "공지하기 기능은 강의자가 학생들에게 알릴 사항이 있을 때, 문자를 보내듯 쉽게 알림 사항을 전파할 수 있는 기능입니다."
+      see_how_to_use: "사용법 보기"
+      download_manual: "Ver 2.0 사용자 가이드를 다운받으세요!"
+      instructor_manual: "강의자용 사용자 가이드 (국문)"
+      student_manual: "학생용 사용자 가이드 (국문)"
+      feel_free_to_ask_us: "비텐던스 사용이 어려우시거나 수업에서 어떻게 활용하면 더 좋을지 궁금하시다면, contact&zwnj;@bttendance.&zwnj;com로 물어보세요. 빠르고 성심성의껏 답변해드리겠습니다!"      
+    reset:
+    	subject: "회원님의 비텐던스 비밀번호가 복구되었습니다."
+    update_password:
+      subject: "회원님의 비텐던스 비밀번호가 수정되었습니다."
+    create_course:
+      subject: "\"%s\" 강의가 개설되었습니다."
+    attend_course:
+      subject: "강의 \"%s\"에 성공적으로 등록되었습니다!"
+    export_grades:
+      subject: "요청하신 \"%s\" 강의의 설문, 출석 및 공지 기록입니다."
 

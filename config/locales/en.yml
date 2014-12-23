@@ -154,23 +154,6 @@ en:
     youve_already_chosen_d_as_a_choice: "You've already chosen D as a choice."
     youve_already_chosen_e_as_a_choice: "You've already chosen E as a choice."
  
-  user_mailer:
-    common:
-      subject: "Bttendane Mail"
-      team: "Team Bttendance"
-    welcome:
-      subject: "Welcome to Bttendance!"
-    reset:
-      subject: "Bttendance Password Reset"
-    update_password:
-      subject: "Your BTTENDANCE password has been changed."
-    create_course:
-      subject: "Course \"%s\" has been created."
-    attend_course:
-      subject: "You are successfully registered in course \"%s\"!"
-    export_grades:
-      subject: "Clicker, Attendance and Notice records of the course \"%s\" has been exported."
-
   export_grades:
     clicker: "Clicker"
     attendance: "Attendance"
@@ -190,3 +173,56 @@ en:
     didnt_participated: "Didn't Participated"
     read: "Read"
     unread: "Unread"
+
+  user_mailer:
+    common:
+      subject: "Bttendane Mail"
+      team: "Team Bttendance"
+      dear_user: "Dear <%= @user.name %>."
+      sincerely: "Yours sincerely,"
+      from_bttendance_team: "Team Bttendance"
+      course_title: "Title"
+      class_code: "Class code"
+      instructor: "Instructor"
+      institution: "Institution"
+      download_manual: "Download BTTENDANCE Ver 2.0 User Manual!"
+      instructor_manual: "User Manual for Instructors (English)"
+      student_manual: "User Manual for Students (English)"
+      homepage: "BTTENDANCE Homepage:"
+      company_info: "© 2014 Bttendance Inc. All rights reserved. Bttendance, 606-601, 100, Pangyoyeok-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, 463-420 Rep. of KOREA."
+      contact: "Contact:"      
+    welcome:
+      subject: "Welcome to Bttendance!"
+      intro_1: "BTTENDANCE is a mobile application helping to make lecture interactive."
+      intro_2: "It helps to check students' response in class, to reduce the time spent the attendance check, and to notify important information to students."
+      intro_3: "Make your lecture effective and efficient with BTTENDANCE!"
+      clicker: "Clicker"
+      clicker_des: "Clicker is the Audience Response System that enables instructors and students to interact dynamically through question-and-polling."
+      attendance: "Attendance"
+      attendance_des: "BTTENDANCE checks your students' attendance accurately and effortlessly in all ranges of class by using Bluetooth and elaborate algorithm."
+      notice: "Notice"
+      notice_des: "BTTENDANCE is an efficient way to make an announcement for your class. Notify to your students as easy as sending text message!"
+      see_how_to_use: "See how to use."
+      feel_free_to_ask_us: "If you have a question about BTTENDANCE, please feel free to ask us at contact&zwnj;@bttendance.&zwnj;com!"      
+    reset:
+      subject: "Bttendance Password Reset"      
+      we_received_your_request: "We have received a request to reset your password."
+      user_new_password: "Your new password is following."
+      please_change_password: "Please change your password that you can remember."
+      if_you_did_not_request: "If you did not request a password reset, please contact us at contact&zwnj;@bttendance.&zwnj;com."
+    update_password:
+      subject: "Your BTTENDANCE password has been changed."
+      user_changed_password: "Your changed password is following."
+      if_you_did_not_request: "If you did not request a password reset, please contact us at contact&zwnj;@bttendance.&zwnj;com."
+    create_course:
+      subject: "Course \"%s\" has been created."
+      course_is_created: "Your course has been created in <%= @school.name %> institution. Please tell class code to your students in order that they can join your course."
+      goodbye: "Make your lecture interactive with BTTENDANCE!"
+    attend_course:
+      subject: "You are successfully registered in course \"%s\"!"
+      you_are_registerd: "You are successfully registered to #courseTitle course."
+      your_student_number: "Your student number (or identity number) in <%= @school.name %> is <%= @schools_user.identity %>. If this number is not your real identity number, please modify it to the real one at Profile screen."
+    export_grades:
+      subject: "Clicker, Attendance and Notice records of the course \"%s\" has been exported."
+      your_excel_file: "Excel file cotaining the clicker survey and the attendance records from #firstdate to #lastdate are attached."
+      if_you_have_question: "If you have some questions, please feel free to contact us at contact&zwnj;@bttendance.&zwnj;com"
