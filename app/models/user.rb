@@ -38,11 +38,11 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, on: :create
 
-  # FILTERS
-  after_create      :create_preference
-  after_create      :send_welcome_email
+  # Model callbacks
+  after_create :create_preferences,
+               :send_welcome_email
 
-  def create_preference
+  def create_preferences
     Preferences.create(user_id: self.id)
   end
 
