@@ -85,7 +85,6 @@ ko:
       password_is_incorrect: "비밀번호가 정확하지 않습니다."
       user_has_been_signed_in_other_device: "다른 기기에서 로그인한 사용자입니다."
       new_version_of_bttendance_has_been_updated_please_update_the_app_for_new_features: "BTTENDANCE의 새로운 버전이 업데이트되었습니다. 새로운 기능 사용을 위해 업데이트해주세요."
-      email_is_required: "Email 주소가 필요합니다."
       device_id_is_required: "기기 ID를 입력해주세요."
       please_check_your_email_address_again: "Email 주소를 다시 확인해주세요."
       please_check_your_password_again: "비밀번호를 다시 확인해 주세요."
@@ -111,10 +110,63 @@ ko:
       post_doesnt_exist: "포스트가 존재하지 않습니다."
       updating_identity_has_failed: "학생 번호를 변경하지 못했습니다."
 
+  push:
+    you_have_succeed_to_send_a_message:	"메시지를 성공적으로 전송하였습니다."
+    attendance_has_been_checked:	"출석이 확인되었습니다."
+    you_have_been_added_as_a_manager:	"관리자로 추가되었습니다."
+    clicker_has_been_started:	"설문하기가 시작했습니다."
+    attendance_check_has_been_started:	"출석체크가 시작했습니다"
+    your_course_has_been_created:	"당신의 강의가 생성되었습니다."
+    clicker_is_on_going:	"설문하기가 진행 중입니다."
+    attendance_check_is_on_going:	"출석체크가 진행 중입니다."
+    you_have_new_notice_:	"새로운 공지가 도착했습니다."
+    students_has_been_attended:	"학생들이 출석하였습니다."
+    attendance_checked:	"출석이 확인되었습니다."
+    attendance_checking:	"출석 체크가 진행 중입니다."
+    attendance_failed:	"결석으로 처리되었습니다."
+    attendance_late:	"지각으로 처리되었습니다."
+
+  clicker:
+    youve_already_chosen_a_as_a_choice:	"이미 A를 선택하였습니다."
+    youve_already_chosen_b_as_a_choice:	"이미 B를 선택하였습니다."
+    youve_already_chosen_c_as_a_choice:	"이미 C를 선택하였습니다."
+    youve_already_chosen_d_as_a_choice:	"이미 D를 선택하였습니다."
+    youve_already_chosen_e_as_a_choice:	"이미 E를 선택하였습니다."
+
 	user_mailer:
     common:
-      subject: "Bttendance Mail"
-      team: "Team Bttendance"
+      subject: "비텐던스 메일"
+      team: "비텐던스 팀"
     welcome:
-      subject: "Bttendance에 가입하신 걸 환영합니다!"
+      subject: "비텐던스에 가입하신 걸 환영합니다!"
     reset:
+    	subject: "회원님의 비텐던스 비밀번호가 복구되었습니다."
+    update_password:
+      subject: "회원님의 비텐던스 비밀번호가 수정되었습니다."
+    create_course:
+      subject: "\"%s\" 강의가 개설되었습니다."
+    attend_course:
+      subject: "강의 \"%s\"에 성공적으로 등록되었습니다!"
+    export_grades:
+      subject: "요청하신 \"%s\" 강의의 설문, 출석 및 공지 기록입니다."
+
+  export_grades:
+    clicker:	"설문하기"
+    attendance:	"출석체크"
+    notice:	"공지하기"
+    student_name:	"학생 이름"
+    student_identity:	"학생 번호"
+    auto_check:	"출석 방식"
+    manual_check:	"자동 체크"
+    attendance_type:	"수동 체크"
+    choice_count:	"설문 형식"
+    s_choice:	"%s 중 고르기"
+    clicker_message:	"질문"
+    notice_message:	"공지 사항"
+    present:	"출석"
+    tardy:	"지각"
+    absent:	"결석"
+    didnt_participated:	"참여하지 않음"
+    read:	"읽음"
+    unread:	"읽지 않음"
+
