@@ -19,19 +19,26 @@ class API < Grape::API
       declared(params, { include_missing: false })
     end
 
-    # set the locale based on the language header
+    # Set the locale based on the language of the browser/request
     def set_locale
-      Rails.logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
-      I18n.locale = extract_locale_from_accept_language_header
-      Rails.logger.debug "* Locale set to '#{I18n.locale}'"
+      I18n.locale = parse_locale
     end
 
-    # locale parsing from http header
-    def extract_locale_from_accept_language_header
-      request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    def parse_locale
+      # Prefer to get the language from the browser/request variable
+      # Fallback to the Accept-Language header
+      locale_string = request.env['HTTP_ACCEPT_LANGUAGE'] || headers['Accept-Language']
+
+      if locale_string
+        # Scan for the first 2-letter locale we find
+        locale_string.scan(/^[a-z]{2}/).first
+      else
+        # Default to English if nothing else is set
+        'en'
+      end
     end
 
-    # Api error return helper
+    # API error return helper
     def error_with(obj, status_code)
       if obj.is_a?(Integer)
         status_code = obj
