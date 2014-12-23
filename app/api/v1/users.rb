@@ -92,7 +92,7 @@ module V1
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
             else
-              error_with(401)
+              error_with('', 401)
             end
           end
 
@@ -164,14 +164,14 @@ module V1
       post 'login', rabl: 'users/user' do
         @user = User.find_by_email(params[:email])
         # Check for Apple.com emails
-        if @user && unsecured_emails.include?(user[:email])
+        if @user && unsecured_emails.include?(params[:email])
           @user
         elsif @user
           if @user.authenticate(params[:password])
-            device = Device.find_by_uuid(params[:device][:uuid])
+            device = Device.find_by_uuid(params[:devices_attributes][:uuid])
             # Device not yet registered to any user, add it to this user
             if !device
-              if @user.devices.create(permitted_params[:device])
+              if @user.devices.create(permitted_params[:devices_attributes])
                 @user
               else
                 # Fail silently
@@ -186,7 +186,7 @@ module V1
               error!({ errors: ['Device registered to another user'] }, 400)
             end
           else
-            error_with(401)
+            error_with('', 401)
           end
         else
           error_with('User', 404)

@@ -212,7 +212,7 @@ Params:
 ```ruby
 requires :email, type: String, desc: 'Email'
 requires :password, type: String, desc: 'Password'
-requires :device, type: Hash do
+requires :devices_attributes, type: Hash do
   requires :platform, type: String, desc: 'Platform'
   optional :uuid, type: String, desc: 'UUID'
   optional :mac_address, type: String, desc: 'MAC Address'
