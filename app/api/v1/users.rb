@@ -34,7 +34,6 @@ module V1
             requires :platform, type: String, desc: 'Platform'
             optional :uuid, type: String, desc: 'UUID'
             optional :mac_address, type: String, desc: 'MAC Address'
-            optional :notification_key, type: String, desc: 'Notification Key'
           end
         end
       end
@@ -156,9 +155,10 @@ module V1
       params do
         requires :email, type: String, desc: 'Email'
         requires :password, type: String, desc: 'Password'
-        requires :device, type: Hash do
-          requires :uuid, type: String, desc: 'UUID'
-          optional :platform, type: String, desc: 'Platform'
+        requires :devices_attributes, type: Hash do
+          requires :platform, type: String, desc: 'Platform'
+          optional :uuid, type: String, desc: 'UUID'
+          optional :mac_address, type: String, desc: 'MAC Address'
         end
       end
       post 'login', rabl: 'users/user' do
