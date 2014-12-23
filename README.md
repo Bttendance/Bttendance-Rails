@@ -9,10 +9,9 @@ Bttendance a is "Smart TA" application, established 2013/11/01.
 4. Setup Postgres & Redis
 5. After cloning this repository, run ```bundle install``` to install dependencies.
 6. Set the ```DATABASE_URL``` environment variable to your desired Postgres development database URL ```launchctl setenv DATABASE_URL postgres```
-7. Set GMAIL_USERNAME & GMAIL_PASSWORD for sending email service
-8. Run ```rake db:setup``` to setup the database (creates database if doesn't exist and autoruns all migrations).
-9. Run ```rake db:migrate RAILS_ENV=development``` to migrate new database
-10. Run ```rails server``` to start server.
+7. Run ```rake db:setup``` to setup the database (creates database if doesn't exist and autoruns all migrations).
+8. Run ```rake db:migrate RAILS_ENV=development``` to migrate new database
+9. Run ```rails server``` to start server.
 
 #### Install EditorConfig for your preferred editor
 
@@ -57,6 +56,13 @@ for more information and download the plugin for your editor of choice. If your 
     // Add following aliases to .bash_profile for quick starting/stopping of the Postgres server:
     alias pgs='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
     alias pgq='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
+#### Sending emails in development
+
+In development, Rails intercepts email sends and outputs them in the terminal where the server
+is running. If you would like to send emails in development, uncomment the applicable lines
+in ```config/environments/development.rb``` and set the appropriate environment variables, e.g.
+```GMAIL_USERNAME``` and ```GMAIL_PASSWORD```.
 
 ## Tips
 Run ```rake api:routes``` to list the API routes, e.g.
