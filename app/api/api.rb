@@ -8,8 +8,10 @@ class API < Grape::API
 
   # Before any route, set the locale based on the language header
   before do
-    I18n.locale = headers['Accept-Language'] || 'en'
+    set_locale
   end
+
+  private
 
   helpers do
     # Quickly get declared params
@@ -30,6 +32,16 @@ class API < Grape::API
       when 422
         error!({ errors: obj.errors.full_messages }, 422)
       end
+    end
+
+    def set_locale
+      Rails.logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
+      I18n.locale = extract_locale_from_accept_language_header
+      Rails.logger.debug "* Locale set to '#{I18n.locale}'"
+    end
+
+    def extract_locale_from_accept_language_header
+      request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     end
   end
 
