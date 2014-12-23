@@ -591,7 +591,7 @@ Returns:
     "course_id": 1,
     "schedule_id": 1,
     "user_id": 1,
-    "scheduled_for": "25/12/2014",
+    "scheduled_for": "2014-11-29 14:10:04",
     "manual": false,
     "active": true
   },
@@ -600,7 +600,7 @@ Returns:
     "course_id": 1,
     "schedule_id": 2,
     "user_id": 2,
-    "scheduled_for": "25/12/2014",
+    "scheduled_for": "2014-11-29 14:10:04",
     "manual": false,
     "active": true
   }
@@ -633,7 +633,7 @@ Returns:
   "course_id": 1,
   "schedule_id": 1,
   "user_id": 1,
-  "scheduled_for": "25/12/2014",
+  "scheduled_for": "2014-11-29 14:10:04",
   "manual": false,
   "active": true
 }
@@ -662,7 +662,7 @@ Returns:
   "course_id": 1,
   "schedule_id": 1,
   "user_id": 1,
-  "scheduled_for": "18/12/2014",
+  "scheduled_for": "2014-11-29 14:10:04",
   "manual": false,
   "active": true
 }
