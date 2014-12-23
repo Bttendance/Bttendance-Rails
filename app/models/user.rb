@@ -39,11 +39,11 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
 
   # FILTERS
-  before_create     :create_preference
+  after_create      :create_preference
   after_create      :send_welcome_email
 
   def create_preference
-    # Preferences.create(user_id: self.id)
+    Preferences.create(user_id: self.id)
   end
 
   def send_welcome_email
