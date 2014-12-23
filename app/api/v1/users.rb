@@ -30,7 +30,7 @@ module V1
           requires :password, type: String, desc: 'Password'
           requires :name, type: String, desc: 'Name'
           optional :locale, type: String, desc: 'Locale'
-          optional :devices_attributes, type: Array do
+          requires :devices_attributes, type: Array do
             requires :platform, type: String, desc: 'Platform'
             optional :uuid, type: String, desc: 'UUID'
             optional :mac_address, type: String, desc: 'MAC Address'
