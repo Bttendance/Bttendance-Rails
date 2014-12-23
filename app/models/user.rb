@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
     # Preferences.create(user_id: self.id)
   end
 
-  def send_welcome_mail
+  def send_welcome_email
     UserMailer.welcome(@user).deliver
   end
 end
