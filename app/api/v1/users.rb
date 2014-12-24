@@ -220,22 +220,10 @@ module V1
       #Just for mailing test
       #Under heehwan_mailtest branch
 
-      desc 'Send welcome email in English to user'
-      get ':id/email/welcome/en' do
+      desc 'Send welcome email in each locale to user'
+      get ':id/email/welcome/:locale' do
         @user = User.find_by_id(params[:id])
-        @user.locale = en
-        if @user
-          UserMailer.welcome(@user).deliver
-          status 204
-        else
-          error_with('User', 404)
-        end
-      end
-
-      desc 'Send welcome email in Korean to user'
-      get ':id/email/welcome/kr' do
-        @user = User.find_by_id(params[:id])
-        @user.locale = ko
+        @user.locale = params[:locale]
         if @user
           UserMailer.welcome(@user).deliver
           status 204

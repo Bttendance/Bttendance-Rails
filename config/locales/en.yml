@@ -203,17 +203,17 @@ en:
       notice: "Notice"
       notice_des: "BTTENDANCE is an efficient way to make an announcement for your class. Notify to your students as easy as sending text message!"
       see_how_to_use: "See how to use."
-      feel_free_to_ask_us: "If you have a question about BTTENDANCE, please feel free to ask us at contact&zwnj;@bttendance.&zwnj;com!"
+      feel_free_to_ask_us: "If you have a question about BTTENDANCE, please feel free to ask us at contact@bttendance.com!"
     reset:
       subject: "Bttendance Password Reset"
       we_received_your_request: "We have received a request to reset your password."
       user_new_password: "Your new password is following."
       please_change_password: "Please change your password that you can remember."
-      if_you_did_not_request: "If you did not request a password reset, please contact us at contact&zwnj;@bttendance.&zwnj;com."
+      if_you_did_not_request: "If you did not request a password reset, please contact us at contact@bttendance.com."
     update_password:
       subject: "Your BTTENDANCE password has been changed."
       user_changed_password: "Your changed password is following."
-      if_you_did_not_request: "If you did not request a password reset, please contact us at contact&zwnj;@bttendance.&zwnj;com."
+      if_you_did_not_request: "If you did not request a password reset, please contact us at contact@bttendance.com."
     create_course:
       subject: "Course \"%s\" has been created."
       course_is_created: "Your course has been created in <%= @school.name %> institution. Please tell class code to your students in order that they can join your course."
@@ -225,4 +225,4 @@ en:
     export_grades:
       subject: "Clicker, Attendance and Notice records of the course \"%s\" has been exported."
       your_excel_file: "Excel file cotaining the clicker survey and the attendance records from #firstdate to #lastdate are attached."
-      if_you_have_question: "If you have some questions, please feel free to contact us at contact&zwnj;@bttendance.&zwnj;com"
+      if_you_have_question: "If you have some questions, please feel free to contact us at contact@bttendance.com"

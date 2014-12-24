@@ -168,7 +168,7 @@ ko:
       instructor_manual: "강의자용 사용자 가이드 (국문)"
       student_manual: "학생용 사용자 가이드 (국문)"      
       homepage: "비텐던스 홈페이지:"
-      company_info: "사업자번호: 144-81-10243 | 통신판매업신고: 제 2014-경기성남-0306호 | 대표자: 김태환 | 경기도 성남시 분당구&zwnj; 판교역로 100,&zwnj; 606-601 주식회사 비텐던스"
+      company_info: "사업자번호: 144-81-10243 | 통신판매업신고: 제 2014-경기성남-0306호 | 대표자: 김태환 | 경기도 성남시 분당구 판교역로 100, 606-601 주식회사 비텐던스"
       contact: "문의메일:"
     welcome:
       subject: "비텐던스에 가입하신 걸 환영합니다!"
@@ -182,17 +182,17 @@ ko:
       notice: "공지하기"
       notice_des: "공지하기 기능은 강의자가 학생들에게 알릴 사항이 있을 때, 문자를 보내듯 쉽게 알림 사항을 전파할 수 있는 기능입니다."
       see_how_to_use: "사용법 보기"
-      feel_free_to_ask_us: "비텐던스 사용이 어려우시거나 수업에서 어떻게 활용하면 더 좋을지 궁금하시다면, contact&zwnj;@bttendance.&zwnj;com로 물어보세요. 빠르고 성심성의껏 답변해드리겠습니다!"
+      feel_free_to_ask_us: "비텐던스 사용이 어려우시거나 수업에서 어떻게 활용하면 더 좋을지 궁금하시다면, contact@bttendance.com로 물어보세요. 빠르고 성심성의껏 답변해드리겠습니다!"
     reset:
       subject: "회원님의 비텐던스 비밀번호가 다시 발급되었습니다."
       we_received_your_request: "비밀번호를 분실하셨다는 고객님의 요청으로 비밀번호를 새로 설정해 보내드립니다."
       user_new_password: "새로 설정된 비밀번호는 다음과 같습니다."
       please_change_password: "이 비밀번호로 로그인하신 후 꼭 비밀번호를 재설정해주세요."
-      if_you_did_not_request: "혹시, 비밀번호 분실을 신고하신 적이 없으신데도 이 메일을 받으셨다면, 꼭 contact&zwnj;@bttendance.&zwnj;com으로 알려주세요."
+      if_you_did_not_request: "혹시, 비밀번호 분실을 신고하신 적이 없으신데도 이 메일을 받으셨다면, 꼭 contact@bttendance.com으로 알려주세요."
     update_password:
       subject: "회원님의 비텐던스 비밀번호가 수정되었습니다."
       user_changed_password: "고객님의 변경된 비밀번호는 다음과 같습니다."
-      if_you_did_not_request: "혹시, 비밀번호 변경을 요청하신 적이 없으신데도 이 메일을 받으셨다면, 꼭 contact&zwnj;@bttendance.&zwnj;com으로 알려주세요."
+      if_you_did_not_request: "혹시, 비밀번호 변경을 요청하신 적이 없으신데도 이 메일을 받으셨다면, 꼭 contact@bttendance.com으로 알려주세요."
     create_course:
       subject: "\"%s\" 강의가 개설되었습니다."
       course_is_created: "고객님의 강의가 <%= @school.name %>에 다음과 같이 생성되었습니다. 학생들이 강의에 참여할 수 있도록 학생들에게 클래스 코드를 알려주세요."
@@ -204,4 +204,4 @@ ko:
     export_grades:
       subject: "요청하신 \"%s\" 강의의 설문, 출석 및 공지 기록입니다."
       your_excel_file: "고객님께서 요청하신 #firstdate 부터 #lastdate 까지의 수강생들의 출석 현황과 설문 현황입니다."
-      if_you_have_question: "혹시 문의하실 점이 있으시다면 contact&zwnj;@bttendance.&zwnj;com으로 문의해주시기 바랍니다. "
+      if_you_have_question: "혹시 문의하실 점이 있으시다면 contact@bttendance.com으로 문의해주시기 바랍니다. "
