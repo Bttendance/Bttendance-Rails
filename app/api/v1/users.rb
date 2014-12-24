@@ -216,21 +216,6 @@ module V1
           error_with('User', 404)
         end
       end
-
-      #Just for mailing test
-      #Under heehwan_mailtest branch
-
-      desc 'Send welcome email in each locale to user'
-      get ':id/email/welcome/:locale' do
-        @user = User.find_by_id(params[:id])
-        @user.locale = params[:locale]
-        if @user
-          UserMailer.welcome(@user).deliver
-          status 204
-        else
-          error_with('User', 404)
-        end
-      end
     end
   end
 end
