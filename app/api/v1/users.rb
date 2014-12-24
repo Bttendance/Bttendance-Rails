@@ -168,7 +168,7 @@ module V1
           @user
         elsif @user
           if @user.authenticate(params[:password])
-            device = Device.find_by_uuid(params[:devices_attributes][:uuid])
+            device = Device.find_by(permitted_params[:devices_attributes])
             # Device not yet registered to any user, add it to this user
             if !device
               if @user.devices.create(permitted_params[:devices_attributes])
@@ -183,7 +183,7 @@ module V1
               @user
             else
               # User doesn't own this device
-              error!({ errors: ['Device registered to another user'] }, 400)
+              error!({ message: 'Device registered to another user' }, 400)
             end
           else
             error_with(401)
