@@ -140,7 +140,7 @@ en:
     your_course_has_been_created: "Your course has been created"
     clicker_is_on_going: "Clicker is Ongoing"
     attendance_check_is_on_going: "Attendance check is Ongoing"
-    you_have_new_notice_: "You have new notice."
+    you_have_new_notice: "You have new notice."
     students_has_been_attended: "students has been attended."
     attendance_checked: "Recorded as present"
     attendance_checking: "Attendance Check is Ongoing"
@@ -220,7 +220,7 @@ en:
       goodbye: "Make your lecture interactive with BTTENDANCE!"
     attend_course:
       subject: "You are successfully registered in course \"%s\"!"
-      you_are_registerd: "You are successfully registered to #courseTitle course."
+      you_are_registerd: "You are successfully registered to <%= course.name %> course."
       your_student_number: "Your student number (or identity number) in <%= @school.name %> is <%= @schools_user.identity %>. If this number is not your real identity number, please modify it to the real one at Profile screen."
     export_grades:
       subject: "Clicker, Attendance and Notice records of the course \"%s\" has been exported."
