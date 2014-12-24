@@ -1,3 +1,3 @@
 object @preferences
 
-attributes :clicker, :attendance, :notice, :curious
+attributes :clicker, :attendance, :curious, :notice, :following
