@@ -33,25 +33,24 @@
                   <!-- Content -->
                   <tr style="text-align: left;">
                     <td style="font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-                      <p style="font-weight: bold;">Dear <%= @user.name %>.</p>
+                      <p style="font-weight: bold;"><%= t 'user_mailer.common.dear_user' %></p>
                       <p>
-                        We have received a request to reset your password.<br>
-                        Your new password is following.
+                        <%= t '.we_received_your_request' %><br>
+                        <%= t '.user_new_password' %>
                       </p>
                       <p style="font-weight:bold">
                         <!-- Write user's password-->
                         <%= @user.password %> 
                       </p>
                       <p>
-                        Please change your password that you can remember.<br>
-                        If you did not request a password reset, please contact us at
-                        <span style="color: #0072B0; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif; text-decoration: none; line-height: 120%;">contact&zwnj;@bttendance.&zwnj;com</span>.<br>
+                        <%= t '.please_change_password' %><br>
+                        <%= t '.if_you_did_not_request' %><br>
                       </p>
                       <p>
-                        Yours sincerely,
+                        <%= t '.user_mailer.common.sincerely' %> 
                       </p>
                       <p align="right" style="font-weight:bold">
-                        Team BTTENDANCE
+                        <%= t 'user_mailer.common.from_bttendance_team' %> 
                       </p>
                     </td>
                   </tr>
@@ -63,13 +62,13 @@
             <!-- Footy -->
             <tr>
               <td class="footy" style="background: #0072B0; padding: 30px 0px;">
-                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;	text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-                  BTTENDANCE Homepage: <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com" class="footer-link">www.bttendance.com</a>
+                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;  text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
+                  <%= t 'user_mailer.common.homepage' %> <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com" class="footer-link">www.bttendance.com</a>
                 </p>
                 <br>
-                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;	text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-                  © 2014 Bttendance Inc. All rights reserved. Bttendance, 606-601, 100, Pangyoyeok-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, 463-420 Rep. of KOREA.<br>
-                  Contact: <a href="mailto:contact@bttendance.com" class="footer-link" style="color: #F1F1FF;">contact@bttendance.com</a>
+                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;  text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
+                  <%= t 'user_mailer.common.company_info' %> <br>
+                  <%= t 'user_mailer.common.contact' %> <a href="mailto:contact@bttendance.com" class="footer-link" style="color: #F1F1FF;">contact@bttendance.com</a>
                 </p>
               </td>
             </tr>

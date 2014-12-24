@@ -33,18 +33,18 @@
                   <!-- Content -->
                   <tr style="text-align: left;">
                     <td style="font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-                      <p style="font-weight: bold;">Dear <%= @user.name %>.</p>
+                      <p style="font-weight: bold;"><%= t 'user_mailer.common.dear_user' %></p>
                       <p>
-                        Excel file cotaining the clicker survey and the attendance records from #firstdate to #lastdate are attached.
+                        <%= t '.your_excel_file' %>
                       </p>
                       <p>
-                        If you have some questions, please feel free to contact us at <span style="color: #0072B0; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif; text-decoration: none; line-height: 120%;">contact&zwnj;@bttendance.&zwnj;com</span>
+                        <%= t '.if_you_have_question' %>
                       </p>
                       <p>
-                        Yours sincerely,
+                        <%= t '.user_mailer.common.sincerely' %>
                       </p>
                       <p align="right" style="font-weight:bold">
-                        Team Bttendance.
+                        <%= t 'user_mailer.common.from_bttendance_team' %> 
                       </p>
                     </td>
                   </tr>
@@ -56,13 +56,13 @@
             <!-- Footy -->
             <tr>
               <td class="footy" style="background: #0072B0; padding: 30px 0px;">
-                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;	text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-                  BTTENDANCE Homepage: <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com" class="footer-link">www.bttendance.com</a>
+                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;  text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
+                  <%= t 'user_mailer.common.homepage' %> <a target="_blank" style="color: #F1F1FF;" href="http://www.bttendance.com" class="footer-link">www.bttendance.com</a>
                 </p>
                 <br>
-                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;	text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
-                  © 2014 Bttendance Inc. All rights reserved. Bttendance, 606-601, 100, Pangyoyeok-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, 463-420 Rep. of KOREA.<br>
-                  Contact: <a href="mailto:contact@bttendance.com" class="footer-link" style="color: #F1F1FF;">contact@bttendance.com</a>
+                <p class="footy-content" style="font-size: 13px; color: #F1F1FF; margin: 0px 30px;  text-decoration: none; font-family: Helvetica Neue, NanumGothic, Malgun Gothic, Arial, sans-serif;">
+                  <%= t 'user_mailer.common.company_info' %> <br>
+                  <%= t 'user_mailer.common.contact' %> <a href="mailto:contact@bttendance.com" class="footer-link" style="color: #F1F1FF;">contact@bttendance.com</a>
                 </p>
               </td>
             </tr>
