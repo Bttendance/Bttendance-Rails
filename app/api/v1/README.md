@@ -59,6 +59,29 @@ Returns:
 ]
 ```
 
+### GET ```/users/search?email=:email```
+
+_Returns a single user with ```:email```_
+
+Returns:
+```json
+{
+  "id": 1,
+  "name": "Tae-hwan Kim",
+  "email": "thefinestartist@bttendance.com",
+  "schools_users": [
+    {
+      "identity": "30729099",
+      "state": "supervisor",
+      "school": {
+        "id": 1,
+        "name": "Yonsei University"
+      }
+    }
+  ]
+}
+```
+
 ### GET ```/users/:id```
 
 _Returns a single user with ```:id```_

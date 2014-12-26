@@ -15,17 +15,10 @@ class CoursesUser < ActiveRecord::Base
   after_create :send_course_mail
 
   def send_course_mail
-  	if self.state
-  		if self.state == 'supervising'
-  			UserMailer.create_course(self).deliver
-  		elsif self.state == 'attending'
-  			UserMailer.attend_course(self).deliver
-  		else
-  			#print error message. Impossible case?
-  		end
-  	else
-  		#print error message. state is not defined
-  		error_with('state', 404)
-  	end
-  end 
+    if self.state == 'supervising'
+      UserMailer.create_course(self).deliver
+    elsif self.state == 'attending'
+      UserMailer.attend_course(self).deliver
+    end
+  end
 end
