@@ -20,7 +20,14 @@ module V1
       end
 
 
-      desc 'Returns a specific user'
+      desc 'Returns a specific user of email'
+      get 'search', rabl: 'users/user' do
+        @user = User.find_by_email(params.email.downcase)
+        @user ? @user : error_with('User', 404)
+      end
+
+
+      desc 'Returns a specific user of id'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
         @user ? @user : error_with('User', 404)
