@@ -95,8 +95,6 @@ module V1
             if @user.authenticate(update_params[:password])
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
-              # Send update_password email              
-              UserMailer.update_password(@user).deliver
             else
               error_with(401)
             end
@@ -218,6 +216,17 @@ module V1
 
         if @user
           @preferences = @user.preferences
+        else
+          error_with('User', 404)
+        end
+      end
+
+      #for test
+      desc 'send reset mail'
+      get ':id/email/reset/' do
+        @user = User.find_by_id(params[:id])
+        if @user 
+          UserMailer.reset(@user).deliver
         else
           error_with('User', 404)
         end
