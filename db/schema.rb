@@ -200,12 +200,13 @@ ActiveRecord::Schema.define(version: 20141214035812) do
 
   create_table "preferences", force: true do |t|
     t.integer  "user_id"
-    t.boolean  "clicker",    default: true, null: false
-    t.boolean  "attendance", default: true, null: false
-    t.boolean  "notice",     default: true, null: false
-    t.boolean  "curious",    default: true, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "clicker",    default: true,   null: false
+    t.boolean  "attendance", default: true,   null: false
+    t.boolean  "curious",    default: false,  null: false
+    t.boolean  "following",  default: true,   null: false
+    t.boolean  "notice",     default: true,   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "preferences", ["user_id"], name: "index_preferences_on_user_id", using: :btree
