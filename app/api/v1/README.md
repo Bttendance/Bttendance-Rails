@@ -149,12 +149,6 @@ requires :user, type: Hash do
   optional :email, type: String, desc: 'Email'
   optional :name, type: String, desc: 'Name'
   optional :locale, type: String, desc: 'Locale'
-  optional :preferences_attributes, type: Hash do
-    optional :clicker, type: Boolean, desc: 'Clicker'
-    optional :attendance, type: Boolean, desc: 'Attendance'
-    optional :notice, type: Boolean, desc: 'Notice'
-    optional :curious, type: Boolean, desc: 'Curious'
-  end
   optional :devices_attributes, type: Array do
     optional :id, type: Integer, desc: 'ID'
     optional :platform, type: String, desc: 'Platform'
@@ -303,12 +297,41 @@ Returns:
 
 _Returns a user with ```:id```'s preferences_
 
+Params:
+```ruby
+requires :preferences, type: Hash do
+  optional :clicker, type: Boolean, desc: 'Clicker'
+  optional :attendance, type: Boolean, desc: 'Attendance'
+  optional :curious, type: Boolean, desc: 'Curious'
+  optional :following, type: Boolean, desc: 'Following'
+  optional :notice, type: Boolean, desc: 'Notice'
+end
+```
+
 Returns:
 ```json
 {
+  "id": 2,
   "clicker": true,
   "attendance": true,
-  "curious": true,
+  "curious": false,
+  "following": true,
+  "notice": true
+}
+```
+
+### PUT ```/users/:id/preferences```
+
+_Updates a user with ```:id```'s preferences and returns the updated preferences object_
+
+Returns:
+```json
+{
+  "id": 2,
+  "clicker": true,
+  "attendance": true,
+  "curious": false,
+  "following": true,
   "notice": true
 }
 ```

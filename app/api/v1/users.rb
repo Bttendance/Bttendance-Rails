@@ -67,12 +67,6 @@ module V1
           optional :email, type: String, desc: 'Email'
           optional :name, type: String, desc: 'Name'
           optional :locale, type: String, desc: 'Locale'
-          optional :preferences_attributes, type: Hash do
-            optional :clicker, type: Boolean, desc: 'Clicker'
-            optional :attendance, type: Boolean, desc: 'Attendance'
-            optional :notice, type: Boolean, desc: 'Notice'
-            optional :curious, type: Boolean, desc: 'Curious'
-          end
           optional :devices_attributes, type: Array do
             optional :id, type: Integer, desc: 'ID'
             optional :platform, type: String, desc: 'Platform'
@@ -228,11 +222,33 @@ module V1
         end
       end
 
+      desc 'Updates a user\'s preferences and returns the updated preferences object'
+      params do
+        requires :preferences, type: Hash do
+          optional :clicker, type: Boolean, desc: 'Clicker'
+          optional :attendance, type: Boolean, desc: 'Attendance'
+          optional :curious, type: Boolean, desc: 'Curious'
+          optional :following, type: Boolean, desc: 'Following'
+          optional :notice, type: Boolean, desc: 'Notice'
+        end
+      end
+      put ':id/preferences', rabl: 'preferences/preference' do
+        @preferences = Preferences.find_by_user_id(params[:id])
+
+        if @preferences.update_attributes(permitted_params[:preferences])
+          @preferences
+        elsif @preferences
+            error_with(@preferences, 422)
+        else
+          error_with('Preferences', 404)
+        end
+      end
+
       #for test
       desc 'send reset mail'
       get ':id/email/reset/' do
         @user = User.find_by_id(params[:id])
-        if @user 
+        if @user
           UserMailer.reset(@user).deliver
         else
           error_with('User', 404)

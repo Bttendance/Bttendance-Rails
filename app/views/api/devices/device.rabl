@@ -1,3 +1,3 @@
 object @device
 
-attributes :id, :platform, :uuid, :mac_address, :notification_key
+attributes :id, :user_id, :platform, :uuid, :mac_address, :notification_key
