@@ -55,6 +55,18 @@ module V1
       end
 
 
+      desc 'Returns a curiouses comments'
+      get ':id/comments' do
+        @curious = Curious.find_by_id(params[:id])
+
+        if @curious
+          @comments = @curious.comments
+        else
+          error_with('Curious', 404)
+        end
+      end
+
+
       desc 'Adds a comment to a curious and returns the new comment object'
       params do
         requires :user_id, type: Integer, desc: 'User ID'
@@ -226,18 +238,6 @@ module V1
           else
             error_with('Follower', 404)
           end
-        else
-          error_with('Curious', 404)
-        end
-      end
-
-
-      desc 'Returns a curiouses comments'
-      get ':id/comments' do
-        @curious = Curious.find_by_id(params[:id])
-
-        if @curious
-          @comments = @curious.comments
         else
           error_with('Curious', 404)
         end

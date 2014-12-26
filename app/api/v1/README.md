@@ -6,8 +6,13 @@ Bttendance API v1
 Notes:
 * JSON types are validated, so strings should be sent as strings, numbers as
 numbers, and so on.
-* Most parameters require a root object (user, school, course, etc), so if something is going wrong that isn't obvious, check that first.
-* All errors include a standard [HTTP informational status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) and message detailing the error.
+* Most parameters require a root object (user, school, course, etc), so if
+something is going wrong that isn't obvious, check that first.
+* Include a ```page``` parameter on [paginated](https://github.com/monterail/grape-kaminari)
+result sets, e.g. ```?page=1```. By default, paginated results return the first page and typically 10 items.
+* You can request more items per page by including a ```per_page``` parameter, e.g. ```?per_page=20```.
+* All errors include a standard [HTTP informational status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
+and message detailing the error.
 
 ## Table of Contents
 
@@ -16,13 +21,16 @@ numbers, and so on.
 * [Courses](#courses)
 * [Schedules](#schedules)
 * [Attendance Alarms](#attendance-alarms)
-
+* [Attendances](#attendances)
+* [Clickers](#clickers)
+* [Notice](#notices)
+* [Curiouses](#curiouses)
 
 ## Users
 
 ### GET ```/users```
 
-_Returns all users_
+_Returns all users, paginated_
 
 Returns:
 ```json
@@ -286,7 +294,7 @@ Returns:
 
 ### GET ```/schools```
 
-_Returns all schools_
+_Returns all schools, paginated_
 
 Returns:
 ```json
@@ -388,7 +396,7 @@ Returns:
 
 ### GET ```/courses```
 
-_Returns all courses_
+_Returns all courses, paginated_
 
 Returns:
 ```json
@@ -519,14 +527,14 @@ remove users in a similar way. For example, the following will add a user to a c
 Returns:
 ```json
 {
-    "course": {
-      "courses_users_attributes": [
-        {
-          "user_id": 1,
-          "state": "attending"
-        }
-      ]
-    }
+  "course": {
+    "courses_users_attributes": [
+      {
+        "user_id": 1,
+        "state": "attending"
+      }
+    ]
+  }
 }
 ```
 
@@ -537,6 +545,77 @@ _Deletes a course with ```:id```_
 Returns:
 ```
 204
+```
+
+### GET ```/courses/:id/attendances```
+
+_Returns a course's attendances, paginated_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "user_id": 1,
+    "auto": false
+  }
+]
+```
+
+### GET ```/courses/:id/clickers```
+
+_Returns a course's clickers, paginated_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "user_id": 1,
+    "type": "ox",
+    "message": "A message",
+    "saved": false,
+    "time_length": 45,
+    "cheating": false,
+    "privacy": "all"
+  }
+]
+```
+
+### GET ```/courses/:id/notices```
+
+_Returns a course's notices, paginated_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "user_id": 1,
+    "targeted": false,
+    "message": "Some message"
+  }
+]
+```
+
+### GET ```/courses/:id/curiouses```
+
+_Returns a course's curiouses, paginated_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "course_id": 1,
+    "user_id": 2,
+    "title": "What do?",
+    "message": "What else do?"
+  }
+]
 ```
 
 ## Schedules
@@ -679,8 +758,367 @@ Returns:
 
 ## Attendances
 
+### POST ```/attendances```
+
+_Creates an attendance and returns the new attendance object_
+
+Params:
+```ruby
+requires :attendance, type: Hash do
+  requires :course_id, type: Integer, desc: 'Course ID'
+  requires :user_id, type: Integer, desc: 'User ID'
+  optional :auto, type: Boolean, desc: 'Auto'
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 1,
+  "auto": false
+}
+```
+
 ## Clickers
+
+### GET ```/clickers/:id```
+
+_Returns a single clicker with ```:id```_
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 1,
+  "type": "ox",
+  "message": "A message",
+  "saved": false,
+  "time_length": 45,
+  "cheating": false
+}
+```
+
+### POST ```/clickers```
+
+_Creates a clicker and returns the new clicker object_
+
+Params:
+```ruby
+requires :clicker, type: Hash do
+  requires :course_id, type: Integer, desc: 'Course ID'
+  requires :user_id, type: Integer, desc: 'User ID'
+  optional :type, type: String, desc: 'Type'
+  optional :message, type: String, desc: 'Message'
+  optional :saved, type: Boolean, desc: 'Saved'
+  optional :time_length, type: Integer, desc: 'Time Length'
+  optional :cheating, type: Boolean, desc: 'Cheating'
+  optional :privacy, type: String, desc: 'Privacy'
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 1,
+  "type": "ox",
+  "message": "A message",
+  "saved": false,
+  "time_length": 45,
+  "cheating": false
+}
+```
+
+### PUT ```/clickers/:id```
+
+_Updates a clicker with ```:id``` and returns the updated clicker object_
+
+Params:
+```ruby
+requires :clicker do
+  optional :type, type: String, desc: 'Type'
+  optional :message, type: String, desc: 'Message'
+  optional :saved, type: Boolean, desc: 'Saved'
+  optional :time_length, type: Integer, desc: 'Time Length'
+  optional :cheating, type: Boolean, desc: 'Cheating'
+  optional :privacy, type: String, desc: 'Privacy'
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 1,
+  "type": "ox",
+  "message": "A different message",
+  "saved": false,
+  "time_length": 45,
+  "cheating": false
+}
+```
+
+### DELETE ```/clickers/:id```
+
+_Deletes a clicker with ```:id```_
+
+Returns:
+```
+204
+```
 
 ## Notices
 
-## Curious
+### POST ```/notices```
+
+_Creates a notice and returns the new notice object_
+
+Params:
+```ruby
+requires :notice, type: Hash do
+  requires :course_id, type: Integer, desc: 'Course ID'
+  requires :user_id, type: Integer, desc: 'User ID'
+  optional :targeted, type: Boolean, desc: 'Targeted'
+  optional :message, type: String, desc: 'Message'
+  optional :notice_targets_attributes, type: Array do
+    requires :user_id, type: Integer, desc: 'User ID'
+  end
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 1,
+  "targeted": false,
+  "message": "Some message"
+}
+```
+
+### PUT ```/notices/:id```
+
+_Updates a notice with ```:id``` and returns the updated notice object_
+
+Params:
+```ruby
+requires :notice, type: Hash do
+  optional :targeted, type: Boolean, desc: 'Targeted'
+  optional :message, type: String, desc: 'Message'
+  optional :notice_targets_attributes, type: Array do
+    optional :id, type: Integer, desc: 'ID'
+    optional :_destroy, type: Boolean, desc: 'Destroy'
+  end
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 1,
+  "targeted": false,
+  "message": "Some other message"
+}
+```
+
+## Curiouses
+
+### GET ```/curiouses/:id```
+
+_Returns a specific curious with ```:id```_
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 2,
+  "title": "What do?",
+  "message": "What else do?"
+}
+```
+
+### POST ```/curiouses```
+
+_Creates a curious and returns the new curious object_
+
+Params:
+```ruby
+requires :curious, type: Hash do
+  requires :course_id, type: Integer, desc: 'Course ID'
+  requires :user_id, type: Integer, desc: 'User ID'
+  requires :title, type: String, desc: 'Title'
+  optional :message, type: String, desc: 'Message'
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 2,
+  "title": "What do?",
+  "message": "What else do?"
+}
+```
+
+### PUT ```/curiouses/:id```
+
+_Updates a curious with ```:id``` and returns the updated curious object_
+
+Params:
+```ruby
+requires :curious, type: Hash do
+  optional :title, type: String, desc: 'Title'
+  optional :message, type: String, desc: 'Message'
+end
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "course_id": 1,
+  "user_id": 2,
+  "title": "How do?",
+  "message": "How else do?"
+}
+```
+
+### GET ```/curiouses/:id/comments```
+
+_Returns a curiouses comments with ```:id```_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "commentable_id": 1,
+    "commentable_type": "Curious",
+    "user_id": 1,
+    "message": "This question is deep. Real deep.",
+    "created_at": "2014-12-22T07:35:38.139Z",
+    "updated_at": "2014-12-22T07:35:38.139Z"
+  }
+]
+```
+
+### POST ```/curiouses/:id/comments```
+
+_Adds a comment to a curious with ```:id``` and returns the new comment object_
+
+Params:
+```ruby
+requires :user_id, type: Integer, desc: 'User ID'
+requires :message, type: String, desc: 'Message'
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "commentable_id": 1,
+  "commentable_type": "Curious",
+  "user_id": 1,
+  "message": "This question is stupid",
+  "created_at": "2014-12-22T07:35:38.139Z",
+  "updated_at": "2014-12-22T07:35:38.139Z"
+}
+```
+
+### PUT ```/curiouses/:id/comments/:comment_id```
+
+_Updates a comment with ```:comment_id``` on a curious with ```:id``` and returns the updated comment object_
+
+Params:
+```ruby
+requires :message, type: String, desc: 'Message'
+```
+
+Returns:
+```json
+{
+  "id": 1,
+  "commentable_id": 1,
+  "commentable_type": "Curious",
+  "user_id": 1,
+  "message": "This question is stupid\n EDIT: Jk.",
+  "created_at": "2014-12-22T07:35:38.139Z",
+  "updated_at": "2014-12-22T07:35:38.139Z"
+}
+```
+
+### DELETE ```/curiouses/:id/comments/:comment_id```
+
+_Deletes a comment with ```:comment_id``` from a curious with ```:id```_
+
+Returns:
+```
+204
+```
+
+### POST ```/curiouses/:id/like```
+
+_Likes a curious with ```:id```_
+
+Params:
+```ruby
+requires :user_id, type: Integer, desc: 'User ID'
+```
+
+Returns:
+```
+201
+```
+
+### POST ```/curiouses/:id/unlike```
+
+_Unlikes a curious with ```:id```_
+
+Params:
+```ruby
+requires :user_id, type: Integer, desc: 'User ID'
+```
+
+Returns:
+```
+204
+```
+
+### POST ```/curiouses/:id/follow```
+
+_Follows a curious with ```:id```_
+
+Params:
+```ruby
+requires :user_id, type: Integer, desc: 'User ID'
+```
+
+Returns:
+```
+204
+```
+
+### POST ```/curiouses/:id/unfollow```
+
+_Unfollows a curious with ```:id```_
+
+Params:
+```ruby
+requires :user_id, type: Integer, desc: 'User ID'
+```
+
+Returns:
+```
+204
+```

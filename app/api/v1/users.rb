@@ -1,5 +1,7 @@
 module V1
   class Users < Grape::API
+    include Grape::Kaminari
+
     resource :users do
       helpers do
         def unsecured_emails
@@ -10,9 +12,11 @@ module V1
         end
       end
 
-      desc 'Returns a list of users'
+      desc 'Returns a list of users, paginated'
+      paginate per_page: 10
       get '', rabl: 'users/users' do
-        @users = User.all
+        users = User.all
+        @users = paginate(Kaminari.paginate_array(users))
       end
 
 

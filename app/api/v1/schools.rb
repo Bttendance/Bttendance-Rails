@@ -1,9 +1,13 @@
 module V1
   class Schools < Grape::API
+    include Grape::Kaminari
+
     resource :schools do
-      desc 'Returns a list of schools'
+      desc 'Returns a list of schools, paginated'
+      paginate per_page: 10
       get '', rabl: 'schools/schools' do
-        @schools = School.all
+        schools = School.all
+        @schools = paginate(Kaminari.paginate_array(schools))
       end
 
 

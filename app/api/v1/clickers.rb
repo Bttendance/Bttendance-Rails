@@ -1,6 +1,18 @@
 module V1
   class Clickers < Grape::API
     resource :clickers do
+      desc 'Returns a specific clicker'
+      get ':id', rabl: 'clickers/clicker' do
+        @clicker = Clicker.find_by_id(params[:id])
+
+        if @clicker
+          @clicker
+        else
+          error_with('Clicker', 404)
+        end
+      end
+
+
       desc 'Creates a clicker and returns the new clicker object'
       params do
         requires :clicker, type: Hash do
@@ -21,18 +33,6 @@ module V1
           @clicker
         else
           error_with(@clicker, 422)
-        end
-      end
-
-
-      desc 'Returns a specific clicker'
-      get ':id', rabl: 'clickers/clicker' do
-        @clicker = Clicker.find_by_id(params[:id])
-
-        if @clicker
-          @clicker
-        else
-          error_with('Clicker', 404)
         end
       end
 

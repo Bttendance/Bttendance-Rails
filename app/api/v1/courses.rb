@@ -1,9 +1,13 @@
 module V1
   class Courses < Grape::API
+    include Grape::Kaminari
+
     resource :courses do
-      desc 'Returns a list of courses'
+      desc 'Returns a list of courses, paginated'
+      paginate per_page: 10
       get '', rabl: 'courses/courses' do
-        @courses = Course.all
+        courses = Course.all
+        @courses = paginate(Kaminari.paginate_array(courses))
       end
 
 
@@ -130,48 +134,52 @@ module V1
       end
 
 
-      desc 'Returns a course\'s attendances'
+      desc 'Returns a course\'s attendances, paginated'
+      paginate per_page: 10
       get ':id/attendances', rabl: 'attendances/attendances' do
         @course = Course.find_by_id(params[:id])
 
         if @course
-          @attendances = @course.attendances
+          @attendances = paginate(Kaminari.paginate_array(@course.attendances))
         else
           error_with('Course', 404)
         end
       end
 
 
-      desc 'Returns a course\'s clickers'
+      desc 'Returns a course\'s clickers, paginated'
+      paginate per_page: 10
       get ':id/clickers', rabl: 'clickers/clickers' do
         @course = Course.find_by_id(params[:id])
 
         if @course
-          @clickers = @course.clickers
+          @clickers = paginate(Kaminari.paginate_array(@course.clickers))
         else
           error_with('Course', 404)
         end
       end
 
 
-      desc 'Returns a course\'s notices'
+      desc 'Returns a course\'s notices, paginated'
+      paginate per_page: 10
       get ':id/notices', rabl: 'notices/notices' do
         @course = Course.find_by_id(params[:id])
 
         if @course
-          @notices = @course.notices
+          @notices = paginate(Kaminari.paginate_array(@course.notices))
         else
           error_with('Course', 404)
         end
       end
 
 
-      desc 'Returns a course\'s curiouses'
+      desc 'Returns a course\'s curiouses, paginated'
+      paginate per_page: 10
       get ':id/curiouses', rabl: 'curiouses/curiouses' do
         @course = Course.find_by_id(params[:id])
 
         if @course
-          @curiouses = @course.curiouses
+          @curiouses = paginate(Kaminari.paginate_array(@course.curiouses))
         else
           error_with('Course', 404)
         end
