@@ -235,12 +235,19 @@ module V1
       put ':id/preferences', rabl: 'preferences/preference' do
         @preferences = Preferences.find_by_user_id(params[:id])
 
-        if @preferences.update_attributes(permitted_params[:preferences])
-          @preferences
-        elsif @preferences
+        if @preferences
+          if @preferences.update_attributes(permitted_params[:preferences])
+            @preferences
+          else
             error_with(@preferences, 422)
+          end
         else
-          error_with('Preferences', 404)
+          @preferences = Preferences.new(permitted_params[:preferences].merge(user_id: params[:id]))
+          if @preferences.save
+            @preferences
+          else
+            error_with(@preferences, 422)
+          end
         end
       end
 
