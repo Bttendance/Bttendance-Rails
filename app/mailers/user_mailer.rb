@@ -29,9 +29,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email)
   end
 
-  # Attachments
-  def export_grade(user)
+  # .xlsx Attachments are needed
+  def export_grade(user, first_date, last_date)
     @user = user
+    @first_date = first_date
+    @last_date = last_date
     I18n.locale = @user.locale
     mail(to: @user.email)
   end

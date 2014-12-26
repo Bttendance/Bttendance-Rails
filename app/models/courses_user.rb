@@ -10,4 +10,22 @@ class CoursesUser < ActiveRecord::Base
 
   # Set a primary key so we can use standard ActiveRecord methods
   self.primary_key = :user_id
+
+  # Send email to instructor or student
+  after_create :send_course_mail
+
+  def send_course_mail
+  	if self.state
+  		if self.state == 'supervising'
+  			UserMailer.create_course(self).deliver
+  		elsif self.state == 'attending'
+  			UserMailer.attend_course(self).deliver
+  		else
+  			#print error message. Impossible case?
+  		end
+  	else
+  		#print error message. state is not defined
+  		error_with('state', 404)
+  	end
+  end 
 end

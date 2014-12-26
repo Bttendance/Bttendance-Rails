@@ -56,6 +56,11 @@ class API < Grape::API
     end
   end
 
+  # def error_with(status_code, obj, type, title, message)
+  #   I18n.locale
+  #   error!({ error: {type: type, title: 'title', message: 'Device registered to another user'}  }, 400)
+  # end
+
   # Mount v1 of the REST API
   mount V1::Base
 end
