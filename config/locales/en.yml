@@ -141,7 +141,7 @@ en:
     clicker_is_on_going: "Clicker is Ongoing"
     attendance_check_is_on_going: "Attendance check is Ongoing"
     you_have_new_notice: "You have new notice."
-    students_has_been_attended: "students has been attended."
+    students_has_been_attended: "students has been attended."G
     attendance_checked: "Recorded as present"
     attendance_checking: "Attendance Check is Ongoing"
     attendance_failed: "Recorded as absent"
@@ -207,12 +207,8 @@ en:
     reset:
       subject: "Bttendance Password Reset"
       we_received_your_request: "We have received a request to reset your password."
-      user_new_password: "Your new password is following."
+      password_reset_link: "To reset your password, please click the link below."
       please_change_password: "Please change your password that you can remember."
-      if_you_did_not_request: "If you did not request a password reset, please contact us at contact@bttendance.com."
-    update_password:
-      subject: "Your BTTENDANCE password has been changed."
-      user_changed_password: "Your changed password is following."
       if_you_did_not_request: "If you did not request a password reset, please contact us at contact@bttendance.com."
     create_course:
       subject: "Course \"%s\" has been created."

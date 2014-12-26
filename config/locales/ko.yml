@@ -186,13 +186,9 @@ ko:
     reset:
       subject: "회원님의 비텐던스 비밀번호가 다시 발급되었습니다."
       we_received_your_request: "비밀번호를 분실하셨다는 고객님의 요청으로 비밀번호를 새로 설정해 보내드립니다."
-      user_new_password: "새로 설정된 비밀번호는 다음과 같습니다."
+      password_reset_link: "비밀번호 재설정을 위해 아래 링크를 눌러주세요."
       please_change_password: "이 비밀번호로 로그인하신 후 꼭 비밀번호를 재설정해주세요."
       if_you_did_not_request: "혹시, 비밀번호 분실을 신고하신 적이 없으신데도 이 메일을 받으셨다면, 꼭 contact@bttendance.com으로 알려주세요."
-    update_password:
-      subject: "회원님의 비텐던스 비밀번호가 수정되었습니다."
-      user_changed_password: "고객님의 변경된 비밀번호는 다음과 같습니다."
-      if_you_did_not_request: "혹시, 비밀번호 변경을 요청하신 적이 없으신데도 이 메일을 받으셨다면, 꼭 contact@bttendance.com으로 알려주세요."
     create_course:
       subject: "\"%s\" 강의가 개설되었습니다."
       course_is_created: "고객님의 강의가 <%= @school.name %>에 다음과 같이 생성되었습니다. 학생들이 강의에 참여할 수 있도록 학생들에게 클래스 코드를 알려주세요."
