@@ -14,4 +14,8 @@ class Course < ActiveRecord::Base
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true
   validates :instructor_name, presence: true
+
+  def attending_users_count
+    self.courses_users.where(state: 'attending').count
+  end
 end

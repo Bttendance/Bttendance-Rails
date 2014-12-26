@@ -8,4 +8,12 @@ class School < ActiveRecord::Base
   before_validation { classification.downcase! }
   validates :name, presence: true, length: { maximum: 255 }
   validates :classification, presence: true, inclusion: { in: ['university', 'school', 'institute', 'other'] }
+
+  def users_count
+    self.schools_users.count
+  end
+
+  def courses_count
+    self.courses.count
+  end
 end
