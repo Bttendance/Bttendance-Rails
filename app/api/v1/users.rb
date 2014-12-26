@@ -102,7 +102,7 @@ module V1
             if @user.authenticate(update_params[:password])
               update_params[:password] = update_params[:new_password]
               update_params.delete :new_password
-              # Send update_password email              
+              # Send update_password email
               UserMailer.update_password(@user).deliver
             else
               error_with(401)
@@ -196,7 +196,7 @@ module V1
               @user
             else
               # User doesn't own this device
-              error!({ error: {type: 'log', title: 'title', message: 'Device registered to another user'}  }, 400)
+              error!({ error: { type: 'log', title: 'title', message: 'Device registered to another user' }}, 400)
             end
           else
             error_with(401)
