@@ -59,9 +59,9 @@ Returns:
 ]
 ```
 
-### GET ```/users/search?email=:email```
+### GET ```/users/:id```
 
-_Returns a single user with ```:email```_
+_Returns a single user with ```:id```_
 
 Returns:
 ```json
@@ -82,9 +82,16 @@ Returns:
 }
 ```
 
-### GET ```/users/:id```
+### POST ```/users/search```
 
-_Returns a single user with ```:id```_
+_Returns a single user with ```id``` or ```email```_
+Params:
+```ruby
+params do
+optional :id, type: String, desc: 'ID'
+optional :email, type: String, desc: 'Email'
+end
+```
 
 Returns:
 ```json

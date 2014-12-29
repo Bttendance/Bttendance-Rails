@@ -20,17 +20,28 @@ module V1
       end
 
 
-      desc 'Returns a specific user of email'
-      get 'search', rabl: 'users/user' do
-        @user = User.find_by_email(params.email.downcase)
-        @user ? @user : error_with('User', 404)
-      end
-
-
       desc 'Returns a specific user of id'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
         @user ? @user : error_with('User', 404)
+      end
+
+
+      desc 'Returns a specific user by id and by email'
+      params do
+        optional :id, type: String, desc: 'ID'
+        optional :email, type: String, desc: 'Email'
+      end
+      post 'search', rabl: 'users/user' do
+        if params[:id]
+          @user = User.find_by_id(params[:id])
+          @user ? @user : error_with('User', 404)
+        elsif params[:email]
+          @user = User.find_by_email(params[:email].downcase)
+          @user ? @user : error_with('User', 404)
+        else
+          error_with('User', 404)
+        end
       end
 
 
