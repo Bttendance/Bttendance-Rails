@@ -15,7 +15,14 @@ class Course < ActiveRecord::Base
   validates :code, presence: true, uniqueness: true
   validates :instructor_name, presence: true
 
+  before_create :create_random_code
+
   def attending_users_count
     self.courses_users.where(state: 'attending').count
   end
+
+  def create_random_code
+    self.code = Array.new(4){[*"A".."Z", *"0".."9"].sample}.join
+  end
+
 end

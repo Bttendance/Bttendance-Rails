@@ -495,6 +495,32 @@ Returns:
 }
 ```
 
+### POST ```/courses/search```
+
+_Returns a single course with ```id``` or ```code```_
+
+Params:
+```ruby
+params do
+  optional :id, type: String, desc: 'ID'
+  optional :code, type: String, desc: 'Code'
+end
+```
+
+Returns:
+```json
+{
+  "id": 3,
+  "school_id": 3,
+  "name": "English 101",
+  "instructor_name": "Devin Doolin",
+  "code": "ENGL101",
+  "open": false,
+  "start_date": null,
+  "end_date": null
+}
+```
+
 ### GET ```/courses/:id/users```
 
 _Returns a course's users by type_
@@ -529,7 +555,6 @@ requires :course, type: Hash do
   requires :school_id, type: Integer, desc: 'School ID'
   requires :name, type: String, desc: 'Name'
   requires :instructor_name, type: String, desc: 'Instructor Name'
-  requires :code, type: String, desc: 'Code'
   requires :open, type: Boolean, desc: 'Open'
   optional :information, type: String, desc: 'Information'
   optional :start_date, type: Date, desc: 'Start Date'
@@ -560,7 +585,6 @@ Params:
 requires :course, type: Hash do
   optional :name, type: String, desc: 'Name'
   optional :instructor_name, type: String, desc: 'Instructor Name'
-  optional :code, type: String, desc: 'Code'
   optional :open, type: Boolean, desc: 'Open'
   optional :information, type: String, desc: 'Information'
   optional :start_date, type: Date, desc: 'Start Date'
