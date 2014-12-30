@@ -119,9 +119,11 @@ module V1
               found_schools_user = @user.schools_users.find_by_school_id(schools_user[:school_id])
               if found_schools_user && schools_user[:_destroy]
                 found_schools_user.destroy
-              elsif found_schools_user
+              elsif found_schools_user && !schools_user[:state]
+                break
+              elsif found_schools_user && schools_user[:state] == found_schools_user.state
                 found_schools_user.update_attributes(schools_user)
-              else !found_schools_user
+              else
                 @user.schools_users.new(schools_user)
               end
             end
