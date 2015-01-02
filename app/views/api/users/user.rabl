@@ -6,6 +6,6 @@ child :schools_users do
   attributes :identity, :state
 
   child :school do
-    attributes :id, :name
+    attributes :id, :name, :classification
   end
 end

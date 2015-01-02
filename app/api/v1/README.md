@@ -300,6 +300,26 @@ Returns:
 ]
 ```
 
+### GET ```/users/:id/schools```
+
+_Returns a user with ```:id```'s schools_
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "name": "Harvard",
+    "classification": "university"
+  },
+  {
+    "id": 2,
+    "name": "Stanford",
+    "classification": "university"
+  }
+]
+```
+
 ### GET ```/users/:id/preferences```
 
 _Returns a user with ```:id```'s preferences_

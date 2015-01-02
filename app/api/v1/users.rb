@@ -224,6 +224,18 @@ module V1
       end
 
 
+      desc 'Returns a user\'s courses'
+      get ':id/schools', rabl: 'schools/schools' do
+        @user = User.find_by_id(params[:id])
+
+        if @user
+          @schools = @user.schools
+        else
+          error_with('User', 404)
+        end
+      end
+
+
       desc 'Returns a user\'s preferences'
       get ':id/preferences', rabl: 'preferences/preference' do
         @user = User.find_by_id(params[:id])
