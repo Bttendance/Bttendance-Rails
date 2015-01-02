@@ -39,8 +39,13 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
 
   # Model callbacks
-  after_create :create_preferences,
-               :send_welcome_email
+  before_create :set_locale
+  after_create  :create_preferences,
+                :send_welcome_email
+
+  def set_locale
+    self.locale = I18n.locale || 'en'
+  end
 
   def create_preferences
     Preferences.create(user_id: self.id)

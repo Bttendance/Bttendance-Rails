@@ -20,17 +20,28 @@ module V1
       end
 
 
-      desc 'Returns a specific user of email'
-      get 'search', rabl: 'users/user' do
-        @user = User.find_by_email(params.email.downcase)
-        @user ? @user : error_with('User', 404)
-      end
-
-
       desc 'Returns a specific user of id'
       get ':id', rabl: 'users/user' do
         @user = User.find_by_id(params[:id])
         @user ? @user : error_with('User', 404)
+      end
+
+
+      desc 'Returns a specific user by id and by email'
+      params do
+        optional :id, type: String, desc: 'ID'
+        optional :email, type: String, desc: 'Email'
+      end
+      post 'search', rabl: 'users/user' do
+        if params[:id]
+          @user = User.find_by_id(params[:id])
+          @user ? @user : error_with('User', 404)
+        elsif params[:email]
+          @user = User.find_by_email(params[:email].downcase)
+          @user ? @user : error_with('User', 404)
+        else
+          error_with('User', 404)
+        end
       end
 
 
@@ -108,9 +119,11 @@ module V1
               found_schools_user = @user.schools_users.find_by_school_id(schools_user[:school_id])
               if found_schools_user && schools_user[:_destroy]
                 found_schools_user.destroy
-              elsif found_schools_user
+              elsif found_schools_user && !schools_user[:state]
+                break
+              elsif found_schools_user && schools_user[:state] == found_schools_user.state
                 found_schools_user.update_attributes(schools_user)
-              else !found_schools_user
+              else
                 @user.schools_users.new(schools_user)
               end
             end
@@ -205,6 +218,18 @@ module V1
 
         if @user
           @courses = @user.courses
+        else
+          error_with('User', 404)
+        end
+      end
+
+
+      desc 'Returns a user\'s courses'
+      get ':id/schools', rabl: 'schools/schools' do
+        @user = User.find_by_id(params[:id])
+
+        if @user
+          @schools = @user.schools
         else
           error_with('User', 404)
         end

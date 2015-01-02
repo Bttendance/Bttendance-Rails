@@ -6,7 +6,7 @@ module V1
       desc 'Returns a list of schools, paginated'
       paginate per_page: 10
       get '', rabl: 'schools/schools' do
-        schools = School.all
+        schools = School.order(created_at: :asc).all
         @schools = paginate(Kaminari.paginate_array(schools))
       end
 

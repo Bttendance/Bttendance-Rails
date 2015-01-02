@@ -23,6 +23,24 @@ module V1
       end
 
 
+      desc 'Returns a specific course by id and by code'
+      params do
+        optional :id, type: String, desc: 'ID'
+        optional :code, type: String, desc: 'Code'
+      end
+      post 'search', rabl: 'courses/course' do
+        if params[:id]
+          @user = Course.find_by_id(params[:id])
+          @user ? @user : error_with('Course', 404)
+        elsif params[:code]
+          @user = Course.find_by_code(params[:code].upcase)
+          @user ? @user : error_with('Course', 404)
+        else
+          error_with('Course', 404)
+        end
+      end
+
+
       desc 'Returns a course\'s users by type'
       get ':id/users', rabl: 'courses/users' do
         @course = Course.find_by_id(params[:id])
@@ -53,7 +71,6 @@ module V1
           requires :school_id, type: Integer, desc: 'School ID'
           requires :name, type: String, desc: 'Name'
           requires :instructor_name, type: String, desc: 'Instructor Name'
-          requires :code, type: String, desc: 'Code'
           requires :open, type: Boolean, desc: 'Open'
           optional :information, type: String, desc: 'Information'
           optional :start_date, type: Date, desc: 'Start Date'
@@ -61,6 +78,7 @@ module V1
         end
       end
       post '', rabl: 'courses/course' do
+        params[:course].delete :code
         @course = Course.new(permitted_params[:course])
 
         if @course.save
@@ -76,7 +94,6 @@ module V1
         requires :course, type: Hash do
           optional :name, type: String, desc: 'Name'
           optional :instructor_name, type: String, desc: 'Instructor Name'
-          optional :code, type: String, desc: 'Code'
           optional :open, type: Boolean, desc: 'Open'
           optional :information, type: String, desc: 'Information'
           optional :start_date, type: Date, desc: 'Start Date'
@@ -89,6 +106,7 @@ module V1
         end
       end
       put ':id', rabl: 'courses/course' do
+        params[:course].delete :code
         @course = Course.find_by_id(params[:id])
 
         if @course
