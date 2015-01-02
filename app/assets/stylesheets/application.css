@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+.font-normal {font-family: 'Nanum Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400;}
+.font-bold {font-family: 'Nanum Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700;}
+.font-extra {font-family: 'Nanum Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800;}
+
