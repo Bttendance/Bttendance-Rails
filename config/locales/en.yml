@@ -240,7 +240,7 @@ en:
       curious_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
       device_title: "Change students\' smart devices to learning material."
       device_desc: "BTTENDANCE supports most of the web browers and the mobile devices, such as iOS and Android."
-      users_text: "567 instructors apply BTTENDANCE to 1234 lectures in the real world."
+      users_text: "#number_of_instructors instructors apply BTTENDANCE to #number_of_lectures lectures in the real world."
       last_title: "Make your lecture interactive with BTTENDANCE!"
       last_start_button: "Start with BTTENDANCE WEB"
       last_download: "Available in Google Play and Apple Appstore"

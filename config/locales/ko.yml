@@ -219,7 +219,7 @@ ko:
       curious_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
       device_title: "학생들의 스마트 기기를 학습 도구로 바꿔보세요."
       device_desc: "비텐던스는 Android, iOS, Web까지 강의실에서 마주할 수 있는 거의 모든 스마트 기기를 지원합니다."
-      users_text: "지금까지 1234개의 강의에서 567명의 강의자가 비텐던스를 실제 수업에서 사용했습니다."
+      users_text: "지금까지 #number_of_lectures 개의 강의에서 #number_of_instructors 명의 강의자가 비텐던스를 실제 수업에서 사용했습니다."
       last_title: "지금 비텐던스를 시작하세요!"
       last_start_button: "비텐던스 WEB 시작하기"
       last_download: "구글 플레이와 애플 앱스토어에서도 다운받으실 수 있습니다."
