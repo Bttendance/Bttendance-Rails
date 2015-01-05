@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="lp-html">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +8,9 @@
     <meta name="author" content="Team Bttendance">
 
     <!-- style css for test and html building -->
-
     <!-- assets/stylesheets/bootstrap.min.css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    
     <!-- It will be moved to application.css -->    
     <style type="text/css">
     	@media screen and (max-width: 510px) {
@@ -22,7 +22,7 @@
 		    }
 			}
     	/* fix bootstrap modal bug */
-    	html {overflow-y: scroll;}
+    	.lp-html {overflow-y: scroll;}
     	.modal-open {padding-right: 0 !important}
 
 			@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
@@ -61,7 +61,7 @@
 			.lp-bg-footy {background-color: #171725; color: #F0F0FF;}
 
 			/* Navigation */
-			.navbar-inverse {
+			.lp-nav {
 				background-color: transparent;
 				border: 0;
 				height: 70px;
@@ -233,7 +233,7 @@
   </head>
   <body>
   	<!-- navigation -->
-  	<nav class="navbar navbar-inverse navbar-fixed-top">
+  	<nav class="navbar navbar-inverse navbar-fixed-top lp-nav">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><img class="nav-img-brandicon" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/Email/logo2.png"></a>
@@ -351,7 +351,7 @@
   		</div>
   	</div>
 
-  	<!-- login -->
+  	<!-- Modal for sign up & sign in -->
 		<div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog getstarted">
 		    <div class="modal-content">
@@ -360,14 +360,6 @@
 		        <div class="getstarted-content">
 		        	<button id="facebook-signin" class="getstarted-button"><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_facebook.png"> 으로 시작하기</button>
 			        <button id="google-signin" class="getstarted-button"><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_googleplus.png"> 로 시작하기</button>
-			        <!-- <div id="getstarted-choices">
-			        	<ul>
-			        		<li><a href="#getstarted-signup">Email로 가입하기</a></li>
-			        		<li><a href="#getstarted-signin">로그인하기</a></li>
-			        	</ul>
-				        <div id="getstarted-signup">hell yeah</div>
-				        <div id="getstarted-signin">Yes we can</div>
-			        </div> -->
 			        <div class="getstarted-forms">
 				        <ul class="nav nav-tabs" id="tabContent">
 					        <li class="forms-li"><a href="#getstarted-signup" data-toggle="tab">Email로 가입하기</a></li>
@@ -411,13 +403,11 @@
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 
-    <!-- Bootstrap core JavaScript
-      ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<!-- JavaScript for test and html building -->
 
+		<!-- assets/javascripts/ -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     	$(document).ready(function(){       
 		   var scroll_start = 0;
@@ -427,9 +417,9 @@
 			    $(document).scroll(function() { 
 			      scroll_start = $(this).scrollTop();
 			      if(scroll_start > offset.top) {
-			          $(".navbar-inverse").css('background-color', '#0072B0');
+			          $(".lp-nav").css('background-color', '#0072B0');
 			      } else {
-			          $('.navbar-inverse').css('background-color', 'transparent');
+			          $('.lp-nav').css('background-color', 'transparent');
 		        }
 		   		});
 		    }
