@@ -32,7 +32,7 @@ module V1
         optional :id, type: String, desc: 'ID'
         optional :email, type: String, desc: 'Email'
       end
-      post 'search', rabl: 'users/user' do
+      post 'find', rabl: 'users/user' do
         if params[:id]
           @user = User.find_by_id(params[:id])
           @user ? @user : error_with('User', 404)
@@ -134,7 +134,9 @@ module V1
               found_courses_user = @user.courses_users.find_by_course_id(courses_user[:course_id])
               if found_courses_user && courses_user[:_destroy]
                 found_courses_user.destroy
-              elsif found_courses_user
+              elsif found_courses_user && !courses_user[:state]
+                break
+              elsif found_courses_user && courses_user[:state] == found_courses_user.state
                 found_courses_user.update_attributes(courses_user)
               else !found_courses_user
                 @user.courses_users.new(courses_user)

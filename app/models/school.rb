@@ -9,6 +9,8 @@ class School < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 255 }
   validates :classification, presence: true, inclusion: { in: ['university', 'school', 'institute', 'other'] }
 
+  scope :name_like, ->(search) { where("lower(name) LIKE ?", "%#{search.downcase}%") }
+
   def users_count
     self.schools_users.count
   end

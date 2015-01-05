@@ -76,14 +76,15 @@ Returns:
       "state": "supervisor",
       "school": {
         "id": 1,
-        "name": "Yonsei University"
+        "name": "Yonsei University",
+        "classification": "university"
       }
     }
   ]
 }
 ```
 
-### POST ```/users/search```
+### POST ```/users/find```
 
 _Returns a single user with ```id``` or ```email```_
 Params:
@@ -106,7 +107,8 @@ Returns:
       "state": "supervisor",
       "school": {
         "id": 1,
-        "name": "Yonsei University"
+        "name": "Yonsei University",
+        "classification": "university"
       }
     }
   ]
@@ -399,6 +401,33 @@ Returns:
 }
 ```
 
+
+### POST ```/schools/search```
+
+_Returns search result of school by ```name```, paginated_
+
+Params:
+```ruby
+requires :name, type: String, desc: 'Name'
+end
+```
+
+Returns:
+```json
+[
+  {
+    "id": 1,
+    "name": "Yonsei University",
+    "classification": "university"
+  },
+  {
+    "id": 2,
+    "name": "Korea University",
+    "classification": "university"
+  }
+]
+```
+
 ### POST ```/schools```
 
 _Creates a school and returns the new school object_
@@ -516,7 +545,7 @@ Returns:
 }
 ```
 
-### POST ```/courses/search```
+### POST ```/courses/find```
 
 _Returns a single course with ```id``` or ```code```_
 

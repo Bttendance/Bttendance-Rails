@@ -28,13 +28,13 @@ module V1
         optional :id, type: String, desc: 'ID'
         optional :code, type: String, desc: 'Code'
       end
-      post 'search', rabl: 'courses/course' do
+      post 'find', rabl: 'courses/course' do
         if params[:id]
-          @user = Course.find_by_id(params[:id])
-          @user ? @user : error_with('Course', 404)
+          @course = Course.find_by_id(params[:id])
+          @course ? @course : error_with('Course', 404)
         elsif params[:code]
-          @user = Course.find_by_code(params[:code].upcase)
-          @user ? @user : error_with('Course', 404)
+          @course = Course.find_by_code(params[:code].upcase)
+          @course ? @course : error_with('Course', 404)
         else
           error_with('Course', 404)
         end

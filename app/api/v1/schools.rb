@@ -23,6 +23,17 @@ module V1
       end
 
 
+      desc 'Returns search result of schools by name'
+      params do
+        requires :name, type: String, desc: 'Name'
+      end
+      paginate per_page: 10
+      post 'search', rabl: 'schools/schools' do
+        schools = School.name_like(params[:name])
+        @schools = paginate(Kaminari.paginate_array(schools))
+      end
+
+
       desc 'Creates a school and returns the new school object'
       params do
         requires :school, type: Hash do
