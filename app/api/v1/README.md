@@ -45,7 +45,8 @@ Returns:
         "state": "supervisor",
         "school": {
           "id": 1,
-          "name": "Yonsei University"
+          "name": "Yonsei University",
+          "classification": "university"
         }
       }
     ]
