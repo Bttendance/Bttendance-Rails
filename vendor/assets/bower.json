@@ -3,6 +3,8 @@
   "dependencies": {
     "bootstrap-sass-official": "latest",
     "angular": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-translate": "latest",
+    "angular-translate-loader-static-files": "latest"
   }
 }
