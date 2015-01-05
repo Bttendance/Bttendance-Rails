@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="BTTENDANCE is your smart TA">
     <meta name="author" content="Team Bttendance">
+    <title></title>
 
     <!-- style css for test and html building -->
     <!-- assets/stylesheets/bootstrap.min.css -->
@@ -245,8 +246,8 @@
   	<div class="container-fluid">
   		<div class="lp-bg-mainimage"></div>
 			<div class="lp-block start">
-				<h1 class="start-title">비텐던스,<br>당신을 위한 스마트 TA</h1>
-				<button class="btn btn-primary btn-lg start-button" type="button" data-toggle="modal" data-target="#startModal"><span class="font-bold">시작하기</span></button>
+				<h1 class="start-title"><%= t '.brand_name' %>,<br><%= t '.brand_slogan' %></h1>
+				<button class="btn btn-primary btn-lg start-button" type="button" data-toggle="modal" data-target="#startModal"><span class="font-bold"><%= t '.get_started' %></span></button>
 				<div id="startchange"></div>
 			</div>
   	</div>  		
@@ -255,7 +256,7 @@
   	<div class="container-fluid lp-bg-gray">
   		<div class="container lp-block intro">
   			<img class="intro-img-logo" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/Email/icon.png">
-  			<h2 class="intro-title">귀찮은 일은 비텐던스에게 맡기시고, 학생들과 더 많이 소통하세요.</h2>
+  			<h2 class="intro-title"><%= t '.intro' %></h2>
   			<img class="img-responsive intro-img-moniter" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_moniterscreen.png">
   		</div>
   	</div>
@@ -263,27 +264,27 @@
   	<!-- 2nd block - Features -->
   	<div class="container-fluid lg-bg-white">
   		<div class="container lp-block features">
-  			<h2 class="features-title">비텐던스가 제공하는 기능들을 확인하세요.</h2>
+  			<h2 class="features-title"><%= t '.feature_title' %></h2>
   			<div class="row features-description">
   				<div class="col-sm-2 col-sm-offset-2">
   					<img class="feature-img-icon" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_icons_attendance.png">
-  					<p class="feature-title">자동 출석체크</p>
-  					<p class="feature-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+  					<p class="feature-title"><%= t '.attendance_title' %></p>
+  					<p class="feature-content"><%= t '.attendance_desc' %></p>
   				</div>
   				<div class="col-sm-2">
   					<img class="feature-img-icon" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_icons_clicker.png">  					
-  					<p class="feature-title">즉석 설문하기</p>
-  					<p class="feature-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+  					<p class="feature-title"><%= t '.clicker_title' %></p>
+  					<p class="feature-content"><%= t '.clicker_desc' %></p>
   				</div>
   				<div class="col-sm-2">  					
   					<img class="feature-img-icon" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_icons_notice.png">  					
-  					<p class="feature-title">공지하기</p>
-  					<p class="feature-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+  					<p class="feature-title"><%= t '.notice_title' %></p>
+  					<p class="feature-content"><%= t '.notice_desc' %></p>
   				</div>
   				<div class="col-sm-2">  					
   					<img class="feature-img-icon" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_icons_curious.png">  					
-  					<p class="feature-title">질문 포럼</p>
-  					<p class="feature-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+  					<p class="feature-title"><%= t '.curious_title' %></p>
+  					<p class="feature-content"><%= t '.curious_desc' %></p>
   				</div>
   			</div>
   		</div>
@@ -292,25 +293,26 @@
   	<!-- 3rd block - Device -->
   	<div class="container-fluid lp-bg-gray">
   		<div class="container lp-block device">
-  			<h2 class="device-title">학생들의 스마트 기기를 학습 도구로 바꿔보세요.</h2>
+  			<h2 class="device-title"><%= t '.device_title' %></h2>
   			<img class="img-responsive device-img-mockup" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_mockup.png">
-  			<p class="device-text-supportable">비텐던스는 Android, iOS, Web까지 강의실에서 마주할 수 있는 거의 모든 스마트 기기를 지원합니다.</p>
+  			<p class="device-text-supportable"><%= t '.device_desc' %></p>
   		</div>
   	</div>
 
   	<!-- 4th block - Users -->
   	<div class="container-fluid lp-bg-white">
   		<div class="container lp-block users">
-  			<h3 class="users-text">지금까지 <span class="users-number">1234</span>개의 강의에서 <span class="users-number">567</span>명의 강의자가 비텐던스를 실제 수업에서 사용했습니다.</h3>
+  			<h3 class="users-text"><%= t '.users_text' %></h3>
+  			<!-- <span class="users-number"> -->
 	  	</div>
   	</div>
 
   	<!-- 5th block - Last -->
   	<div class="container-fluid lp-bg-gray">
   		<div class="container lp-block last">
-  			<h2 class="last-title">지금 비텐던스를 시작하세요!</h2>  			
-  			<button class="btn btn-primary btn-lg start-button" type="submit"><span classs="font-bold">비텐던스 WEB 시작하기</span></button>
-  			<h3 class="last-text-download">구글 플레이와 애플 앱스토어에서도 다운받으실 수 있습니다.</h3>
+  			<h2 class="last-title"><%= t '.last_title' %></h2>  			
+  			<button class="btn btn-primary btn-lg start-button" type="submit"><span classs="font-bold"><%= t '.last_start_button' %></span></button>
+  			<h3 class="last-text-download"><%= t '.last_download' %></h3>
   			<div class="last-badges">
 					<img class="last-img-badge" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_appstore_badge.png">
 					<img class="last-img-badge" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_googleplay_badge.png">
@@ -328,25 +330,25 @@
   			</div>
   			<div class="row footy-links">
   				<div class="col-sm-2 col-sm-offset-4 footy-linkgroup">
-  					<p class="font-bold">Features</p>
+  					<p class="font-bold"><%= t '.footy_features_title' %></p>
   					<ul>
-  						<li>Attendance</li>
-  						<li>Clicker</li>
-  						<li>Notice</li>
-  						<li>Curious</li>
+  						<li><%= t '.footy_features_attendance' %></li>
+  						<li><%= t '.footy_features_clicker' %></li>
+  						<li><%= t '.footy_features_notice' %></li>
+  						<li><%= t '.footy_features_curious' %></li>
   					</ul>
   				</div>  				
   				<div class="col-sm-2 footy-linkgroup">  					
-  					<p class="font-bold">Company</p>
+  					<p class="font-bold"><%= t '.footy_company_title' %></p>
   					<ul>
-  						<li>Contact</li>
-  						<li>Terms of service</li>
-  						<li>Privacy policy</li>
+  						<li><%= t '.footy_company_contact' %></li>
+  						<li><%= t '.footy_company_termsofservice' %></li>
+  						<li><%= t '.footy_company_privacypolicy' %></li>
   					</ul>
   				</div>
   			</div>
 				<div class="footy-text-legalinfo">
-					<p>주식회사 비텐던스 | 대표자: 김태환 | 경기도 성남시 분당구 판교역로 100, 606-601 | 사업자번호: 144-81-10243 | 통신판매업신고: 제 2014-경기성남-0306호</p>
+					<p><%= t '.footy_legalinfo' %></p>
 				</div>
   		</div>
   	</div>
@@ -358,12 +360,17 @@
 		      <div class="modal-body">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		        <div class="getstarted-content">
-		        	<button id="facebook-signin" class="getstarted-button"><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_facebook.png"> 으로 시작하기</button>
-			        <button id="google-signin" class="getstarted-button"><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_googleplus.png"> 로 시작하기</button>
+		        	<% if I18n.locale != :ko %>
+			        	<button id="facebook-signin" class="getstarted-button"><%= t '.start_withfacebook' %><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_facebook.png"></button>
+				        <button id="google-signin" class="getstarted-button"><%= t '.start_withgoogle' %><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_googleplus.png"></button>
+				      <% else %>
+				      	<button id="facebook-signin" class="getstarted-button"><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_facebook.png"><%= t '.start_withfacebook' %></button>
+				        <button id="google-signin" class="getstarted-button"><img src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_signin_googleplus.png"><%= t '.start_withgoogle' %></button>
+			        <% end %>
 			        <div class="getstarted-forms">
 				        <ul class="nav nav-tabs" id="tabContent">
-					        <li class="forms-li"><a href="#getstarted-signup" data-toggle="tab">Email로 가입하기</a></li>
-					        <li class="forms-li"><a href="#getstarted-signin" data-toggle="tab">로그인하기</a></li>
+					        <li class="forms-li"><a href="#getstarted-signup" data-toggle="tab"><%= t '.signup_withemail' %></a></li>
+					        <li class="forms-li"><a href="#getstarted-signin" data-toggle="tab"><%= t '.login_withemail' %></a></li>
 					      </ul>
 					      <div class="tab-content">
 					        <div class="tab-pane" id="getstarted-signup">
@@ -378,7 +385,7 @@
 											  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
 										  </div>
 										  <div class="form-group">
-											  <button type="submit" class="btn btn-default btn-lg">Sign up</button>
+											  <button type="submit" class="btn btn-default btn-lg"><%= t '.signup'%></button>
 										  </div>
 										</form>
 					        </div>        
@@ -391,7 +398,7 @@
 										  	<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
 										  </div>
 										  <div class="form-group">
-										  	<button type="submit" class="btn btn-default btn-lg">Sign in</button>
+										  	<button type="submit" class="btn btn-default btn-lg"><%= t '.login'%></button>
 										  </div>
 										</form>
 					        </div> 
