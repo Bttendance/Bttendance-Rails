@@ -256,7 +256,8 @@
     <div class="container-fluid lp-bg-gray">
       <div class="container lp-block intro">
         <img class="intro-img-logo" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/Email/icon.png">
-        <h2 class="intro-title"><%= t '.intro' %></h2>
+        <h2 class="intro-title"><%= t '.intro_title' %></h2>
+        <p><%= t '.intro_text' %></p>
         <img class="img-responsive intro-img-moniter" src="https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/landing_main_moniterscreen.png">
       </div>
     </div>
@@ -348,6 +349,7 @@
           </div>
         </div>
         <div class="footy-text-legalinfo">
+        	<p><%= t '.footy_capyright' %></p>
           <p><%= t '.footy_legalinfo' %></p>
         </div>
       </div>
@@ -398,6 +400,7 @@
                       <div class="form-group">
                         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                       </div>
+                      <a href=""><%= t '.forgot_password' %></a>
                       <div class="form-group">
                         <button type="submit" class="btn btn-default btn-lg"><%= t '.login'%></button>
                       </div>
