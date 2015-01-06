@@ -112,8 +112,7 @@ module V1
             end
           end
 
-          # Update schools and courses join models manually
-          # TODO: Abstract (app-level)
+          # Update schools join models manually
           if update_params[:schools_users_attributes].present?
             update_params[:schools_users_attributes].each do |schools_user|
               found_schools_user = @user.schools_users.find_by_school_id(schools_user[:school_id])
@@ -129,6 +128,8 @@ module V1
             end
             update_params.delete(:schools_users_attributes)
           end
+
+          # Update courses join models manually
           if update_params[:courses_users_attributes].present?
             update_params[:courses_users_attributes].each do |courses_user|
               found_courses_user = @user.courses_users.find_by_course_id(courses_user[:course_id])
@@ -138,13 +139,26 @@ module V1
                 break
               elsif found_courses_user && courses_user[:state] == found_courses_user.state
                 found_courses_user.update_attributes(courses_user)
-              else !found_courses_user
+              else
                 @user.courses_users.new(courses_user)
               end
             end
             update_params.delete(:courses_users_attributes)
           end
 
+          # Update device id manually
+          if update_params[:devices_attributes].present?
+            update_params[:devices_attributes].each do |device|
+              if !device[:id]
+                found_device = Device.find_by(uuid: device[:uuid], mac_address: device[:mac_address])
+                if found_device
+                  device[:id] = found_device.id
+                end
+              end
+            end
+          end
+
+          # Update user model
           if @user.update_attributes(update_params)
             @user
           else
