@@ -35,8 +35,8 @@ gem 'pry-rails',     group: :development
 gem 'bcrypt', '~> 3.1.9'
 # Plug-n-play WebSocket support for Rails
 gem 'websocket-rails'
-
-gem 'rails_12factor', group: :production
+# Plug in which helps to install bower to heroku
+gem 'rails_12factor'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
