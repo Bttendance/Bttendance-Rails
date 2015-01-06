@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.9'
 # Plug-n-play WebSocket support for Rails
 gem 'websocket-rails'
 
+gem 'rails_12factor', group: :production
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
