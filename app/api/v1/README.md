@@ -612,7 +612,7 @@ requires :course, type: Hash do
   requires :school_id, type: Integer, desc: 'School ID'
   requires :name, type: String, desc: 'Name'
   requires :instructor_name, type: String, desc: 'Instructor Name'
-  requires :open, type: Boolean, desc: 'Open'
+  optional :open, type: Boolean, desc: 'Open'
   optional :information, type: String, desc: 'Information'
   optional :start_date, type: Date, desc: 'Start Date'
   optional :end_date, type: Date, desc: 'End Date'
