@@ -28,7 +28,7 @@ module V1
         optional :id, type: String, desc: 'ID'
         optional :code, type: String, desc: 'Code'
       end
-      post 'find', rabl: 'courses/course' do
+      post 'search', rabl: 'courses/course' do
         if params[:id]
           @course = Course.find_by_id(params[:id])
           @course ? @course : error_with('Course', 404)

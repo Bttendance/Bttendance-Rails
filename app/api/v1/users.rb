@@ -32,7 +32,7 @@ module V1
         optional :id, type: String, desc: 'ID'
         optional :email, type: String, desc: 'Email'
       end
-      post 'find', rabl: 'users/user' do
+      post 'search', rabl: 'users/user' do
         if params[:id]
           @user = User.find_by_id(params[:id])
           @user ? @user : error_with('User', 404)

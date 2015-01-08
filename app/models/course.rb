@@ -15,7 +15,7 @@ class Course < ActiveRecord::Base
   validates :code, presence: true, uniqueness: true
   validates :instructor_name, presence: true
 
-  before_create :create_random_code
+  before_validation :create_random_code, on: :create
 
   def attending_users_count
     self.courses_users.where(state: 'attending').count
@@ -23,6 +23,7 @@ class Course < ActiveRecord::Base
 
   def create_random_code
     self.code = Array.new(4){[*"A".."Z", *"0".."9"].sample}.join
+    Rails.logger.debug(self.code)
   end
 
 end
