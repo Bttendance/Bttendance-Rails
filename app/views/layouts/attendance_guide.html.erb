@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="feature guide - Attendance">
+    <meta name="author" content="Team Bttendance">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+    /* Common css start */
+	    @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	    body {
+	      font-family: 'Nanum Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400;
+	    }
+	    h1, h2, h3, h4, p { margin:0;  padding:0;}
+	    h1 {font-size: 36px;}
+	    h2 {font-size: 24px;}
+	    h3 {font-size: 18px;}
+	    ul {list-style-type: none; padding:0; margin:0;}
+	  /* Common css end */
+
+    	.guide-content {
+    		max-width: 650px;
+    		margin: 50px auto;
+    	}
+    	.feature-list {
+				font-size: 12px;
+				padding-left: 0px;
+    	}
+    	.feature-list li.first {
+    		background: none;
+    	}
+    	.feature-list li {
+    		padding: 0 10px;
+    		float: left;
+    		list-style: none;
+    		background: url(https://s3-ap-northeast-1.amazonaws.com/bttendancedevelop/menu_div.gif) no-repeat 0 3px;
+    	}
+    	.feature-desc {
+    		margin-bottom: 30px;
+    	}
+    	.feature-summary {
+    		margin: 20px 0; 
+    	}
+    	.feature-explain {
+    		margin: 10px 0;
+    	}
+    	.tab-guidebutton {
+    		width: 50%;
+    		text-align: center;
+    	}
+    	.webguide-screenshot {
+    		width: 200px;
+    		height: 150px;
+    	}
+    	.guide-step {
+    		text-align: center;
+    	}
+    </style>
+	</head>
+	<body>
+		<div class="guide-content">
+			<div class="container-fluid">
+				<!-- Guide title -->
+				<div>
+					<h1>Attendance</h1>
+					<ul class="feature-list">
+						<li class="first">Attendance</li>
+						<li>Clicker</li>
+						<li>Notice</li>
+						<li>Curious forum</li>
+					</ul>	
+				</div>
+				<!-- Feature description -->
+				<div class="feature-desc">
+					<img class="concept-image" src="">
+					<h3 class="feature-summary">비텐던스의 자동 출석 체크 시스템은 출석 체크에 어려움을 겪는 이들을 위한 가장 진보한 해답입니다.</h3>
+					<p class="feature-explain">✔ 비텐던스는 스마트폰의 블루투스 기능과 정교한 알고리즘을 이용해서 강의 규모와 상관없이 학생들의 출석을 빠르고 정확하게 확인합니다.</p>
+					<p class="feature-explain">✔ 강의자와 출석이 확인된 학생들의 스마트폰을 이용해 다른 학생들의 출석을 확인하므로 별도의 설비가 전혀 필요없습니다.</p>
+					<p class="feature-explain">✔ 강의 일정을 미리 등록해두면 비텐던스가 알아서 학생들에게 알림을 보낸 후 출석 체크를 시작합니다. 출석 체크에 대해선 온전히 비텐던스에게 맡기시고 보다 더 중요한 것들에 집중하세요.</p>
+				</div>
+				<!-- How to use -->
+				<div class="feature-howtouse">
+					<div role="tabpanel">
+
+					  <!-- Nav tabs -->
+					  <ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" class="tab-guidebutton active"><a href="#web" aria-controls="web" role="tab" data-toggle="tab">How to use - Web</a></li>
+					    <li role="presentation" class="tab-guidebutton"><a href="#mobile" aria-controls="mobile" role="tab" data-toggle="tab">How to use - Mobile</a></li>
+					  </ul>
+
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="web">
+					    	<div class="row">
+					    		<div class="col-sm-6 guide-step">
+					    			<img class="webguide-screenshot" src="">
+							    	<p>1. 왼쪽 사이드바에서 출석체크 버튼을 눌러주세요.</p>
+					    		</div>
+					    		<div class="col-sm-6 guide-step">
+					    			<img class="webguide-screenshot" src="">
+							    	<p>2. 자동 출석체크 시작을 위해 블루투스로 빠르게 출석체크 하기 버튼을 누르세요.</p>
+					    		</div>
+					    	</div>
+					    	
+					    	
+					    	<img class="webguide-screenshot" src="">
+					    	<p>3. 출석 확인을 위해 스마트폰의 비텐던스 앱을 실행시키고 블루투스 기능을 켜 주세요.</p>
+					    	<img class="webguide-screenshot" src="">
+					    	<p>4. 만약 자리에 있는데도 출석으로 인정받지 못했다면, 포스트에서 출석 확인 버튼을 눌러주세요.	출석 확인 신청이 강의자에게 전송되어 강의자가 수동으로 수정할 수 있게 해줍니다.</p>
+					    	<img class="webguide-screenshot" src="">
+					    	<p>5. 강의자는 포스트 상세 화면 오른 편에 나열된 학생들의 이름을 눌러서 학생의 출결 현황을 수정할 수 있으며, 이름을 누를 때마다 학생의 상태가 결석 → 출석 → 지각 → 결석 으로 바뀝니다.<br>
+								출석 확인을 신청한 학생은 붉은 색으로 표시되니 이름을 불러 그 학생의 출석을 확인해보세요. </p>
+					    	<img class="webguide-screenshot" src="">
+					    	<p>6. '시간을 정해 자동으로 출석체크' 를 눌러 개강일과 종강일, 강의 요일과 강의 시간만 등록해두면 비텐던스가 해당 요일 해당 시간에 자동으로 출석체크를 실시합니다.<br>
+								휴강이 생기거나 보충 수업이 생기면 '달력에서 세부 일정 변경하기' 버튼을 눌러 일정을 변경할 수 있습니다. </p>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="mobile">
+					    	<img class="mobileguide-screenshot" src="">
+					    	<p>1. 액션 바에 위치한 출석체크 버튼을 눌러주세요.</p>
+					    	<img class="mobileguide-screenshot" src="">
+								<p>2. 자동 출석체크 시작을 위해 블루투스로 빠르게 출석체크 하기 버튼을 누르세요.</p>
+								<img class="mobileguide-screenshot" src="">
+								<p>3. 앱에서 안내하는대로 스마트폰의 블루투스 기능을 켜 주세요.	비텐던스가 1분동안 학생들의 출석을 자동으로 확인합니다.</p>
+								(출석체크가 진행되는 동안 앱이 실행되고 있어야 합니다.)
+								<img class="mobileguide-screenshot" src="">
+								<p>4. 만약 자리에 있는데도 출석으로 인정받지 못했다면, 포스트에서 출석 확인 버튼을 눌러주세요. 출석 확인 신청이 강의자에게 전송되어 강의자가 수동으로 수정할 수 있게 해줍니다.</p>
+								<img class="mobileguide-screenshot" src="">
+								<p>5. 강의자는 상세보기 화면에서 이름을 눌러서 학생의 출결 현황을 수정할 수 있으며, 누를 때마다 학생의 상태가 결석 → 출석 → 지각 → 결석 으로 바뀝니다.<br>
+								출석 확인을 신청한 학생은 붉은 색으로 표시되니 이름을 불러 그 학생의 출석을 확인해보세요. </p>
+								<img class="mobileguide-screenshot" src="">
+								<p>6. '시간을 정해 자동으로 출석체크' 를 눌러 개강일과 종강일, 강의 요일과 강의 시간만 등록해두면 비텐던스가 해당 요일 해당 시간에 자동으로 출석체크를 실시합니다.<br>
+								휴강이 생기거나 보충 수업이 생기면 '달력에서 세부 일정 변경하기' 버튼을 눌러 일정을 변경할 수 있습니다. </p>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+    <!-- assets/javascripts/ -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	</body>
+</html>
