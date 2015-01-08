@@ -170,7 +170,9 @@ requires :user, type: Hash do
   optional :schools_users_attributes, type: Array do
     optional :school_id, type: Integer, desc: 'School ID'
     optional :identity, type: String, desc: 'Identity'
-    optional :state, type: String, desc: 'State'
+    optional :is_supervisor, type: Boolean, desc: 'Is Supervising'
+    optional :is_student, type: Boolean, desc: 'Is Student'
+    optional :is_administrator, type: Boolean, desc: 'Is Administrator'
     optional :_destroy, type: Boolean, desc: 'Destroy'
   end
   optional :courses_users_attributes, type: Array do
@@ -193,7 +195,8 @@ Notes:
         {
           "school_id": 1,
           "identity": "30729099",
-          "state": "supervisor"
+          "is_supervisor": "false",
+          "is_student": "true"
         }
       ],
       "courses_users_attributes": [
@@ -215,7 +218,9 @@ Returns:
   "schools_users": [
     {
       "identity": "30729099",
-      "state": "supervisor",
+      "is_supervisor": "false",
+      "is_student": "true",
+      "is_administrator": "false",
       "school": {
         "id": 1,
         "name": "Yonsei University"
@@ -263,7 +268,9 @@ Returns:
   "schools_users": [
     {
       "identity": "30729099",
-      "state": "supervisor",
+      "is_supervisor": "false",
+      "is_student": "true",
+      "is_administrator": "false",
       "school": {
         "id": 1,
         "name": "Yonsei University"

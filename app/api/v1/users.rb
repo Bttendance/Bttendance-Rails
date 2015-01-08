@@ -89,7 +89,9 @@ module V1
           optional :schools_users_attributes, type: Array do
             optional :school_id, type: Integer, desc: 'School ID'
             optional :identity, type: String, desc: 'Identity'
-            optional :state, type: String, desc: 'State'
+            optional :is_supervisor, type: Boolean, desc: 'Is Supervising'
+            optional :is_student, type: Boolean, desc: 'Is Student'
+            optional :is_administrator, type: Boolean, desc: 'Is Administrator'
             optional :_destroy, type: Boolean, desc: 'Destroy'
           end
           optional :courses_users_attributes, type: Array do
@@ -116,14 +118,15 @@ module V1
           if update_params[:schools_users_attributes].present?
             update_params[:schools_users_attributes].each do |schools_user|
               found_schools_user = @user.schools_users.find_by_school_id(schools_user[:school_id])
-              if found_schools_user && schools_user[:_destroy]
+
+              schools_user_destroy = schools_user[:_destroy]
+              schools_user.delete(:_destroy)
+
+              if found_schools_user && schools_user_destroy
                 found_schools_user.destroy
-              elsif found_schools_user && !schools_user[:state]
-                break
-              elsif found_schools_user && schools_user[:state] == found_schools_user.state
+              elsif found_schools_user
                 found_schools_user.update_attributes(schools_user)
               else
-                schools_user.delete(:_destroy)
                 @user.schools_users.new(schools_user)
               end
             end
@@ -134,14 +137,17 @@ module V1
           if update_params[:courses_users_attributes].present?
             update_params[:courses_users_attributes].each do |courses_user|
               found_courses_user = @user.courses_users.find_by_course_id(courses_user[:course_id])
-              if found_courses_user && courses_user[:_destroy]
+
+              courses_user_destroy = courses_user[:_destroy]
+              courses_user.delete(:_destroy)
+
+              if found_courses_user && courses_user_destroy
                 found_courses_user.destroy
               elsif found_courses_user && !courses_user[:state]
                 break
               elsif found_courses_user && courses_user[:state] == found_courses_user.state
                 found_courses_user.update_attributes(courses_user)
               else
-                courses_user.delete(:_destroy)
                 @user.courses_users.new(courses_user)
               end
             end

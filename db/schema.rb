@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102015626) do
+ActiveRecord::Schema.define(version: 20150108052849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,12 +230,14 @@ ActiveRecord::Schema.define(version: 20150102015626) do
   end
 
   create_table "schools_users", id: false, force: :cascade do |t|
-    t.integer  "school_id",              null: false
-    t.integer  "user_id",                null: false
-    t.string   "identity",   limit: 255, null: false
-    t.string   "state",      limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "school_id",                                    null: false
+    t.integer  "user_id",                                      null: false
+    t.string   "identity",         limit: 255,                 null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.boolean  "is_supervisor",                default: false, null: false
+    t.boolean  "is_student",                   default: false, null: false
+    t.boolean  "is_administrator",             default: false, null: false
   end
 
   add_index "schools_users", ["school_id"], name: "index_schools_users_on_school_id", using: :btree
