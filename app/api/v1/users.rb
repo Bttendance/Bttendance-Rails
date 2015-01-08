@@ -123,6 +123,7 @@ module V1
               elsif found_schools_user && schools_user[:state] == found_schools_user.state
                 found_schools_user.update_attributes(schools_user)
               else
+                schools_user.delete(:_destroy)
                 @user.schools_users.new(schools_user)
               end
             end
@@ -140,6 +141,7 @@ module V1
               elsif found_courses_user && courses_user[:state] == found_courses_user.state
                 found_courses_user.update_attributes(courses_user)
               else
+                courses_user.delete(:_destroy)
                 @user.courses_users.new(courses_user)
               end
             end
