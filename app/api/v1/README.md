@@ -84,7 +84,7 @@ Returns:
 }
 ```
 
-### POST ```/users/find```
+### POST ```/users/search```
 
 _Returns a single user with ```id``` or ```email```_
 Params:
@@ -408,7 +408,7 @@ _Returns search result of school by ```name```, paginated_
 
 Params:
 ```ruby
-requires :name, type: String, desc: 'Name'
+requires :query, type: String, desc: 'Search Query'
 end
 ```
 
@@ -545,7 +545,7 @@ Returns:
 }
 ```
 
-### POST ```/courses/find```
+### POST ```/courses/search```
 
 _Returns a single course with ```id``` or ```code```_
 
