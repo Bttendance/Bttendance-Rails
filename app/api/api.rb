@@ -38,28 +38,34 @@ class API < Grape::API
       end
     end
 
+    # def error_with(obj, status_code)
+    #   if obj.is_a?(Integer)
+    #     status_code = obj
+    #   end
+    #
+    #   case status_code
+    #   when 401
+    #     error!({ message: "Authentication failed" }, 401)
+    #   when 404
+    #     error!({ message: "#{obj} does not exist" }, 404)
+    #   when 422
+    #     error!({ message: obj.errors.full_messages }, 422)
+    #   end
+    # 
+    # end
+
     # API error return helper
-    def error_with(obj, status_code)
-      if obj.is_a?(Integer)
-        status_code = obj
-      end
-
-      case status_code
-      when 401
-        error!({ message: "Authentication failed" }, 401)
-      when 404
-        error!({ message: "#{obj} does not exist" }, 404)
-      when 422
-        error!({ message: obj.errors.full_messages }, 422)
-      end
-
+    def error_with(type, title, message, status_code)
+      error!(
+      {
+        error: {
+          type: type,
+          title: title,
+          message: message
+        }
+      }, status_code)
     end
   end
-
-  # def error_with(status_code, obj, type, title, message)
-  #   I18n.locale
-  #   error!({ error: {type: type, title: 'title', message: 'Device registered to another user'}  }, 400)
-  # end
 
   # Mount v1 of the REST API
   mount V1::Base
