@@ -1,0 +1,41 @@
+#main {
+  > .action {
+    height: 590px;
+    background-color: $mirage;
+
+    > header {
+      margin: 15px 18px;
+    }
+
+    > .container {
+      margin-top: 122px;
+      text-align: center;
+
+      > h1 {
+        margin-bottom: 54px;
+        text-align: center;
+        color: $titan-white;
+      }
+
+      .btn-start {
+        width: 370px;
+      }
+    }
+  }
+
+  > .intro {
+    background-color: $white-lilac;
+    background: $white-lilac;
+    text-align: center;
+
+    .logo {
+      margin: 62px 0 52px 0;
+    }
+
+    h2 {
+      margin-bottom: 63px;
+      font-size: 24px;
+      color: $mirage;
+    }
+  }
+}

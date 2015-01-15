@@ -1,3 +1,8 @@
 {
-  "TEST": "Test"
+  "bttendance": "Bttendance",
+  "tagline": "A smart TA for you",
+  "get_started": "Get Started",
+  "main": {
+    "intro_line": "Let Bttendance handle the details,<br>while you spend more time interacting with your students."
+  }
 }

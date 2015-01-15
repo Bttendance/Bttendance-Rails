@@ -1,3 +1,8 @@
 {
-  "TEST": "테스트"
+  "bttendance": "비텐던스",
+  "tagline": "당신을 위한 Smart TA",
+  "get_started": "시작하기",
+  "main": {
+    "intro_line": "귀찮은 일은 비텐던스에게 맡기시고,<br>비텐던스를 통해 학생들과 더 많이 소통하세요."
+  }
 }
