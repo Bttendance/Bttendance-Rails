@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.5'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -28,7 +30,7 @@ gem 'hashie_rails'
 gem 'grape-rabl'
 # Use Kaminari for pagination
 # TODO: Check official repo for PR #21 merge
-gem 'grape-kaminari', git: 'https://github.com/dnd/grape-kaminari', branch: 'post_0_9_0_grape_fix'
+gem 'grape-kaminari'
 # Use pry for live debugging
 gem 'pry-rails',     group: :development
 # Use ActiveModel has_secure_password
