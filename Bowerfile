@@ -3,5 +3,7 @@
 asset 'bootstrap-sass-official'
 asset 'angular'
 asset 'angular-route'
+asset 'angular-resource'
 asset 'angular-translate'
 asset 'angular-translate-loader-static-files'
+asset 'lodash'

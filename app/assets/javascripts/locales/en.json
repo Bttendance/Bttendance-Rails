@@ -1,8 +1,24 @@
 {
   "bttendance": "Bttendance",
-  "tagline": "A smart TA for you",
+  "tagline": "A smart TA for your lecture",
   "get_started": "Get Started",
+  "get_started_web": "Start with Bttendance Web",
   "main": {
-    "intro_line": "Let Bttendance handle the details,<br>while you spend more time interacting with your students."
+    "intro_line": "Let Bttendance handle the details,<br>while you spend more time interacting with your students.",
+    "features_title": "See what features Bttendance has to offer",
+    "attendance_title": "Attendance Check",
+    "attendance_description": "Check and manage your students attendance.",
+    "clicker_title": "Clicker Questions",
+    "clicker_description": "Check your student's responses easily during class with a superior user experience.",
+    "notice_title": "Course Notices",
+    "notice_description": "Sharing important course updates is as easy as sending a text.",
+    "curious_title": "Q&A Forum",
+    "curious_description": "Participants can ask questions, get answers, and answer other's questions.",
+    "devices_title": "Turn your student's smart devices into tools for learning.",
+    "devices_line": "Bttendance supports most modern web browsers<br>and mobile platforms such as Android and iOS.",
+    "counter_line": "<span>{{ numUniqueUsers }}</span> instructors around the world apply Bttendance in <span>{{ numUniqueCourses }}</span> classrooms.",
+    "platforms_title": "Bring real interaction and engagement to your classroom<br>with Bttendance!",
+    "platforms_line": "Available in the Google Play and Apple App Stores",
+    "company_info": "© 2015 Bttendance Inc. All rights reserved.<br>Bttendance, 606-601, 100, Pangyoyeok-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, 463-420 Rep. of Korea."
   }
 }

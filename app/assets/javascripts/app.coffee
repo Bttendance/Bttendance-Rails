@@ -1,12 +1,12 @@
 bttendance = angular.module 'bttendance', [
   'ngRoute',
+  'ngResource',
   'pascalprecht.translate',
-  'templates',
-  'controllers'
+  'templates'
 ]
 
-bttendance.config ['$routeProvider', '$locationProvider', '$translateProvider',
-  ($routeProvider, $locationProvider, $translateProvider) ->
+bttendance.config(['$routeProvider', '$locationProvider', '$translateProvider',
+  ($routeProvider, $locationProvider, $translateProvider, $window) ->
     $locationProvider.html5Mode true
 
     $routeProvider
@@ -19,9 +19,15 @@ bttendance.config ['$routeProvider', '$locationProvider', '$translateProvider',
       suffix: '.json'
     )
 
-    $translateProvider.preferredLanguage 'ko'
+    $translateProvider
+      .registerAvailableLanguageKeys ['ko', 'en'],
+        'en_US': 'en'
+        'en-US': 'en'
+        'en_us': 'en'
+      .determinePreferredLanguage()
 
     # TODO: I18n switcher & storage
-]
-
-controllers = angular.module 'controllers', []
+])
+.constant('Constants', {
+  API_VERSION: 'v1'
+})

@@ -5,9 +5,15 @@ module V1
     resource :courses do
       desc 'Returns a list of courses, paginated'
       paginate per_page: 10
-      get '', rabl: 'courses/courses' do
+      get ''  do
         courses = Course.all
+
+        if params[:count]
+          return [course_count: Course.count]
+        end
+
         @courses = paginate(Kaminari.paginate_array(courses))
+        render rabl: 'courses/courses'
       end
 
 

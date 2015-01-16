@@ -2,7 +2,23 @@
   "bttendance": "비텐던스",
   "tagline": "당신을 위한 Smart TA",
   "get_started": "시작하기",
+  "get_started_web": "비텐던스를 Web 시작하기",
   "main": {
-    "intro_line": "귀찮은 일은 비텐던스에게 맡기시고,<br>비텐던스를 통해 학생들과 더 많이 소통하세요."
+    "intro_line": "귀찮은 일은 비텐던스에게 맡기시고,<br>비텐던스를 통해 학생들과 더 많이 소통하세요.",
+    "features_title": "비텐던스가 제공하는  기능들을 확인하세요",
+    "attendance_title": "차동 출석체크",
+    "attendance_description": "출석체크하는 기능입니다.<br>학생들의 출석을<br>관리합니다.",
+    "clicker_title": "즉석 설문하기",
+    "clicker_description": "즉석 설문 조사하는<br>기능입니다. 즉석 설문<br>조사를 하는 기능입니다.",
+    "notice_title": "공지하기 기능",
+    "notice_description": "공지를 해보세요.<br>쉽게 공지를 할 수 있습니다.<br>쉬운 공지하기 기능.",
+    "curious_title": "질의응답 포럼",
+    "curious_description": "질문과 답변을 합니다.<br>질문을 하고 답변을 할 수<br>있슨니다.",
+    "devices_title": "학생들의 스마트 기기를 학습 도구로 바꾸세요.",
+    "devices_line": "비텐던스는 Android, iOS 그리고 Web까지<br>강의실에서 마주할 수 있는 거의 모든 스마트 기기를 지원합니다.",
+    "counter_line": "지금까지 <span>{{ numUniqueCourses }}</span>개의 강의에서 <span>{{ numUniqueUsers }}</span>명의 강의자가 비텐던스를 실제 수업에 적용했습니다.",
+    "platforms_title": "지금 비텐던스를 시작해요!",
+    "platforms_line": "구글 플레이이와 애플 앱스토어에서도 다운 받으실 수 있습니다.",
+    "company_info": "주식회사 비텐던스 | 대표: 김태환"
   }
 }

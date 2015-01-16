@@ -2,6 +2,7 @@
   > .action {
     height: 590px;
     background-color: $mirage;
+    background: $mirage;
 
     > header {
       margin: 15px 18px;
@@ -17,7 +18,7 @@
         color: $titan-white;
       }
 
-      .btn-start {
+      > .btn-start {
         width: 370px;
       }
     }
@@ -34,8 +35,155 @@
 
     h2 {
       margin-bottom: 63px;
-      font-size: 24px;
       color: $mirage;
+    }
+  }
+
+  .features {
+    background-color: $titan-white;
+    background: $titan-white;
+
+    > .container {
+      // Combined margin bug (why?)
+      margin-top: 125px;
+      margin-bottom: 135px;
+
+      > h2 {
+        margin-bottom: 82px;
+        color: $storm-grey;
+      }
+
+      .feature {
+        > img {
+          margin-bottom: 34px;
+        }
+
+        > p:first-of-type {
+          margin-bottom: 8px;
+          font-size: 15px;
+          color: $deep-cerulean;
+        }
+
+        > p:last-of-type {
+          font-size: 13px;
+          color: $storm-grey;
+        }
+      }
+    }
+  }
+
+  .devices {
+    background-color: $white-lilac;
+    background: $white-lilac;
+
+    >.container {
+      margin-top: 64px;
+      margin-bottom: 74px;
+
+      > h2 {
+        margin-bottom: 56px;
+        color: $mirage;
+      }
+
+      > p {
+        margin-top: 54px;
+        color: $mirage;
+      }
+    }
+  }
+
+  .counter {
+    height: 90px;
+    background-color: $titan-white;
+    background: $titan-white;
+
+    > .container p {
+      margin-top: 28px;
+      font-size: 19px;
+      color: $storm-grey;
+
+      > span {
+        font-size: 24px;
+        color: $deep-cerulean;
+      }
+    }
+  }
+
+  .platforms {
+    background-color: $white-lilac;
+    background: $white-lilac;
+
+    > .container {
+      margin-top: 88px;
+      margin-bottom: 108px;
+
+      > h2 {
+        margin-bottom: 62px;
+        color: $mirage;
+      }
+
+      .btn-start {
+        width: 370px;
+      }
+
+      > p {
+        margin: 38px 0 22px 0;
+        color: $mirage;
+      }
+
+      > img:first-of-type {
+        margin-right: 2px;
+      }
+    }
+  }
+
+  > footer {
+    background-color: $mirage;
+    background: $mirage;
+
+    > .container {
+      margin-top: 88px;
+      margin-bottom: 78px;
+
+      > .social-icons {
+        margin-bottom: 98px;
+
+        img:nth-child(-n+2) {
+          margin-right: 20px;
+        }
+      }
+
+      > ul {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+
+        &:first-of-type {
+          margin: 0 62px 0 0;
+        }
+
+        &:nth-child(2) {
+          vertical-align: top;
+        }
+
+        > li {
+          color: $titan-white;
+
+          &:first-child {
+            margin-bottom: 10px;
+          }
+
+          > a {
+            color: $titan-white;
+          }
+        }
+      }
+
+      > p {
+        margin-top: 133px;
+        font-size: 10px;
+        color: $titan-white;
+      }
     }
   }
 }

@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require angular/angular
 //= require angular-route/angular-route
+//= require angular-resource/angular-resource
 //= require angular-translate/angular-translate
 //= require angular-translate-loader-static-files/angular-translate-loader-static-files
 //= require angular-rails-templates
+//= require lodash/dist/lodash
 //= require_tree ./templates
 //= require_tree .

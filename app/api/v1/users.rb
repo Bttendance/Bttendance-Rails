@@ -14,9 +14,15 @@ module V1
 
       desc 'Returns a list of users, paginated'
       paginate per_page: 10
-      get '', rabl: 'users/users' do
+      get '' do
         users = User.all
+
+        if params[:count]
+          return [user_count: User.count]
+        end
+
         @users = paginate(Kaminari.paginate_array(users))
+        render rabl: 'users/users'
       end
 
 
