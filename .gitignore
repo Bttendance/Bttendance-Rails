@@ -29,6 +29,7 @@ capybara-*.html
 .rvmrc
 .rspec
 /public/system
+/public/assets
 /coverage/
 **.orig
 **.DS_Store

@@ -5,8 +5,15 @@ bttendance = angular.module 'bttendance', [
   'templates'
 ]
 
-bttendance.config(['$routeProvider', '$locationProvider', '$translateProvider',
-  ($routeProvider, $locationProvider, $translateProvider, $window) ->
+bttendance
+.factory 'railsLocaleLoader', ($http) ->
+  (options) ->
+    $http.get('locales/' + options.key + '.json').then (response) ->
+      response.data
+    , (error) ->
+      throw options.key
+
+.config ($provide, $routeProvider, $locationProvider, $translateProvider, $httpProvider, Rails) ->
     $locationProvider.html5Mode true
 
     $routeProvider
@@ -14,11 +21,16 @@ bttendance.config(['$routeProvider', '$locationProvider', '$translateProvider',
         templateUrl: 'main.html'
         controller: 'MainController'
 
-    $translateProvider.useStaticFilesLoader(
-      prefix: '/assets/locales/'
-      suffix: '.json'
-    )
+    # Assets interceptor
+    $provide.factory 'railsAssetsInterceptor', ->
+      request: (config) ->
+        if assetUrl = Rails.templates[config.url]
+          config.url = assetUrl
+        config
+    $httpProvider.interceptors.push('railsAssetsInterceptor')
 
+    # Translation settings
+    $translateProvider.useLoader 'railsLocaleLoader'
     $translateProvider
       .registerAvailableLanguageKeys ['ko', 'en'],
         'en_US': 'en'
@@ -27,7 +39,7 @@ bttendance.config(['$routeProvider', '$locationProvider', '$translateProvider',
       .determinePreferredLanguage()
 
     # TODO: I18n switcher & storage
-])
+
 .constant('Constants', {
   API_VERSION: 'v1'
 })

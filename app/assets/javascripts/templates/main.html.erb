@@ -2,7 +2,7 @@
   <section class="row action">
     <header>
       <a href="/">
-        <img src="/assets/brand.png">
+        <img src="<%= asset_path 'brand.png' %>">
       </a>
     </header>
     <div class="container">
@@ -12,9 +12,9 @@
   </section>
   <section class="row intro">
     <div class="container">
-      <img src="/assets/logo.png" class="logo">
+      <img src="<%= asset_path 'logo.png' %>" class="logo">
       <h2 translate="main.intro_line"></h2>
-      <img src="/assets/screen_half.png">
+      <img src="<%= asset_path 'screen_half.png' %>">
     </div>
   </section>
   <section class="row features">
@@ -22,22 +22,22 @@
       <h2 translate="main.features_title"></h2>
       <div class="row">
         <div class="col-xs-3 feature attendance">
-          <img src="/assets/attendance_icon.png">
+          <img src="<%= asset_path 'attendance_icon.png' %>">
           <p translate="main.attendance_title"></p>
           <p translate="main.attendance_description"></p>
         </div>
         <div class="col-xs-3 feature clicker">
-          <img src="/assets/clicker_icon.png">
+          <img src="<%= asset_path 'clicker_icon.png' %>">
           <p translate="main.clicker_title"></p>
           <p translate="main.clicker_description"></p>
         </div>
         <div class="col-xs-3 feature notice">
-          <img src="/assets/notice_icon.png">
+          <img src="<%= asset_path 'notice_icon.png' %>">
           <p translate="main.notice_title"></p>
           <p translate="main.notice_description"></p>
         </div>
         <div class="col-xs-3 feature curious">
-          <img src="/assets/curious_icon.png">
+          <img src="<%= asset_path 'curious_icon.png' %>">
           <p translate="main.curious_title"></p>
           <p translate="main.curious_description"></p>
         </div>
@@ -47,7 +47,7 @@
   <section class="row devices">
     <div class="container text-center">
       <h2 translate="main.devices_title"></h2>
-      <img src="/assets/platforms_devices.png">
+      <img src="<%= asset_path 'platforms_devices.png' %>">
       <p translate="main.devices_line"></p>
     </div>
   </section>
@@ -61,16 +61,16 @@
       <h2 translate="main.platforms_title"></h2>
       <button class="btn btn-primary btn-xl btn-start" translate="get_started_web"></button>
       <p translate="main.platforms_line"></p>
-      <a href="https://play.google.com/store/apps/details?id=com.bttendance&hl=ko"><img src="/assets/play_store_icon.png"></a>
-      <a href="https://itunes.apple.com/kr/app/bttendance-make-your-lecture/id829410376"><img src="/assets/app_store_icon.png"></a>
+      <a href="https://play.google.com/store/apps/details?id=com.bttendance&hl=ko"><img src="<%= asset_path 'play_store_icon.png' %>"></a>
+      <a href="https://itunes.apple.com/kr/app/bttendance-make-your-lecture/id829410376"><img src="<%= asset_path 'app_store_icon.png' %>"></a>
     </div>
   </section>
   <footer class="row">
     <div class="container text-center">
       <div class="social-icons">
-        <a href="http://bttendance.tistory.com/"><img src="/assets/tistory_icon.png"></a>
-        <a href="https://www.facebook.com/bttendancekorea"><img src="/assets/facebook_icon.png"></a>
-        <a href="mailto:contact@bttendance.com"><img src="/assets/email_icon.png"></a>
+        <a href="http://bttendance.tistory.com/"><img src="<%= asset_path 'tistory_icon.png' %>"></a>
+        <a href="https://www.facebook.com/bttendancekorea"><img src="<%= asset_path 'facebook_icon.png' %>"></a>
+        <a href="mailto:contact@bttendance.com"><img src="<%= asset_path 'email_icon.png' %>"></a>
       </div>
       <ul>
         <li>Features</li>

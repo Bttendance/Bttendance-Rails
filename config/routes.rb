@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :devices
-
   # Mount the API Root which will load other API routes
   mount API => '/'
 
