@@ -202,6 +202,8 @@ en:
       attendance_des: "BTTENDANCE checks your students' attendance accurately and effortlessly in all ranges of class by using Bluetooth and elaborate algorithm."
       notice: "Notice"
       notice_des: "BTTENDANCE is an efficient way to make an announcement for your class. Notify to your students as easy as sending text message!"
+      cuious: "Q&A forum"
+      curious_des: "Engage in free debate without formality and constraint. BTTENDANCE offers Question & Answer forum for all class members."
       see_how_to_use: "See how to use."
       feel_free_to_ask_us: "If you have a question about BTTENDANCE, please feel free to ask us at contact@bttendance.com!"
     reset:
