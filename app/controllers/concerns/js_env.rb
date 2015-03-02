@@ -10,6 +10,8 @@ module JSEnv
 
   def js_env
     data = {
+      host: ENV['HOST'],
+      application_id: ENV['APPLICATION_ID'],
       env: Rails.env,
       templates: templates
     }
