@@ -6,6 +6,24 @@ class API < Grape::API
   # Use the RABL JSON formatter
   formatter :json, Grape::Formatter::Rabl
 
+  use ::WineBouncer::OAuth2
+
+  rescue_from :all do |e|
+    eclass = e.class.to_s
+    message = "OAuth Error: #{e.to_s}" if eclass.match('WineBouncer::Errors')
+    status = case
+    when eclass.match('OAuthUnauthorizedError')
+      401
+    when eclass.match('OAuthForbiddenError')
+      403
+    else
+      (e.respond_to? :status) && e.status || 500
+    end
+    opts = { error: "#{message || e.message}" }
+    opts[:trace] = e.backtrace[0, 10] unless Rails.env.production?
+    Rack::Response.new(opts.to_json, status).finish
+  end
+
   # Before any route
   before do
     set_locale
@@ -39,7 +57,7 @@ class API < Grape::API
     end
 
     # API error return helper
-    def error_with(obj, status_code)
+    def error_with(obj, status_code = nil)
       if obj.is_a?(Integer)
         status_code = obj
       end

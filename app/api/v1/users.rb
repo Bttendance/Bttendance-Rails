@@ -10,6 +10,10 @@ module V1
             'apple6@apple.com', 'apple7@apple.com', 'apple8@apple.com',
             'apple9@apple.com']
         end
+
+        def warden
+          env['warden']
+        end
       end
 
       desc 'Returns a list of users, paginated'
@@ -17,12 +21,20 @@ module V1
       get '' do
         users = User.all
 
-        if params[:count]
-          return [user_count: User.count]
-        end
-
         @users = paginate(Kaminari.paginate_array(users))
         render rabl: 'users/users'
+      end
+
+
+      desc 'Returns a count of all users'
+      get 'count', oauth2: false do
+        { user_count: User.count }
+      end
+
+
+      desc 'Returns the current authenticated user with auth token'
+      get 'me', rabl: 'users/user' do
+        @user = resource_owner
       end
 
 
@@ -65,7 +77,7 @@ module V1
           end
         end
       end
-      post '', rabl: 'users/user' do
+      post '', rabl: 'users/user', oauth2: false do
         @user = User.new(permitted_params[:user])
 
         if @user.save
@@ -188,7 +200,7 @@ module V1
       params do
         requires :email, type: String, desc: 'Email'
       end
-      post 'reset' do
+      post 'reset', oauth2: false do
         @user = User.find_by_email(params[:email])
         if @user
           UserMailer.reset(@user).deliver
@@ -199,46 +211,9 @@ module V1
       end
 
 
-      desc 'Authenticates a user and returns the user object'
-      params do
-        requires :email, type: String, desc: 'Email'
-        requires :password, type: String, desc: 'Password'
-        requires :devices_attributes, type: Hash do
-          requires :platform, type: String, desc: 'Platform'
-          optional :uuid, type: String, desc: 'UUID'
-          optional :mac_address, type: String, desc: 'MAC Address'
-        end
-      end
-      post 'login', rabl: 'users/user' do
-        @user = User.find_by_email(params[:email])
-        # Check for Apple.com emails
-        if @user && unsecured_emails.include?(params[:email])
-          @user
-        elsif @user
-          if @user.authenticate(params[:password])
-            device = Device.find_by(permitted_params[:devices_attributes])
-            # Device not yet registered to any user, add it to this user
-            if !device
-              if @user.devices.create(permitted_params[:devices_attributes])
-                @user
-              else
-                # Fail silently
-                # TODO: Handle (logging/retry?)
-                @user
-              end
-            elsif device && device.user_id == @user.id
-              # User owns this device already, return user
-              @user
-            else
-              # User doesn't own this device
-              error!({ error: { type: 'log', title: 'title', message: 'Device registered to another user' }}, 400)
-            end
-          else
-            error_with(401)
-          end
-        else
-          error_with('User', 404)
-        end
+      desc 'Logs an authenticated user out'
+      delete 'logout' do
+        warden.logout
       end
 
 
@@ -254,7 +229,7 @@ module V1
       end
 
 
-      desc 'Returns a user\'s courses'
+      desc 'Returns a user\'s schools'
       get ':id/schools', rabl: 'schools/schools' do
         @user = User.find_by_id(params[:id])
 
@@ -303,17 +278,6 @@ module V1
           else
             error_with(@preferences, 422)
           end
-        end
-      end
-
-      #for test
-      desc 'send reset mail'
-      get ':id/email/reset/' do
-        @user = User.find_by_id(params[:id])
-        if @user
-          UserMailer.reset(@user).deliver
-        else
-          error_with('User', 404)
         end
       end
     end

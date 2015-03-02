@@ -37,7 +37,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 # Use doorkeeper for OAuth
 gem 'doorkeeper'
-gem 'wine_bouncer'
+gem 'wine_bouncer', git: 'https://github.com/ddoolin/wine_bouncer', branch: 'protected-fix'
 # Use pry for live debugging
 gem 'pry-rails',     group: :development
 # Use ActiveModel has_secure_password

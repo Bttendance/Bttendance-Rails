@@ -17,6 +17,12 @@ module V1
       end
 
 
+      desc 'Returns a count of all users'
+      get 'count', oauth2: false do
+        { course_count: Course.count }
+      end
+
+
       desc 'Returns a specific course'
       get ':id', rabl: 'courses/course' do
         @course = Course.find_by_id(params[:id])
@@ -29,7 +35,7 @@ module V1
       end
 
 
-      desc 'Returns a specific course by id and by code'
+      desc 'Returns a specific course by ID and/or code'
       params do
         optional :id, type: String, desc: 'ID'
         optional :code, type: String, desc: 'Code'
