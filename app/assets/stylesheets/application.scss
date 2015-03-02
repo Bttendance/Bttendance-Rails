@@ -15,8 +15,18 @@
 
 // Bttendance styles
 @import "variables";
+@import "mixins";
 @import "buttons";
+@import "forms";
+@import "modals";
 @import "main";
+@import 'dash';
+
+@import "components/navbar";
+@import "components/sidenav";
+
+@import "modals/auth";
+@import "modals/add_course";
 
 // Third-party libs
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
@@ -25,3 +35,12 @@
 // Fonts
 @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 @import url("http://fonts.googleapis.com/css?family=Open+Sans");
+
+html, body {
+  width: 100%;
+  height: 100%;
+
+  .container-fluid {
+    height: 100%;
+  }
+}

@@ -1,0 +1,41 @@
+.sidenav-container {
+  float: left;
+  width: 215px;
+  height: 100%;
+}
+
+.content-container {
+  height: 100%;
+  margin-right: -15px;
+  background-color: $white-lilac;
+  background: $white-lilac;
+
+  .start-container {
+    height: 100%;
+    overflow: scroll;
+    padding-top: 54px;
+    text-align: center;
+    color: $storm-grey;
+    font-size: 12px;
+
+    .txt-get-started {
+      margin: 38px 0 30px 0;
+    }
+
+    .btn-add-course {
+      width: 300px;
+      height: 48px;
+    }
+
+    .content-separator {
+      width: 654px;
+      margin: 30px auto;
+      border-top: 1px solid $storm-grey;
+      opacity: 0.16;
+    }
+
+    .img-manual {
+      margin: 20px 0 15px;
+    }
+  }
+}

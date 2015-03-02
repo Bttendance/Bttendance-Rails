@@ -1,0 +1,10 @@
+// Hide text (use background-image, etc first)
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.inline-block {
+  display: inline-block;
+}

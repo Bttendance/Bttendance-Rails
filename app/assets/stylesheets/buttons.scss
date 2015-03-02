@@ -1,0 +1,38 @@
+#bttendance {
+  .btn {
+    border: none;
+  }
+
+  .btn-xl {
+    @extend .btn-lg;
+    height: 60px;
+  }
+
+  .btn-block {
+    height: 50px;
+    font-size: 18px;
+  }
+
+  button.close {
+    @extend .hide-text;
+    width: 34px;
+    height: 34px;
+    opacity: 0.8;
+    float: none;
+    outline: none;
+    background-image: url('close.png');
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .btn-link {
+    outline: none;
+    color: $storm-grey;
+
+    &:hover {
+      color: $mirage;
+    }
+  }
+}

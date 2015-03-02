@@ -1,0 +1,9 @@
+<header id="navbar_main" class="row navbar navbar-default navbar-static-top" ng-controller="NavbarController">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/">
+      <img src="<%= asset_path 'brand.png' %>">
+    </a>
+  </div>
+  <button class="btn btn-primary btn-md btn-add-course" translate="add_course" ng-show="!currentUser.courses || currentUser.courses.length < 1" ng-click="openAddCourseModal()"></button>
+  <button class="btn btn-link btn-profile"><span class="glyphicon glyphicon-user"></span>{{ currentUser.name }}</button>
+</header>

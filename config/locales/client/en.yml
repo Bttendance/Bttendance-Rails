@@ -21,3 +21,28 @@ en:
       platforms_title: "Bring real interaction and engagement to your classroom<br>with Bttendance!"
       platforms_line: "Available in the Google Play and Apple App Stores"
       company_info: "© 2015 Bttendance Inc. All rights reserved.<br>Bttendance, 606-601, 100, Pangyoyeok-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, 463-420 Rep. of Korea."
+    navbar:
+      add_course: "Add Course"
+    dash:
+      start:
+        get_started: "You have not yet added a course!<br>Register a class as an instructor or join a class as a student to get started."
+        how_to_use: "Wondering how to use Bttendance?"
+        view_manual: "View online manual"
+        download_manual: "Download instruction manual"
+    modals:
+      auth:
+        btn_auth_facebook: "Sign up with <img src='/assets/facebook_brand.png'>"
+        btn_auth_google: "Sign up with <img src='/assets/google_brand.png'>"
+        btn_auth_email: "E-mail Signup"
+        btn_login: "Login"
+        btn_register: "Register"
+        name: "Name"
+        email: "E-mail"
+        password: "Password"
+      add_course:
+        register_course_suffixed: "Register Course (Instructor)"
+        register_course: "Register Course"
+        join_course: "Join Class (Student)"
+        class_code: "Course Code"
+        course_name: "Course Name"
+        instructor_name: "Instructor Name"

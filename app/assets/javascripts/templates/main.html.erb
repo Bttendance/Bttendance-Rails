@@ -7,7 +7,7 @@
     </header>
     <div class="container">
       <h1>{{ 'bttendance' | translate }},<br>{{ 'tagline' | translate }}</h1>
-      <button class="btn btn-primary btn-xl btn-start" translate="get_started"></button>
+      <a class="btn btn-primary btn-xl btn-start" translate="get_started" ng-href="{{ loginUrl }}"></a>
     </div>
   </section>
   <section class="row intro">
@@ -59,7 +59,7 @@
   <section class="row platforms">
     <div class="container text-center">
       <h2 translate="main.platforms_title"></h2>
-      <button class="btn btn-primary btn-xl btn-start" translate="get_started_web"></button>
+      <a class="btn btn-primary btn-xl btn-start text-bold" translate="get_started_web" ng-href="{{ loginUrl }}"></a>
       <p translate="main.platforms_line"></p>
       <a href="https://play.google.com/store/apps/details?id=com.bttendance&hl=ko"><img src="<%= asset_path 'play_store_icon.png' %>"></a>
       <a href="https://itunes.apple.com/kr/app/bttendance-make-your-lecture/id829410376"><img src="<%= asset_path 'app_store_icon.png' %>"></a>

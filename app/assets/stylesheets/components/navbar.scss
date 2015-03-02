@@ -1,0 +1,25 @@
+#bttendance {
+  #navbar_main {
+    margin-bottom: 0;
+
+    .navbar-brand {
+      height: 66px;
+      padding: 12px 20px;
+    }
+
+    .btn-add-course {
+      width: 160px;
+      margin: 15px 0 15px 30px;
+    }
+
+    .btn-profile {
+      float: right;
+      padding: 23px 20px 23px 0;
+      color: white;
+
+      > span {
+        margin-right: 5px;
+      }
+    }
+  }
+}

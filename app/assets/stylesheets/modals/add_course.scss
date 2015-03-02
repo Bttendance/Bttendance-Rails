@@ -1,0 +1,20 @@
+#bttendance {
+  .add-course-modal {
+    .modal-dialog {
+      width: 450px;
+
+      .modal-content {
+        .modal-body {
+          .btn-choose-path {
+            font-size: 14px;
+            color: $selago;
+          }
+
+          &.register-course, &.join-course {
+            padding: 20px;
+          }
+        }
+      }
+    }
+  }
+}

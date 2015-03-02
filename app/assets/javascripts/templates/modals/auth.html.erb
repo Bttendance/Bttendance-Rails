@@ -1,0 +1,24 @@
+<div class="modal-header text-right">
+  <button type="button" class="close" ng-click="dismiss()"><span>&times;</span></button>
+</div>
+<div class="modal-body">
+  <button type="button" class="btn-auth-facebook btn btn-block" ng-click="authFacebook()" translate="modals.auth.btn_auth_facebook"></button>
+  <button type="button" class="btn-auth-google btn btn-block" ng-click="authGoogle()" translate="modals.auth.btn_auth_google"></button>
+  <div class="controls">
+      <button type="button" class="btn-auth-email btn btn-link" translate="modals.auth.btn_auth_email" ng-click="showEmailForm(emailForm)"></button>
+      <button type="button" class="btn-login btn btn-link" translate="modals.auth.btn_login" ng-click="showLoginForm()"></button>
+  </div>
+  <form class="email-signup-form" ng-show="emailFormOpen" name="emailForm" ng-submit="register(emailForm)">
+    <input type="text" required class="form-control" name="name" ng-model="name" placeholder="{{ 'modals.auth.name' | translate }}" focus="emailFormOpen">
+    <input type="text" required class="form-control" name="email" ng-model="email" placeholder="{{ 'modals.auth.email' | translate }}">
+    <input type="password" required class="form-control" ng-class="{ 'form-has-error': errors.length > 0 }" name="password" ng-model="password" placeholder="{{ 'modals.auth.password' | translate }}">
+    <error-list></error-list>
+    <button type="submit" class="btn btn-primary btn-block" translate="modals.auth.btn_register"></button>
+  </form>
+  <form class="login-form" ng-show="loginFormOpen" name="loginForm" ng-submit="login(loginForm)">
+    <input type="text" required class="form-control" name="email" ng-model="email" placeholder="{{ 'modals.auth.email' | translate }}" focus="loginFormOpen">
+    <input type="password" required minlength="6" class="form-control" ng-class="{ 'form-has-error': errors.length > 0 }" name="password" ng-model="password" placeholder="{{ 'modals.auth.password' | translate }}">
+    <error-list></error-list>
+    <button type="submit" class="btn btn-primary btn-block" translate="modals.auth.btn_login"></button>
+  </form>
+</div>

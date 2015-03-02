@@ -4,6 +4,7 @@ ko:
     tagline: "당신을 위한 Smart TA"
     get_started: "시작하기"
     get_started_web: "비텐던스를 Web 시작하기"
+    add_course: "강의 추가하기기"
     main:
       intro_line: "귀찮은 일은 비텐던스에게 맡기시고,<br>비텐던스를 통해 학생들과 더 많이 소통하세요."
       features_title: "비텐던스가 제공하는  기능들을 확인하세요"
@@ -21,3 +22,26 @@ ko:
       platforms_title: "지금 비텐던스를 시작해요!"
       platforms_line: "구글 플레이이와 애플 앱스토어에서도 다운 받으실 수 있습니다."
       company_info: "주식회사 비텐던스 | 대표: 김태환"
+    dash:
+      start:
+        get_started: "아직 강의를 추가하지 않으셨군요!<br>비텐던스를 사용하기 위해서는 강의를 개설하시거나 (강의자) 수강강하셔야 (학생) 합니다."
+        how_to_use: "사용법이 궁금하세요?"
+        view_manual: "기능별<br>사용법 보기"
+        download_manual: "사용자 매뉴얼<br>다운받기"
+    modals:
+      auth:
+        btn_auth_facebook: "<img src='/assets/facebook_brand.png'>로 시작하기"
+        btn_auth_google: "<img src='/assets/google_brand.png'>로 시작하기"
+        btn_auth_email: "E-mail로 가입하기"
+        btn_login: "로그인하기"
+        btn_register: "가입하기"
+        name: "이름"
+        email: "E-mail"
+        password: "비밀번호"
+      add_course:
+        register_course_suffixed: "강의 개설하하기 (강의자)"
+        register_course: "강의 개설"
+        join_course: "강의 수강하기 (학생)"
+        class_code: "클래스코드"
+        course_name: "강의명"
+        instructor_name: "교수명"

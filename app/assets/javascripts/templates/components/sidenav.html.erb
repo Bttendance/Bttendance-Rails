@@ -1,0 +1,25 @@
+<aside id="sidenav_main" ng-controller="SidenavController" class="row">
+  <ul class="sidenav-list">
+    <li class="home">
+      <a ng-class="{ active: isState('dash.home') }"ui-sref="dash.home"><span></span>Home</a>
+    </li>
+    <li class="attendance">
+      <a ng-class="{ active: isState('dash.attendance') }"ui-sref="dash.attendance"><span></span>Attendance</a>
+    </li>
+    <li class="clicker">
+      <a ng-class="{ active: isState('dash.clicker')  }"ui-sref="dash.clicker"><span></span>Clicker</a>
+    </li>
+    <li class="notice">
+      <a ng-class="{ active: isState('dash.notice') }"ui-sref="dash.notice"><span></span>Notice</a>
+    </li>
+    <li class="curious">
+      <a ng-class="{ active: isState('dash.curious') }"ui-sref="dash.curious"><span></span>Curious</a>
+    </li>
+    <li class="student">
+      <a ng-class="{ active: isState('dash.student') }"ui-sref="dash.student"><span></span>Student</a>
+    </li>
+    <li class="settings">
+      <a ng-class="{ active: isState('dash.settings') }"ui-sref="dash.settings"><span></span>Course Settings</a>
+    </li>
+  </ul>
+</aside>

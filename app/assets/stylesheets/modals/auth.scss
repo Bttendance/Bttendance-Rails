@@ -1,0 +1,69 @@
+.auth-modal {
+  .btn-auth-facebook, .btn-auth-google {
+    height: 50px;
+    font-size: 18px;
+    color: $titan-white;
+
+    &:hover {
+      color: $titan-white;
+    }
+  }
+
+  .btn-auth-facebook {
+    background-color: $chambray;
+    background: $chambray;
+
+    > img {
+      vertical-align: baseline;
+    }
+
+    &:hover {
+      background-color: darken($chambray, 5%);
+      background: darken($chambray, 5%);
+    }
+  }
+
+  .btn-block.btn-auth-google {
+    margin: 24px 0 45px 0;
+    background-color: $valencia;
+    background: $valencia;
+
+    &:hover {
+      background-color: darken($valencia, 5%);
+      background: darken($valencia, 5%);
+    }
+  }
+
+  .controls {
+    margin-left: 95px;
+    font-size: 14px;
+
+    .btn-auth-email {
+      padding: 0 32px 0 0;
+      border-right: 1px solid $storm-grey;
+    }
+
+    .btn-login {
+      padding: 0 0 0 28px;
+    }
+  }
+
+  .error-list {
+    @extend .bg-danger;
+    list-style: none;
+    margin-bottom: 35px;
+    padding: 15px;
+  }
+
+  .email-signup-form, .login-form {
+    margin-top: 44px;
+
+    > input {
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-bottom: 35px;
+      }
+    }
+  }
+}

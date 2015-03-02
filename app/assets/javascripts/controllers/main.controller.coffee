@@ -1,11 +1,12 @@
 'use strict'
 
 angular.module 'bttendance'
-.controller 'MainController', ($scope, Course, User) ->
+.controller 'MainController', ($scope, Course, User, Rails, Auth) ->
+  $scope.loginUrl = Auth.AUTH_URL
   $scope.translationData = {}
 
-  Course.query count: true, (data) ->
-    $scope.translationData.numUniqueCourses = _.first(data).course_count
+  Course.count().$promise.then (data) ->
+    $scope.translationData.numUniqueCourses = data.course_count
 
-  User.query count: true, (data) ->
-    $scope.translationData.numUniqueUsers = _.first(data).user_count
+  User.count().$promise.then (data) ->
+    $scope.translationData.numUniqueUsers = data.user_count
