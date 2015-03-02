@@ -29,8 +29,15 @@ gem 'hashie_rails'
 # Use RABL for JSON templating
 gem 'grape-rabl'
 # Use Kaminari for pagination
-# TODO: Check official repo for PR #21 merge
 gem 'grape-kaminari'
+# Use devise for user authentication, etc
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+# Use doorkeeper for OAuth
+gem 'doorkeeper'
+gem 'wine_bouncer'
 # Use pry for live debugging
 gem 'pry-rails',     group: :development
 # Use ActiveModel has_secure_password
@@ -38,7 +45,7 @@ gem 'bcrypt', '~> 3.1.9'
 # Plug-n-play WebSocket support for Rails
 gem 'websocket-rails'
 # Plug in which helps to install bower to heroku
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
