@@ -7,6 +7,9 @@
     "angular-resource": "latest",
     "angular-translate": "latest",
     "angular-translate-loader-static-files": "latest",
+    "angular-bootstrap": "latest",
+    "angular-ui-router": "latest",
+    "ngstorage": "latest",
     "lodash": "latest"
   }
 }

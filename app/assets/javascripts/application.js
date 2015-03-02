@@ -18,6 +18,9 @@
 //= require angular-translate/angular-translate
 //= require angular-translate-loader-static-files/angular-translate-loader-static-files
 //= require angular-rails-templates
-//= require lodash/dist/lodash
+//= require angular-bootstrap/ui-bootstrap-tpls
+//= require angular-ui-router/release/angular-ui-router
+//= require ngstorage/ngStorage
+//= require lodash/lodash
 //= require_tree ./templates
 //= require_tree .

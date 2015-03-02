@@ -1,8 +1,10 @@
 bttendance = angular.module 'bttendance', [
-  'ngRoute',
   'ngResource',
+  'ngStorage',
   'pascalprecht.translate',
-  'templates'
+  'templates',
+  'ui.bootstrap',
+  'ui.router'
 ]
 
 bttendance
