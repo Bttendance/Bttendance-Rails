@@ -24,10 +24,10 @@ module V1
 
 
       desc 'Returns search result of schools by name'
+      paginate per_page: 10
       params do
         requires :query, type: String, desc: 'Search Query'
       end
-      paginate per_page: 10
       post 'search', rabl: 'schools/schools' do
         schools = School.name_like(params[:query])
         @schools = paginate(Kaminari.paginate_array(schools))
