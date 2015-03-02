@@ -39,7 +39,7 @@ module V1
 
       desc 'Updates a clicker and returns the updated clicker object'
       params do
-        requires :clicker do
+        requires :clicker, type: Hash do
           optional :type, type: String, desc: 'Type'
           optional :message, type: String, desc: 'Message'
           optional :saved, type: Boolean, desc: 'Saved'
