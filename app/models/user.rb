@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+  devise :database_authenticatable, :registerable, :recoverable,
+         :rememberable, :trackable, :validatable
+
   has_many :schools_users
   has_many :schools, through: :schools_users
   has_many :courses_users
@@ -35,7 +38,6 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  has_secure_password
   validates :password, length: { minimum: 6 }, on: :create
 
   # Model callbacks
@@ -53,5 +55,14 @@ class User < ActiveRecord::Base
 
   def send_welcome_email
     UserMailer.welcome(self).deliver
+  end
+
+  def from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+    end
   end
 end
